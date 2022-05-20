@@ -1,0 +1,43 @@
+{
+  "@header": {
+    "version": "1.0.0",
+    "aasVersion": "3.0RC01"
+  },
+  "aasEnvironmentMapping": {
+    "@definitions": {
+      "mappingIdGeneration": {
+        "@concatenate_and_hash": [
+          {
+            "@xpath": "//caex:SystemUnitClass[caex:SupportedRoleClass/@RefRoleClassPath='AutomationMLComponentStandardRCL/AutomationComponent' or caex:RoleRequirements/@RefBaseRoleClassPath='AutomationMLComponentStandardRCL/AutomationComponent'] | //caex:InternalElement[caex:SupportedRoleClass/@RefRoleClassPath='AutomationMLComponentStandardRCL/AutomationComponent' or caex:RoleRequirements/@RefBaseRoleClassPath='AutomationMLComponentStandardRCL/AutomationComponent']",
+            "default": "DefaultManufacturer"
+          },
+          "/",
+          {
+            "@xpath": "caex:Attribute[@Name='IdentificationData']/caex:Attribute[@Name='ManufacturerUri']/caex:Value"
+          }
+        ]
+      }
+    },
+    "submodels": [
+      {
+        "submodelElements": [
+          {
+            "modelType": "File",
+            "@foreach": {
+              "@xpath": "caex:InternalElement[@Name='Manuals']/caex:InternalElement[@Name='Betriebsanleitung']/caex:ExternalInterface[@Name='ExternalDataReference']"
+            },
+            "@bind": {
+              "idShort": "Betriebsanleitung",
+              "value": {
+                "@xpath": "caex:Attribute[@Name='refURI']/caex:Value"
+              },
+              "mimeType": {
+                "@xpath": "caex:Attribute[@Name='MIMEType']/caex:Value"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

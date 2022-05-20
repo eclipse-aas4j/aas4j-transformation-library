@@ -1,0 +1,6 @@
+/* 
+  SPDX-FileCopyrightText: (C)2021 SAP SE or an affiliate company and aas-transformation-library contributors. All rights reserved. 
+
+  SPDX-License-Identifier: Apache-2.0 
+ */
+rootProject.name = 'aas-transformation-library'

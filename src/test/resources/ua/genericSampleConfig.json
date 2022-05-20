@@ -1,0 +1,27 @@
+{
+	"@header": {
+		"version": "1.0.0",
+		"aasVersion": "3.0RC01",
+		"@namespaces": {
+			"opc": "http://opcfoundation.org/UA/2011/03/UANodeSet.xsd",
+			"uax": "http://opcfoundation.org/UA/2008/02/Types.xsd",
+			"typ": "http://opcfoundation.org/UA/I4AAS/V3/Types.xsd"
+		}
+	},
+	"aasEnvironmentMapping": {
+		"submodels": [
+			{
+				"@foreach": {
+					"@xpath": "/opc:UANodeSet/opc:UAVariable/opc:Value/uax:ListOfExtensionObject/uax:ExtensionObject/uax:Body"
+				},
+				"@bind": {
+					"idShort": {
+						"@xpath": "typ:AASKeyDataType/typ:Type"
+					}
+				},
+				"submodelElements": [
+				]
+			}
+		]
+	}
+}

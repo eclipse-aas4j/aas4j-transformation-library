@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CAEXFile SchemaVersion="3.0" FileName="aml_minimal_sample.xml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.dke.de/CAEX" xsi:schemaLocation="http://www.dke.de/CAEX CAEX_ClassModel_V.3.0.xsd">
+	<SuperiorStandardVersion>AutomationML 2.10</SuperiorStandardVersion>
+	<SourceDocumentInformation OriginName="" OriginID="" OriginVersion="" LastWritingDateTime="2020-06-12T12:46:56.7231137+02:00"/>
+	<SystemUnitClassLib Name="TestSystemUnitClassLib">
+		<SystemUnitClass Name="TestSystemUnitClass" ID="TestSystemUnitClassID">
+			<Attribute Name="GeneralTechnicalData">
+				<Attribute Name="AmbientTemperature">
+                    <Attribute Name="TemperatureMin">
+                        <Value>-273</Value>
+                    </Attribute>
+                    <Attribute Name="TemperatureMin">
+                        <Value>100</Value>
+                    </Attribute>
+				</Attribute>
+				<Attribute Name="IPCode">
+					<Value>Test IPCode</Value>
+				</Attribute>
+				<Attribute Name="Material">
+					<Value>Test Material</Value>
+				</Attribute>
+				<Attribute Name="Weight">
+					<Value>123.1</Value>
+				</Attribute>
+				<Attribute Name="Height">
+					<Value>15</Value>
+				</Attribute>
+				<Attribute Name="Width">
+					<Value>18</Value>
+				</Attribute>
+				<Attribute Name="Length">
+					<Value>14</Value>
+				</Attribute>
+			</Attribute>
+			<Attribute Name="IdentificationData">
+				<Attribute Name="Manufacturer">
+					<Value>Test Manufacturer</Value>
+				</Attribute>
+				<Attribute Name="ManufacturerURI">
+					<Value>http://www.example.com/manufacturerURI</Value>
+				</Attribute>
+				<Attribute Name="DeviceClass">
+					<Value>1234</Value>
+				</Attribute>
+				<Attribute Name="Model">
+					<Value>Test Model</Value>
+				</Attribute>
+				<Attribute Name="ProductCode">
+					<Value>Test ProductCode</Value>
+				</Attribute>
+				<Attribute Name="OrderCode">
+					<Value>Test OrderCode</Value>
+				</Attribute>
+				<Attribute Name="HardwareRevision">
+					<Value>1.0.0</Value>
+				</Attribute>
+				<Attribute Name="SoftwareRevision">
+					<Value>1.0.0</Value>
+				</Attribute>
+				<Attribute Name="SerialNumber">
+					<Value>TestSerialNumber1234</Value>
+				</Attribute>
+				<Attribute Name="FabricationNumber">
+					<Value>TestFabricationNumber1234</Value>
+				</Attribute>
+				<Attribute Name="ProductInstanceURI">
+					<Value>http://www.example.com/productInstanceURI</Value>
+				</Attribute>
+			</Attribute>
+			
+			
+			<!-- Collection of other files (can be a link to an online or local file) -->
+			<!-- This example contains several files
+			- a local text file
+			- a local pdf file
+			- an online text file
+			-->
+			<InternalElement Name="TestOtherFilesCollection" ID="TestOtherFilesCollectionID">
+			
+				<!-- Link to a local .txt file -->
+				<InternalElement Name="TestLocalTextFile" ID="TestLocalTextFileID">
+					<ExternalInterface Name="ExternalDataReference" ID="ExternalDataReferenceID1" RefBaseClassPath="AutomationMLBPRInterfaceClassLib/ExternalDataReference">
+						<Attribute Name="MIMEType" AttributeDataType="xs:string">
+							<Value>plain/text</Value>
+						</Attribute>
+						<Attribute Name="refURI" AttributeDataType="xs:anyURI" RefAttributeType="AutomationMLBaseAttributeTypeLib/refURI">
+							<Value>/files/TestTXTDeviceManual.txt</Value>
+						</Attribute>
+					</ExternalInterface>
+					<SupportedRoleClass RefRoleClassPath="AutomationMLBPRRoleClassLib/ExternalData"/>
+				</InternalElement>
+				
+				<!-- Link to a local .pdf file -->
+				<InternalElement Name="TestOnlinePDFFile" ID="TestOnlinePDFFileID">
+					<ExternalInterface Name="ExternalDataReference" ID="ExternalDataReferenceID2" RefBaseClassPath="AutomationMLBPRInterfaceClassLib/ExternalDataReference">
+						<Attribute Name="MIMEType" AttributeDataType="xs:string">
+							<Value>application/pdf</Value>
+						</Attribute>
+						<Attribute Name="refURI" AttributeDataType="xs:anyURI" RefAttributeType="AutomationMLBaseAttributeTypeLib/refURI">
+							<Value>/files/TestPDFDeviceManual.pdf</Value>
+						</Attribute>
+					</ExternalInterface>
+					<SupportedRoleClass RefRoleClassPath="AutomationMLBPRRoleClassLib/ExternalData"/>
+				</InternalElement>
+				
+				<!-- Link to an online .txt file --> 
+				<InternalElement Name="TestOnlineTextFile" ID="TestOnlineTextFileID">
+					<ExternalInterface Name="ExternalDataReference" ID="ExternalDataReferenceID1" 	RefBaseClassPath="AutomationMLBPRInterfaceClassLib/ExternalDataReference">
+						<Attribute Name="MIMEType" AttributeDataType="xs:string">
+							<Value>plain/text</Value>
+						</Attribute>
+						<Attribute Name="refURI" AttributeDataType="xs:anyURI" RefAttributeType="AutomationMLBaseAttributeTypeLib/refURI">
+							<Value>https://www.w3.org/TR/PNG/iso_8859-1.txt</Value>
+						</Attribute>
+					</ExternalInterface>
+					<SupportedRoleClass RefRoleClassPath="AutomationMLBPRRoleClassLib/ExternalData" />
+				</InternalElement>
+				
+				<RoleRequirements RefBaseRoleClassPath="AutomationMLBaseRoleClassLib/AutomationMLBaseRole"/>
+			</InternalElement>
+			<SupportedRoleClass RefRoleClassPath="AutomationMLComponentStandardRCL/AutomationComponent"/>
+		</SystemUnitClass>
+		<SystemUnitClass Name="NotUsedSystemUnitClass" ID="NotUsedSystemUnitClassID">
+			<InternalElement Name="NotUsedFilesCollection" ID="NotUsedFilesCollectionID">
+				<!-- Link to a local .txt file -->
+				<InternalElement Name="NotUsedLocalTextFile" ID="NotUsedLocalTextFileID">
+					<ExternalInterface Name="ExternalDataReference" ID="ExternalDataReferenceID1" RefBaseClassPath="AutomationMLBPRInterfaceClassLib/ExternalDataReference">
+						<Attribute Name="MIMEType" AttributeDataType="xs:string">
+							<Value>plain/text</Value>
+						</Attribute>
+						<Attribute Name="refURI" AttributeDataType="xs:anyURI" RefAttributeType="AutomationMLBaseAttributeTypeLib/refURI">
+							<Value>/files/TestTXTWarranty.txt</Value>
+						</Attribute>
+					</ExternalInterface>
+					<SupportedRoleClass RefRoleClassPath="AutomationMLBPRRoleClassLib/ExternalData"/>
+				</InternalElement>
+			</InternalElement>
+
+		</SystemUnitClass>
+	</SystemUnitClassLib>
+</CAEXFile>

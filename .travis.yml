@@ -1,0 +1,11 @@
+dist: bionic
+language: generic
+git:
+  depth: 1
+
+notifications:
+  email: false
+
+install:
+  - ls -la
+  - docker run -v $(pwd):/src sapmachine:11 bash -c "cd /src && ./gradlew clean build --info"

@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UANodeSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uax="http://opcfoundation.org/UA/2008/02/Types.xsd" xmlns="http://opcfoundation.org/UA/2011/03/UANodeSet.xsd" xmlns:s1="http://yourorganisation.org/example_euromap/Types.xsd" xmlns:s2="http://opcfoundation.org/UA/DI/Types.xsd" xmlns:s3="http://opcfoundation.org/UA/PlasticsRubber/GeneralTypes/Types.xsd" xmlns:ua="http://unifiedautomation.com/Configuration/NodeSet.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <NamespaceUris>
+        <Uri>http://yourorganisation.org/example_euromap/</Uri>
+        <Uri>http://opcfoundation.org/UA/DI/</Uri>
+        <Uri>http://opcfoundation.org/UA/PlasticsRubber/GeneralTypes/</Uri>
+    </NamespaceUris>
+    <Models>
+        <Model ModelUri="http://yourorganisation.org/example_euromap/" PublicationDate="2021-10-12T09:58:01Z" Version="1.0.0">
+            <RequiredModel ModelUri="http://opcfoundation.org/UA/" PublicationDate="2020-04-14T00:00:00Z" Version="1.04.6"/>
+            <RequiredModel ModelUri="http://opcfoundation.org/UA/DI/" PublicationDate="2020-05-19T00:00:00Z" Version="1.02.1"/>
+            <RequiredModel ModelUri="http://opcfoundation.org/UA/PlasticsRubber/GeneralTypes/" PublicationDate="2021-05-10T12:00:00Z" Version="1.03"/>
+        </Model>
+    </Models>
+    <Aliases>
+        <Alias Alias="Boolean">i=1</Alias>
+        <Alias Alias="String">i=12</Alias>
+        <Alias Alias="DateTime">i=13</Alias>
+        <Alias Alias="LocalizedText">i=21</Alias>
+        <Alias Alias="Organizes">i=35</Alias>
+        <Alias Alias="HasTypeDefinition">i=40</Alias>
+        <Alias Alias="HasProperty">i=46</Alias>
+        <Alias Alias="HasComponent">i=47</Alias>
+        <Alias Alias="IdType">i=256</Alias>
+        <Alias Alias="NumericRange">i=291</Alias>
+        <Alias Alias="LogbookEventsEnumeration">ns=3;i=3009</Alias>
+    </Aliases>
+    <Extensions>
+        <Extension>
+            <ua:ModelInfo Tool="UaModeler" Hash="arrJIq3Q3bAyoK10DnaKSg==" Version="1.6.4"/>
+        </Extension>
+    </Extensions>
+    <UAObject NodeId="ns=1;i=5002" BrowseName="1:MachineInformation">
+        <DisplayName>MachineInformation</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty">ns=1;i=6007</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6008</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6001</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6002</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6009</Reference>
+            <Reference ReferenceType="Organizes" IsForward="false">ns=2;i=6094</Reference>
+            <Reference ReferenceType="HasTypeDefinition">ns=3;i=1009</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6003</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6010</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6004</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6011</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6012</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6005</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6006</Reference>
+        </References>
+    </UAObject>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=5002" NodeId="ns=1;i=6007" BrowseName="2:AssetId">
+        <DisplayName>AssetId</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5002</Reference>
+        </References>
+        <Value>
+            <uax:String>TestAssetId</uax:String>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="LocalizedText" ParentNodeId="ns=1;i=5002" NodeId="ns=1;i=6008" BrowseName="2:ComponentName">
+        <DisplayName>ComponentName</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5002</Reference>
+        </References>
+        <Value>
+            <uax:LocalizedText>
+                <uax:Locale>de</uax:Locale>
+                <uax:Text>Test Komponente</uax:Text>
+            </uax:LocalizedText>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=5002" NodeId="ns=1;i=6001" BrowseName="3:ControllerName">
+        <DisplayName>ControllerName</DisplayName>
+        <Description>Name of the machine controller </Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5002</Reference>
+        </References>
+        <Value>
+            <uax:String>TestControllerName</uax:String>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=5002" NodeId="ns=1;i=6002" BrowseName="2:DeviceClass">
+        <DisplayName>DeviceClass</DisplayName>
+        <Description>Indicates in which domain or for what purpose a device is used.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5002</Reference>
+        </References>
+        <Value>
+            <uax:String>TestDeviceClass</uax:String>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=5002" NodeId="ns=1;i=6009" BrowseName="2:DeviceManual">
+        <DisplayName>DeviceManual</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5002</Reference>
+        </References>
+        <Value>
+            <uax:String>TestDeviceManual</uax:String>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="LocalizedText" ParentNodeId="ns=1;i=5002" NodeId="ns=1;i=6003" BrowseName="2:Manufacturer">
+        <DisplayName>Manufacturer</DisplayName>
+        <Description>Name of the company that manufactured the device</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5002</Reference>
+        </References>
+        <Value>
+            <uax:LocalizedText>
+                <uax:Locale>de</uax:Locale>
+                <uax:Text>Test Hersteller</uax:Text>
+            </uax:LocalizedText>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=5002" NodeId="ns=1;i=6010" BrowseName="2:ManufacturerUri">
+        <DisplayName>ManufacturerUri</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5002</Reference>
+        </References>
+        <Value>
+            <uax:String>http://test-manufacturer.org/123</uax:String>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="LocalizedText" ParentNodeId="ns=1;i=5002" NodeId="ns=1;i=6004" BrowseName="2:Model">
+        <DisplayName>Model</DisplayName>
+        <Description>Model name of the device</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5002</Reference>
+        </References>
+        <Value>
+            <uax:LocalizedText>
+                <uax:Locale>de</uax:Locale>
+                <uax:Text>Test Model 2000</uax:Text>
+            </uax:LocalizedText>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=5002" NodeId="ns=1;i=6011" BrowseName="2:ProductCode">
+        <DisplayName>ProductCode</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5002</Reference>
+        </References>
+        <Value>
+            <uax:String>1234-4567</uax:String>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=5002" NodeId="ns=1;i=6012" BrowseName="2:ProductInstanceUri">
+        <DisplayName>ProductInstanceUri</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5002</Reference>
+        </References>
+        <Value>
+            <uax:String>http://test-product.org/instance789</uax:String>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=5002" NodeId="ns=1;i=6005" BrowseName="2:SerialNumber">
+        <DisplayName>SerialNumber</DisplayName>
+        <Description>Identifier that uniquely identifies, within a manufacturer, a device instance</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5002</Reference>
+        </References>
+        <Value>
+            <uax:String>111222333444</uax:String>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="LogbookEventsEnumeration" ParentNodeId="ns=1;i=5002" ValueRank="1" NodeId="ns=1;i=6006" BrowseName="3:SupportedLogbookEvents">
+        <DisplayName>SupportedLogbookEvents</DisplayName>
+        <Description>Information which LogbookEvents are supported by the machine</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5002</Reference>
+        </References>
+    </UAVariable>
+    <UAObject SymbolicName="http___yourorganisation_org_example_euromap_" NodeId="ns=1;i=5001" BrowseName="1:http://yourorganisation.org/example_euromap/">
+        <DisplayName>http://yourorganisation.org/example_euromap/</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty">ns=1;i=6013</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=11616</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">i=11715</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6014</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6015</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6016</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6017</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6018</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6019</Reference>
+        </References>
+    </UAObject>
+    <UAVariable DataType="Boolean" ParentNodeId="ns=1;i=5001" NodeId="ns=1;i=6013" BrowseName="IsNamespaceSubset">
+        <DisplayName>IsNamespaceSubset</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5001</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+        <Value>
+            <uax:Boolean>false</uax:Boolean>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="DateTime" ParentNodeId="ns=1;i=5001" NodeId="ns=1;i=6014" BrowseName="NamespacePublicationDate">
+        <DisplayName>NamespacePublicationDate</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5001</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+        <Value>
+            <uax:DateTime>2021-10-12T09:58:01Z</uax:DateTime>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=5001" NodeId="ns=1;i=6015" BrowseName="NamespaceUri">
+        <DisplayName>NamespaceUri</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5001</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+        <Value>
+            <uax:String>http://yourorganisation.org/example_euromap/</uax:String>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=5001" NodeId="ns=1;i=6016" BrowseName="NamespaceVersion">
+        <DisplayName>NamespaceVersion</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5001</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+        <Value>
+            <uax:String>1.0.0</uax:String>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="IdType" ParentNodeId="ns=1;i=5001" ValueRank="1" NodeId="ns=1;i=6017" ArrayDimensions="0" BrowseName="StaticNodeIdTypes">
+        <DisplayName>StaticNodeIdTypes</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5001</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="NumericRange" ParentNodeId="ns=1;i=5001" ValueRank="1" NodeId="ns=1;i=6018" ArrayDimensions="0" BrowseName="StaticNumericNodeIdRange">
+        <DisplayName>StaticNumericNodeIdRange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5001</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=5001" NodeId="ns=1;i=6019" BrowseName="StaticStringNodeIdPattern">
+        <DisplayName>StaticStringNodeIdPattern</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5001</Reference>
+        </References>
+    </UAVariable>
+</UANodeSet>

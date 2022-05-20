@@ -1,0 +1,299 @@
+/* 
+  SPDX-FileCopyrightText: (C)2021 SAP SE or an affiliate company and aas-transformation-library contributors. All rights reserved. 
+
+  SPDX-License-Identifier: Apache-2.0 
+ */
+plugins {
+    id 'java'
+    id 'jacoco'
+    id 'application'
+    id 'com.diffplug.spotless' version '5.15.1'
+    id 'com.github.ksoichiro.console.reporter' version '0.6.2'
+    id 'se.bjurr.violations.violations-gradle-plugin' version '1.40'
+    id 'com.github.johnrengelman.shadow' version '6.1.0'
+    id 'eclipse'
+    id 'idea'
+    id 'maven-publish'
+}
+
+group = 'com.sap.dsc.aas.lib'
+version = '0.1.1'
+
+application {
+    group = group
+    version = version
+    mainClass.set('com.sap.dsc.aas.lib.ConsoleApplication')
+}
+
+mainClassName = application.mainClass.get()
+shadowDistZip.enabled(false)
+shadowDistTar.enabled(false)
+
+configurations {
+    // Configure this for lombok
+    annotationProcessor {
+        extendsFrom implementation
+    }
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
+
+test {
+    useJUnitPlatform {
+        includeEngines 'junit-jupiter'
+        excludeTags 'integration-test'
+    }
+
+    ignoreFailures = false
+    testLogging {
+        events = ['passed', 'skipped', 'failed', 'standardOut', 'standardError']
+        exceptionFormat = org.gradle.api.tasks.testing.logging.TestExceptionFormat.FULL
+        showStandardStreams = false
+    }
+    reports {
+        junitXml {
+            enabled = true
+            destination = file("${buildDir}/reports/junit/xml")
+        }
+        html {
+            enabled = true
+            destination = file("${buildDir}/reports/junit/html")
+        }
+    }
+    finalizedBy jacocoTestReport
+}
+
+task integrationTest(type: Test) {
+    useJUnitPlatform {
+        includeEngines 'junit-jupiter'
+        includeTags 'integration-test'
+    }
+
+    ignoreFailures = false
+    testLogging {
+        events = ['passed', 'skipped', 'failed', 'standardOut', 'standardError']
+        exceptionFormat = org.gradle.api.tasks.testing.logging.TestExceptionFormat.FULL
+        showStandardStreams = true
+    }
+    reports {
+        junitXml {
+            enabled = true
+            destination = file("${buildDir}/reports/integration/xml")
+        }
+        html {
+            enabled = true
+            destination = file("${buildDir}/reports/integration/html")
+        }
+    }
+    shouldRunAfter test
+}
+
+consoleReporter {
+    jacoco {
+        enabled true
+        onlyWhenCoverageTaskExecuted false
+        reportAfterBuildFinished true
+        failIfLessThanThresholdError true
+        autoconfigureCoverageConfig true
+        coverageTaskName 'jacocoTestReport'
+        reportFile project.file("${buildDir}/reports/jacoco/xml/jacoco.xml")
+        thresholdFine 80
+        thresholdWarning 65
+        thresholdError 50
+        brokenCoverageErrorMessage 'Code Coverage has fallen below the defined threshold.'
+        colorEnabled true
+    }
+}
+
+jacoco {
+    toolVersion = '0.8.6'
+    reportsDir = file("${buildDir}/reports/jacoco")
+}
+
+jacocoTestReport {
+    dependsOn test
+
+    reports {
+        csv {
+            enabled true
+            destination file("${buildDir}/reports/jacoco/csv/jacoco.csv")
+        }
+        xml {
+            enabled true
+            destination file("${buildDir}/reports/jacoco/xml/jacoco.xml")
+        }
+        html {
+            enabled true
+            destination file("${buildDir}/reports/jacoco/html")
+        }
+    }
+
+    // Display the code coverage every time after the jacocoTestReport run
+    finalizedBy project.tasks.reportCoverage
+}
+
+javadoc {
+    options.addBooleanOption('html5', true)
+}
+
+spotless {
+    enforceCheck = false
+
+    format 'misc', {
+        target('.gitignore')
+        trimTrailingWhitespace()
+        indentWithSpaces()
+        endWithNewline()
+    }
+
+    format 'gradle', {
+        target('*.gradle')
+        trimTrailingWhitespace()
+        indentWithSpaces()
+        endWithNewline()
+        licenseHeader('/* \n  SPDX-FileCopyrightText: (C)$YEAR SAP SE or an affiliate company and aas-transformation-library contributors. All rights reserved. \n\n  SPDX-License-Identifier: Apache-2.0 \n */','\\w')
+    }
+
+    // format 'xmlaml', {
+    //     target('src/**/*.xml','src/**/*.aml')
+    //     trimTrailingWhitespace()
+    //     indentWithSpaces()
+    //     endWithNewline()
+    //     licenseHeader('<!-- \n  SPDX-FileCopyrightText: (C)$YEAR SAP SE or an affiliate company and aas-transformation-library contributors. All rights reserved. \n\n  SPDX-License-Identifier: Apache-2.0 \n -->','<[^!]')
+    // }
+
+    java {
+        encoding("UTF8")
+        trimTrailingWhitespace()
+        removeUnusedImports()
+        endWithNewline()
+        eclipse('4.12.0').configFile 'codestyle/EclipseFormatterProfile.xml'
+        importOrderFile('codestyle/EclipseOrganizeImports.importorder')
+        licenseHeader('/* \n  SPDX-FileCopyrightText: (C)$YEAR SAP SE or an affiliate company and aas-transformation-library contributors. All rights reserved. \n\n  SPDX-License-Identifier: Apache-2.0 \n */')
+    }
+}
+
+import java.text.SimpleDateFormat
+
+distZip.enabled(false)
+distTar.enabled(false)
+
+task sourcesJar(type: Jar) {
+    from sourceSets.main.allJava
+
+    destinationDirectory.set(file("${buildDir}/libs"))
+
+    doFirst {
+        manifest {
+            attributes(
+                'Asset-Administration-Shell-Artifact-Name' : "${rootProject.name}",
+                'Asset-Administration-Shell-Artifact-Git-Version' : archiveVersion.get(),
+                'Asset-Administration-Shell-Artifact-Build-Date' : "${new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(new Date())}"
+            )
+        }
+        manifest.writeTo("${buildDir}/tmp/jar/MANIFEST.MF")
+    }
+
+    archiveAppendix.set('composable')
+    archiveClassifier.set('sources')
+    archiveExtension.set('jar')
+}
+
+task buildJar (type: Jar) {
+    destinationDirectory.set(file("${buildDir}/libs"))
+
+    doFirst {
+        manifest {
+            attributes(
+                    'Asset-Administration-Shell-Artifact-Name' : "${rootProject.name}",
+                    'Asset-Administration-Shell-Artifact-Git-Version' : archiveVersion.get(),
+                    'Asset-Administration-Shell-Artifact-Build-Date' : "${new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(new Date())}"
+            )
+        }
+        manifest.writeTo("${buildDir}/tmp/jar/MANIFEST.MF")
+    }
+
+    exclude 'META-INF/*.RSA', 'META-INF/*.SF', 'META-INF/*.DSA', 'META-INF/NOTICE', 'META-INF/LICENSE', 'META-INF/DEPENDENCIES'
+
+    archiveExtension.set('jar')
+    with jar
+}
+
+task build(overwrite: true) {
+    dependsOn('buildJar', 'sourcesJar')
+}
+
+shadowJar {
+    destinationDirectory = file("${buildDir}/distributions")
+    archiveClassifier.set("")
+
+    exclude 'META-INF/*.RSA', 'META-INF/*.SF', 'META-INF/*.DSA', 'META-INF/NOTICE', 'META-INF/LICENSE', 'META-INF/LICENSE'
+
+    archiveBaseName.set("aas-transformation-library")
+    archiveAppendix.set("shadow")
+    archiveExtension.set("jar")
+}
+
+repositories {
+    mavenCentral()
+}
+
+publishing {
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/" + System.getenv("GITHUB_REPOSITORY"))
+            credentials {
+                username = System.getenv("GITHUB_ACTOR")
+                password = System.getenv("GITHUB_TOKEN")
+            }
+        }
+    }
+    publications {
+        gpr(MavenPublication) {
+            artifact jar
+        }
+    }
+}
+
+dependencies {
+    def guava_version = "30.0-jre"
+    def commons_version = "1.4"
+    def junit_version = "5.7.0"
+    def mockito_version = "3.2.4"
+    def dom4j_version = "2.1.3"
+    def apache_poi_version = "4.1.2"
+    def jackson_version = "2.11.3"
+    def truth_version = "1.1"
+    def slf4j_version = "1.7.30"
+    def json_schema_validator_version = "1.0.45"
+    def jaxen_version = "1.1.6"
+    def aas_dataformat_json = "1.1.1"
+    def aas_model_version = "1.1.1"
+
+    implementation group: "com.google.guava", name: "guava", version: guava_version
+    implementation group: "commons-cli", name: "commons-cli", version: commons_version
+    implementation (group: "org.dom4j", name: "dom4j", version: dom4j_version) {
+        transitive = false
+    }
+    implementation group: "org.apache.poi", name: "poi", version: apache_poi_version
+    implementation group: "org.apache.poi", name: "poi-ooxml", version: apache_poi_version
+    implementation group: "com.fasterxml.jackson.core", name: "jackson-core", version: jackson_version
+    implementation group: "com.fasterxml.jackson.core", name: "jackson-databind", version: jackson_version
+    implementation group: "com.fasterxml.jackson.core", name: "jackson-annotations", version: jackson_version
+    implementation group: "org.slf4j", name: "slf4j-simple", version: slf4j_version
+    implementation group: "jaxen", name: "jaxen", version: jaxen_version
+    implementation group: 'io.admin-shell.aas', name: 'dataformat-json', version: aas_dataformat_json
+    implementation group: 'io.admin-shell.aas', name: 'model', version: aas_model_version
+    testImplementation group: "org.junit.jupiter", name: "junit-jupiter", version: junit_version
+    testImplementation group: "org.junit.jupiter", name: "junit-jupiter-api", version: junit_version
+    testImplementation group: "org.junit.jupiter", name: "junit-jupiter-engine", version: junit_version
+    testImplementation group: "org.mockito", name: "mockito-core", version: mockito_version
+    testImplementation group: "org.mockito", name: "mockito-junit-jupiter", version: mockito_version
+    testImplementation group: "com.google.truth", name: "truth", version: truth_version
+    testImplementation group: "com.google.truth.extensions", name: "truth-java8-extension", version: truth_version
+    testImplementation group: "com.networknt", name: "json-schema-validator", version: json_schema_validator_version
+}

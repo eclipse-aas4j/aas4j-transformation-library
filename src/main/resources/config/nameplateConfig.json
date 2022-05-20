@@ -1,0 +1,266 @@
+{
+  "version": "2.0.0",
+  "aasVersion": "3.0RC01",
+  "configMappings": [
+    {
+      "from_xpath": "//caex:SystemUnitClass[caex:SupportedRoleClass/@RefRoleClassPath='AutomationMLComponentStandardRCL/AutomationComponent' or caex:RoleRequirements/@RefBaseRoleClassPath='AutomationMLComponentStandardRCL/AutomationComponent'] | //caex:InternalElement[caex:SupportedRoleClass/@RefRoleClassPath='AutomationMLComponentStandardRCL/AutomationComponent' or caex:RoleRequirements/@RefBaseRoleClassPath='AutomationMLComponentStandardRCL/AutomationComponent']",
+      "idGeneration": {
+        "parameters": [
+          {
+            "from_xpath": "caex:Attribute[@Name='IdentificationData']/caex:Attribute[@Name='Manufacturer']/caex:Value",
+            "from_string": "DefaultManufacturer"
+          },
+          {
+            "from_string": "/"
+          },
+          {
+            "from_xpath": "caex:Attribute[@Name='IdentificationData']/caex:Attribute[@Name='ManufacturerUri']/caex:Value"
+          }
+        ],
+        "finalizeFunction": "concatenate_and_hash",
+        "idGenerationName": "mappingIdGeneration"
+      },
+      "assets": [
+        {
+          "from_xpath": "//caex:SystemUnitClass[caex:SupportedRoleClass/@RefRoleClassPath='AutomationMLComponentStandardRCL/AutomationComponent' or caex:RoleRequirements/@RefBaseRoleClassPath='AutomationMLComponentStandardRCL/AutomationComponent'] | //caex:InternalElement[caex:SupportedRoleClass/@RefRoleClassPath='AutomationMLComponentStandardRCL/AutomationComponent' or caex:RoleRequirements/@RefBaseRoleClassPath='AutomationMLComponentStandardRCL/AutomationComponent']",
+          "idGeneration": {
+            "parameters": [
+              {
+                "from_xpath": "caex:Attribute[@Name='IdentificationData']/caex:Attribute[@Name='Manufacturer']/caex:Value",
+                "from_string": "DefaultManufacturer"
+              },
+              {
+                "from_string": "/"
+              },
+              {
+                "from_xpath": "caex:Attribute[@Name='IdentificationData']/caex:Attribute[@Name='ManufacturerUri']/caex:Value"
+              }
+            ],
+            "finalizeFunction": "concatenate_and_hash",
+            "idGenerationName": "assetIdGeneration"
+          },
+          "idShort_xpath": "@Name"
+        }
+      ],
+      "assetInformation": {
+        "kindType_xpath": "TYPE",
+        "idGeneration": {
+          "parameters": [
+            {
+              "from_string": "assetInformationId"
+            }
+          ]
+        },
+        "globalAssetIdReference": {
+          "valueId": "assetInformationGlobalAssetIdReference",
+          "keyType": "CUSTOM",
+          "keyElement": "ASSET"
+        }
+      },
+      "assetShell": {
+        "idGeneration": {
+          "parameters": [
+            {
+              "from_string": "shellId"
+            }
+          ]
+        },
+        "idShort_xpath": "@Name"
+      },
+      "submodels": [
+        {
+          "from_xpath": "caex:Attribute[@Name='CommercialData']/caex:Attribute[@Name='ManufacturerDetails']",
+          "semanticId_ref": {
+            "valueId": "https://admin-shell.io/zvei/nameplate/1/0/Nameplate",
+            "keyType": "IRI",
+            "keyElement": "SUBMODEL"
+          },
+          "idGeneration": {
+            "parameters": [
+              {
+                "from_idGenerationName": "assetIdGeneration"
+              },
+              {
+                "from_string": "_submodel1"
+              }
+            ],
+            "finalizeFunction": "concatenate"
+          },
+          "idShort_xpath": "'Nameplate'",
+          "submodelElements": [
+            {
+              "semanticId_ref": {
+                "valueId": "0173-1#02-AAO677#002",
+                "keyType": "IRDI",
+                "keyElement": "SUBMODEL_ELEMENT"
+              },
+              "idShort_xpath": " 'ManufacturerName' ",
+              "from_attributeName": "Name",
+              "@type": "MultiLanguageProperty",
+              "values": [
+                {
+                  "langXPath": "'en-us'",
+                  "valueXPath": "caex:Value"
+                }
+              ]
+            },
+            {
+              "semanticId_ref": {
+                "valueId": "0173-1#02-AAW338#001",
+                "keyType": "IRDI",
+                "keyElement": "SUBMODEL_ELEMENT"
+              },
+              "idShort_xpath": " 'ManufacturerProductDesignation' ",
+              "from_xpath": "//caex:Attribute[@Name='DescriptionLong']",
+              "@type": "MultiLanguageProperty",
+              "values": [
+                {
+                  "langXPath": "'en-us'",
+                  "valueXPath": "caex:Value"
+                }
+              ]
+            },
+            {
+              "from_xpath": ".",
+              "idShort_xpath": " 'Address' ",
+              "semanticId_ref": {
+                "valueId": "0173-1#02-AAQ832#005",
+                "keyType": "IRDI",
+                "keyElement": "SUBMODEL_ELEMENT_COLLECTION"
+              },
+              "@type": "SubmodelElementCollection",
+              "submodelElements": [
+                {
+                  "from_attributeName": "Address1",
+                  "idShort_xpath": " 'Street' ",
+                  "semanticId_ref": {
+                    "valueId": "0173-1#02-AAO128#002",
+                    "keyType": "IRDI",
+                    "keyElement": "SUBMODEL_ELEMENT_COLLECTION"
+                  },
+                  "@type": "MultiLanguageProperty",
+                  "values": [
+                    {
+                      "langXPath": "'en-us'",
+                      "valueXPath": "caex:Value"
+                    }
+                  ]
+                },
+                {
+                  "from_attributeName": "ZipCode",
+                  "idShort_xpath": " 'Zipcode' ",
+                  "semanticId_ref": {
+                    "valueId": "0173-1#02-AAO129#002",
+                    "keyType": "IRDI",
+                    "keyElement": "SUBMODEL_ELEMENT_COLLECTION"
+                  },
+                  "@type": "MultiLanguageProperty",
+                  "values": [
+                    {
+                      "langXPath": "'en-us'",
+                      "valueXPath": "caex:Value"
+                    }
+                  ]
+                },
+                {
+                  "from_attributeName": "City",
+                  "idShort_xpath": " 'CityTown' ",
+                  "semanticId_ref": {
+                    "valueId": "0173-1#02-AAO132#002",
+                    "keyType": "IRDI",
+                    "keyElement": "SUBMODEL_ELEMENT_COLLECTION"
+                  },
+                  "@type": "MultiLanguageProperty",
+                  "values": [
+                    {
+                      "langXPath": "'en-us'",
+                      "valueXPath": "caex:Value"
+                    }
+                  ]
+                },
+                {
+                  "from_attributeName": "Country",
+                  "idShort_xpath": " 'NationalCode' ",
+                  "semanticId_ref": {
+                    "valueId": "0173-1#02-AAO134#002",
+                    "keyType": "IRDI",
+                    "keyElement": "SUBMODEL_ELEMENT_COLLECTION"
+                  },
+                  "@type": "MultiLanguageProperty",
+                  "values": [
+                    {
+                      "langXPath": "'en-us'",
+                      "valueXPath": "caex:Value"
+                    }
+                  ]
+                },
+                {
+                  "from_xpath": ".",
+                  "idShort_xpath": " 'Email' ",
+                  "semanticId_ref": {
+                    "valueId": "0173-1#02-AAQ836#005",
+                    "keyType": "IRDI",
+                    "keyElement": "SUBMODEL_ELEMENT_COLLECTION"
+                  },
+                  "@type": "SubmodelElementCollection",
+                  "submodelElements": [
+                    {
+                      "from_attributeName": "ContactMail",
+                      "idShort_xpath": " 'EmailAddress' ",
+                      "semanticId_ref": {
+                        "valueId": "0173-1#02-AAO198#002",
+                        "keyType": "IRDI",
+                        "keyElement": "PROPERTY"
+                      },
+                      "@type": "Property",
+                      "valueType": "string"
+                    }
+                  ]
+                },
+                {
+                  "from_xpath": ".",
+                  "idShort_xpath": " 'Phone' ",
+                  "semanticId_ref": {
+                    "valueId": "0173-1#02-AAQ833#005",
+                    "keyType": "IRDI",
+                    "keyElement": "SUBMODEL_ELEMENT"
+                  },
+                  "@type": "SubmodelElementCollection",
+                  "submodelElements": [
+                    {
+                      "from_attributeName": "ContactPhone",
+                      "idShort_xpath": " 'TelephoneNumber' ",
+                      "semanticId_ref": {
+                        "valueId": "0173-1#02-AAO136#002",
+                        "keyType": "IRDI",
+                        "keyElement": "PROPERTY"
+                      },
+                      "@type": "MultiLanguageProperty",
+                      "values": [
+                        {
+                          "langXPath": "'en-us'",
+                          "valueXPath": "caex:Value"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "from_attributeName": "Website",
+                  "idShort_xpath": " 'AddressOfAdditionalLink' ",
+                  "semanticId_ref": {
+                    "valueId": "0173-1#02-AAQ326#002",
+                    "keyType": "IRDI",
+                    "keyElement": "SUBMODEL_ELEMENT_COLLECTION"
+                  },
+                  "@type": "Property",
+                  "valueType": "string"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

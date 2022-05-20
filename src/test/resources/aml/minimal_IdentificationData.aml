@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CAEXFile SchemaVersion="3.0" FileName="aml_minimal_sample.xml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.dke.de/CAEX" xsi:schemaLocation="http://www.dke.de/CAEX CAEX_ClassModel_V.3.0.xsd">
+    <SuperiorStandardVersion>AutomationML 2.10</SuperiorStandardVersion>
+    <SourceDocumentInformation OriginName="" OriginID="" OriginVersion="" LastWritingDateTime="2020-06-12T12:46:56.7231137+02:00" />
+    <SystemUnitClassLib Name="TestSystemUnitClassLib">
+        <SystemUnitClass Name="MyAssetName" ID="TestSystemUnitClassID">
+            <Attribute Name="IdentificationData">
+                <Attribute Name="Manufacturer">
+                    <Value>TestManufacturer</Value>
+                </Attribute>
+                <Attribute Name="ManufacturerURI">
+                    <Value>http://www.example.com/manufacturerURI</Value>
+                </Attribute>
+                <Attribute Name="Model">
+                    <Value>TestModel</Value>
+                </Attribute>
+            </Attribute>
+            <SupportedRoleClass RefRoleClassPath="AutomationMLComponentStandardRCL/AutomationComponent" />
+        </SystemUnitClass>
+    </SystemUnitClassLib>
+</CAEXFile>

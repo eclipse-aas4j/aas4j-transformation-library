@@ -1,0 +1,230 @@
+{
+	"@header": {
+		"version": "1.0.0",
+		"aasVersion": "3.0RC01"
+	},
+	"aasEnvironmentMapping": {
+		"submodels": [
+			{
+				"semanticId": {
+					"keys": [
+						{
+							"value": "https://admin-shell.io/zvei/nameplate/1/0/Nameplate",
+							"idType": "Iri",
+							"type": "Submodel"
+						}
+					]
+				},
+				"idShort": "Nameplate",
+				"submodelElements": [
+					{
+						"semanticId": {
+							"keys": [
+								{
+									"value": "0173-1#02-AAO677#002",
+									"idType": "Irdi",
+									"type": "SubmodelElement"
+								}
+							]
+						},
+						"idShort": "ManufacturerName",
+						"modelType": "MultiLanguageProperty",
+						"value": [
+							{
+								"language": "en",
+								"text": "manuName"
+							}
+						]
+					},
+					{
+						"semanticId": {
+							"keys": [
+								{
+									"value": "0173-1#02-AAW338#001",
+									"idType": "Irdi",
+									"type": "SubmodelElement"
+								}
+							]
+						},
+						"idShort": " 'ManufacturerProductDesignation' ",
+						"modelType": "MultiLanguageProperty",
+						"value": [
+							{
+								"language": "en",
+								"text": "TODO"
+							}
+						]
+					},
+					{
+						"idShort": "Address",
+						"semanticId": {
+							"keys": [
+								{
+									"value": "0173-1#02-AAQ832#005",
+									"idType": "Irdi",
+									"type": "SubmodelElementCollection"
+								}
+							]
+						},
+						"modelType": "SubmodelElementCollection",
+						"value": [
+							{
+								"idShort": "Street",
+								"semanticId": {
+									"keys": [
+										{
+											"value": "0173-1#02-AAO128#002",
+											"idType": "Irdi",
+											"type": "SubmodelElementCollection"
+										}
+									]
+								},
+								"modelType": "MultiLanguageProperty",
+								"value": [
+									{
+										"language": "en",
+										"text": "TODO"
+									}
+								]
+							},
+							{
+								"idShort": "Zipcode",
+								"semanticId": {
+									"keys": [
+										{
+											"value": "0173-1#02-AAO129#002",
+											"idType": "Irdi",
+											"type": "SubmodelElementCollection"
+										}
+									]
+								},
+								"modelType": "MultiLanguageProperty",
+								"value": [
+									{
+										"language": "en",
+										"text": "TODO"
+									}
+								]
+							},
+							{
+								"idShort": "CityTown",
+								"semanticId": {
+									"keys": [
+										{
+											"value": "0173-1#02-AAO132#002",
+											"idType": "Irdi",
+											"type": "SubmodelElementCollection"
+										}
+									]
+								},
+								"modelType": "MultiLanguageProperty",
+								"value": [
+									{
+										"language": "en",
+										"text": "TODO"
+									}
+								]
+							},
+							{
+								"idShort": "NationalCode",
+								"semanticId": {
+									"keys": [
+										{
+											"value": "0173-1#02-AAO134#002",
+											"idType": "Irdi",
+											"type": "SubmodelElementCollection"
+										}
+									]
+								},
+								"modelType": "MultiLanguageProperty",
+								"value": [
+									{
+										"language": "en",
+										"text": "TODO"
+									}
+								]
+							},
+							{
+								"idShort": "Email",
+								"semanticId": {
+									"keys": [
+										{
+											"value": "0173-1#02-AAQ836#005",
+											"idType": "Irdi",
+											"type": "SubmodelElementCollection"
+										}
+									]
+								},
+								"modelType": "SubmodelElementCollection",
+								"value": [
+									{
+										"idShort": "EmailAddress",
+										"semanticId": {
+											"keys": [
+												{
+													"value": "0173-1#02-AAO198#002",
+													"idType": "Irdi",
+													"type": "Property"
+												}
+											]
+										},
+										"modelType": "Property",
+										"valueType": "String"
+									}
+								]
+							},
+							{
+								"idShort": "Phone",
+								"semanticId": {
+									"keys": [
+										{
+											"value": "0173-1#02-AAQ833#005",
+											"idType": "Irdi",
+											"type": "SubmodelElement"
+										}
+									]
+								},
+								"modelType": "SubmodelElementCollection",
+								"value": [
+									{
+										"idShort": "TelephoneNumber",
+										"semanticId": {
+											"keys": [
+												{
+													"value": "0173-1#02-AAO136#002",
+													"idType": "Irdi",
+													"type": "Property"
+												}
+											]
+										},
+										"modelType": "MultiLanguageProperty",
+										"value": [
+											{
+												"language": "en",
+												"text": "TODO"
+											}
+										]
+									}
+								]
+							},
+							{
+								"idShort": "AddressOfAdditionalLink",
+								"semanticId": {
+									"keys": [
+										{
+											"value": "0173-1#02-AAQ326#002",
+											"idType": "Irdi",
+											"type": "SubmodelElementCollection"
+										}
+									]
+								},
+								"modelType": "Property",
+								"valueType": "String"
+							}
+						]
+					}
+				]
+			}
+		]
+	}
+}

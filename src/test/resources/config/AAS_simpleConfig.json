@@ -1,0 +1,898 @@
+{
+	"assetAdministrationShells": [
+		{
+			"modelType": {
+				"name": "AssetAdministrationShell"
+			},
+			"assetInformation": {
+				"assetKind": "Type",
+				"globalAssetId": {
+					"keys": [
+						{
+							"idType": "Custom",
+							"type": "Asset",
+							"value": "assetInformationGlobalAssetIdReference"
+						}
+					]
+				}
+			},
+			"submodels": [
+				{
+					"keys": [
+						{
+							"idType": "Custom",
+							"type": "Submodel",
+							"value": "Test Manufacturer/null_submodel1"
+						}
+					]
+				},
+				{
+					"keys": [
+						{
+							"idType": "Custom",
+							"type": "Submodel",
+							"value": "submodel2_submodel3"
+						}
+					]
+				},
+				{
+					"keys": [
+						{
+							"idType": "Custom",
+							"type": "Submodel",
+							"value": "Test Manufacturer/null_generalTechnicalData"
+						}
+					]
+				},
+				{
+					"keys": [
+						{
+							"idType": "Custom",
+							"type": "Submodel",
+							"value": "submodel3"
+						}
+					]
+				},
+				{
+					"keys": [
+						{
+							"idType": "Custom",
+							"type": "Submodel",
+							"value": "Documents"
+						}
+					]
+				},
+				{
+					"keys": [
+						{
+							"idType": "Custom",
+							"type": "Submodel",
+							"value": "Test Manufacturer/null_operations"
+						}
+					]
+				}
+			],
+			"identification": {
+				"idType": "Custom",
+				"id": "shellId"
+			},
+			"idShort": "TestSystemUnitClass"
+		}
+	],
+	"conceptDescriptions": [
+	],
+	"submodels": [
+		{
+			"modelType": {
+				"name": "Submodel"
+			},
+			"semanticId": {
+				"keys": [
+					{
+						"idType": "Irdi",
+						"type": "ConceptDescription",
+						"value": "http://sap.com"
+					}
+				]
+			},
+			"identification": {
+				"idType": "Custom",
+				"id": "Test Manufacturer/null_submodel1"
+			},
+			"idShort": "submodelShortId1",
+			"submodelElements": [
+				{
+					"modelType": {
+						"name": "Property"
+					},
+					"kind": "Instance",
+					"semanticId": {
+						"keys": [
+							{
+								"idType": "Irdi",
+								"type": "ConceptDescription",
+								"value": "submodelElementSemanticId1"
+							}
+						]
+					},
+					"value": "Test Manufacturer",
+					"valueId": {
+						"keys": [
+							{
+								"idType": "Custom",
+								"type": "Property",
+								"value": "Test Manufacturer"
+							}
+						]
+					},
+					"valueType": "STRING",
+					"category": "PARAMETER",
+					"idShort": "Manufacturer"
+				},
+				{
+					"modelType": {
+						"name": "Property"
+					},
+					"kind": "Instance",
+					"semanticId": {
+						"keys": [
+							{
+								"idType": "Irdi",
+								"type": "ConceptDescription",
+								"value": "submodelElementSemanticId2"
+							}
+						]
+					},
+					"value": "Test Manufacturer",
+					"valueId": {
+						"keys": [
+							{
+								"idType": "Custom",
+								"type": "Property",
+								"value": "Test Manufacturer"
+							}
+						]
+					},
+					"valueType": "STRING",
+					"category": "PARAMETER",
+					"idShort": "Manufacturer"
+				},
+				{
+					"modelType": {
+						"name": "Capability"
+					},
+					"kind": "Instance",
+					"category": "PARAMETER",
+					"idShort": "Browseable"
+				}
+			]
+		},
+		{
+			"modelType": {
+				"name": "Submodel"
+			},
+			"semanticId": {
+				"keys": [
+					{
+						"idType": "Irdi",
+						"type": "ConceptDescription",
+						"value": "http://sap.com"
+					}
+				]
+			},
+			"identification": {
+				"idType": "Custom",
+				"id": "submodel2_submodel3"
+			},
+			"idShort": "CommercialData",
+			"submodelElements": [
+				{
+					"modelType": {
+						"name": "SubmodelElementCollection"
+					},
+					"kind": "Instance",
+					"semanticId": {
+						"keys": [
+							{
+								"idType": "Irdi",
+								"type": "ConceptDescription",
+								"value": "SubmodelElementCollectionSemanticId"
+							}
+						]
+					},
+					"category": "PARAMETER",
+					"idShort": "ProductPriceDetails",
+					"allowDuplicates": true,
+					"value": [
+						{
+							"modelType": {
+								"name": "Property"
+							},
+							"kind": "Instance",
+							"value": "2020-01-01",
+							"valueId": {
+								"keys": [
+									{
+										"idType": "Custom",
+										"type": "Property",
+										"value": "2020-01-01"
+									}
+								]
+							},
+							"valueType": "STRING",
+							"category": "PARAMETER",
+							"idShort": "ValidStartDate"
+						},
+						{
+							"modelType": {
+								"name": "Property"
+							},
+							"kind": "Instance",
+							"value": "TestPriceAmount",
+							"valueId": {
+								"keys": [
+									{
+										"idType": "Custom",
+										"type": "Property",
+										"value": "TestPriceAmount"
+									}
+								]
+							},
+							"valueType": "STRING",
+							"category": "PARAMETER",
+							"idShort": "PriceAmount"
+						}
+					]
+				},
+				{
+					"modelType": {
+						"name": "SubmodelElementCollection"
+					},
+					"kind": "Instance",
+					"semanticId": {
+						"keys": [
+							{
+								"idType": "Custom",
+								"type": "ConceptDescription",
+								"value": "ProductDetails"
+							}
+						]
+					},
+					"category": "PARAMETER",
+					"idShort": "ProductDetails",
+					"allowDuplicates": true,
+					"value": [
+						{
+							"modelType": {
+								"name": "MultiLanguageProperty"
+							},
+							"kind": "Instance",
+							"category": "PARAMETER",
+							"idShort": "DescriptionShort",
+							"value": [
+								{
+									"language": "en",
+									"text": "TestProductDetailsDescriptionShort"
+								}
+							]
+						}
+					]
+				},
+				{
+					"modelType": {
+						"name": "Entity"
+					},
+					"entityType": "SelfManagedEntity",
+					"globalAssetId": {
+						"keys": [
+							{
+								"idType": "Custom",
+								"type": "Asset",
+								"value": "AssetIdExtern"
+							}
+						]
+					},
+					"statements": [
+						{
+							"modelType": {
+								"name": "Property"
+							},
+							"kind": "Instance",
+							"value": "TestGlobalTradeItemNumber1234",
+							"valueId": {
+								"keys": [
+									{
+										"idType": "Custom",
+										"type": "Property",
+										"value": "TestGlobalTradeItemNumber1234"
+									}
+								]
+							},
+							"valueType": "STRING",
+							"category": "PARAMETER",
+							"idShort": "GTIN"
+						},
+						{
+							"modelType": {
+								"name": "Property"
+							},
+							"kind": "Instance",
+							"value": "1234",
+							"valueId": {
+								"keys": [
+									{
+										"idType": "Custom",
+										"type": "Property",
+										"value": "1234"
+									}
+								]
+							},
+							"valueType": "integer",
+							"category": "PARAMETER",
+							"idShort": "CustomsTariffNumber"
+						},
+						{
+							"modelType": {
+								"name": "Property"
+							},
+							"kind": "Instance",
+							"value": "TestCountryOfOriginDE",
+							"valueId": {
+								"keys": [
+									{
+										"idType": "Custom",
+										"type": "Property",
+										"value": "TestCountryOfOriginDE"
+									}
+								]
+							},
+							"valueType": "STRING",
+							"category": "PARAMETER",
+							"idShort": "CountryOfOrigin"
+						}
+					],
+					"kind": "Instance",
+					"semanticId": {
+						"keys": [
+							{
+								"idType": "Irdi",
+								"type": "ConceptDescription",
+								"value": "PackAndTransport"
+							}
+						]
+					},
+					"category": "PARAMETER",
+					"idShort": "PackagingAndTransportation"
+				}
+			]
+		},
+		{
+			"modelType": {
+				"name": "Submodel"
+			},
+			"semanticId": {
+				"keys": [
+					{
+						"idType": "Irdi",
+						"type": "ConceptDescription",
+						"value": "http://sap.com"
+					}
+				]
+			},
+			"identification": {
+				"idType": "Custom",
+				"id": "Test Manufacturer/null_generalTechnicalData"
+			},
+			"idShort": "GeneralTechnicalData",
+			"submodelElements": [
+				{
+					"modelType": {
+						"name": "Range"
+					},
+					"kind": "Instance",
+					"semanticId": {
+						"keys": [
+							{
+								"idType": "Iri",
+								"type": "Range",
+								"value": "AmbientTemperature"
+							}
+						]
+					},
+					"max": "100",
+					"min": "-273",
+					"valueType": "integer",
+					"category": "PARAMETER",
+					"idShort": "AmbientTemperature"
+				},
+				{
+					"modelType": {
+						"name": "MultiLanguageProperty"
+					},
+					"kind": "Instance",
+					"category": "PARAMETER",
+					"idShort": "Material",
+					"value": [
+						{
+							"language": "de",
+							"text": "Test Material Deutsch"
+						},
+						{
+							"language": "en",
+							"text": "English Test Material"
+						}
+					]
+				}
+			]
+		},
+		{
+			"modelType": {
+				"name": "Submodel"
+			},
+			"semanticId": {
+				"keys": [
+					{
+						"idType": "Irdi",
+						"type": "ConceptDescription",
+						"value": "http://sap.com"
+					}
+				]
+			},
+			"identification": {
+				"idType": "Custom",
+				"id": "submodel3"
+			},
+			"idShort": "ParameterData",
+			"submodelElements": [
+				{
+					"modelType": {
+						"name": "Property"
+					},
+					"kind": "Instance",
+					"value": "Value of my custom attribute in ParameterData1",
+					"valueId": {
+						"keys": [
+							{
+								"idType": "Custom",
+								"type": "Property",
+								"value": "Value of my custom attribute in ParameterData1"
+							}
+						]
+					},
+					"valueType": "STRING",
+					"category": "PARAMETER",
+					"idShort": "ParameterDataCustomAttribute1"
+				},
+				{
+					"modelType": {
+						"name": "Property"
+					},
+					"kind": "Instance",
+					"value": "Value of my custom attribute in ParameterData2",
+					"valueId": {
+						"keys": [
+							{
+								"idType": "Custom",
+								"type": "Property",
+								"value": "Value of my custom attribute in ParameterData2"
+							}
+						]
+					},
+					"valueType": "STRING",
+					"category": "PARAMETER",
+					"idShort": "ParameterDataCustomAttribute2"
+				}
+			]
+		},
+		{
+			"modelType": {
+				"name": "Submodel"
+			},
+			"semanticId": {
+				"keys": [
+					{
+						"idType": "Irdi",
+						"type": "ConceptDescription",
+						"value": "http://sap.com/Documents"
+					}
+				]
+			},
+			"identification": {
+				"idType": "Custom",
+				"id": "Documents"
+			},
+			"idShort": "Documents",
+			"submodelElements": [
+				{
+					"modelType": {
+						"name": "File"
+					},
+					"mimeType": "application/pdf",
+					"value": "manual/OI_wtt12l_en_de_fr_it_pt_es_zh_.pdf",
+					"kind": "Instance",
+					"category": "PARAMETER",
+					"idShort": "Betriebsanleitung"
+				},
+				{
+					"modelType": {
+						"name": "ReferenceElement"
+					},
+					"kind": "Instance",
+					"category": "PARAMETER",
+					"idShort": "STEPGeometry",
+					"value": {
+						"keys": [
+							{
+								"idType": "Custom",
+								"type": "ConceptDescription",
+								"value": "MGFTT2-DFC-C_20200519_134129_7UszRjlaUUSGJwr_3pyZ3g"
+							}
+						]
+					}
+				},
+				{
+					"modelType": {
+						"name": "Blob"
+					},
+					"mimeType": "application/pdf",
+					"value": "Zm9v",
+					"kind": "Instance",
+					"category": "PARAMETER",
+					"idShort": "BetriebsanleitungBIN"
+				},
+				{
+					"modelType": {
+						"name": "BasicEvent"
+					},
+					"observed": {
+						"keys": [
+							{
+								"idType": "Custom",
+								"type": "Blob",
+								"value": "Blob"
+							}
+						]
+					},
+					"kind": "Instance",
+					"category": "PARAMETER",
+					"idShort": "SampleBasicEvent"
+				}
+			]
+		},
+		{
+			"modelType": {
+				"name": "Submodel"
+			},
+			"semanticId": {
+				"keys": [
+					{
+						"idType": "Irdi",
+						"type": "ConceptDescription",
+						"value": "http://sap.com/operations"
+					}
+				]
+			},
+			"identification": {
+				"idType": "Custom",
+				"id": "Test Manufacturer/null_operations"
+			},
+			"idShort": "Operations",
+			"submodelElements": [
+				{
+					"modelType": {
+						"name": "Operation"
+					},
+					"kind": "Instance",
+					"semanticId": {
+						"keys": [
+							{
+								"idType": "Irdi",
+								"type": "ConceptDescription",
+								"value": "ops"
+							}
+						]
+					},
+					"category": "PARAMETER",
+					"idShort": "OperationA",
+					"inoutputVariable": [
+						{
+							"value": {
+								"modelType": {
+									"name": "Property"
+								},
+								"kind": "Instance",
+								"value": "10",
+								"valueId": {
+									"keys": [
+										{
+											"idType": "Custom",
+											"type": "Property",
+											"value": "10"
+										}
+									]
+								},
+								"valueType": "STRING",
+								"category": "PARAMETER",
+								"idShort": "PinF"
+							}
+						}
+					],
+					"inputVariable": [
+						{
+							"value": {
+								"modelType": {
+									"name": "Property"
+								},
+								"kind": "Instance",
+								"value": "10",
+								"valueId": {
+									"keys": [
+										{
+											"idType": "Custom",
+											"type": "Property",
+											"value": "10"
+										}
+									]
+								},
+								"valueType": "STRING",
+								"category": "PARAMETER",
+								"idShort": "PinA"
+							}
+						},
+						{
+							"value": {
+								"modelType": {
+									"name": "Property"
+								},
+								"kind": "Instance",
+								"value": "15",
+								"valueId": {
+									"keys": [
+										{
+											"idType": "Custom",
+											"type": "Property",
+											"value": "15"
+										}
+									]
+								},
+								"valueType": "STRING",
+								"category": "PARAMETER",
+								"idShort": "PinB"
+							}
+						},
+						{
+							"value": {
+								"modelType": {
+									"name": "Property"
+								},
+								"kind": "Instance",
+								"value": "30",
+								"valueId": {
+									"keys": [
+										{
+											"idType": "Custom",
+											"type": "Property",
+											"value": "30"
+										}
+									]
+								},
+								"valueType": "STRING",
+								"category": "PARAMETER",
+								"idShort": "PinC"
+							}
+						}
+					],
+					"outputVariable": [
+						{
+							"value": {
+								"modelType": {
+									"name": "Property"
+								},
+								"kind": "Instance",
+								"valueId": {
+									"keys": [
+										{
+											"idType": "Custom",
+											"type": "Property",
+											"value": null
+										}
+									]
+								},
+								"valueType": "STRING",
+								"category": "PARAMETER",
+								"idShort": "PinD"
+							}
+						},
+						{
+							"value": {
+								"modelType": {
+									"name": "Property"
+								},
+								"kind": "Instance",
+								"value": "15",
+								"valueId": {
+									"keys": [
+										{
+											"idType": "Custom",
+											"type": "Property",
+											"value": "15"
+										}
+									]
+								},
+								"valueType": "STRING",
+								"category": "PARAMETER",
+								"idShort": "PinE"
+							}
+						}
+					]
+				},
+				{
+					"modelType": {
+						"name": "RelationshipElement"
+					},
+					"kind": "Instance",
+					"semanticId": {
+						"keys": [
+							{
+								"idType": "Irdi",
+								"type": "ConceptDescription",
+								"value": "test"
+							}
+						]
+					},
+					"category": "PARAMETER",
+					"idShort": "relElement",
+					"first": {
+						"keys": [
+							{
+								"idType": "Iri",
+								"type": "ConceptDescription",
+								"value": "FOO"
+							}
+						]
+					},
+					"second": {
+						"keys": [
+							{
+								"idType": "Iri",
+								"type": "ConceptDescription",
+								"value": "BAR"
+							}
+						]
+					}
+				},
+				{
+					"modelType": {
+						"name": "AnnotatedRelationshipElement"
+					},
+					"kind": "Instance",
+					"semanticId": {
+						"keys": [
+							{
+								"idType": "Irdi",
+								"type": "ConceptDescription",
+								"value": "test/test/test"
+							}
+						]
+					},
+					"category": "PARAMETER",
+					"idShort": "annoRelElement",
+					"first": {
+						"keys": [
+							{
+								"idType": "Custom",
+								"type": "ConceptDescription",
+								"value": "abc"
+							}
+						]
+					},
+					"second": {
+						"keys": [
+							{
+								"idType": "Custom",
+								"type": "ConceptDescription",
+								"value": "def"
+							}
+						]
+					},
+					"annotation": [
+						{
+							"modelType": {
+								"name": "Property"
+							},
+							"kind": "Instance",
+							"value": "10",
+							"valueId": {
+								"keys": [
+									{
+										"idType": "Custom",
+										"type": "Property",
+										"value": "10"
+									}
+								]
+							},
+							"valueType": "STRING",
+							"category": "PARAMETER",
+							"idShort": "PinA"
+						},
+						{
+							"modelType": {
+								"name": "Property"
+							},
+							"kind": "Instance",
+							"value": "15",
+							"valueId": {
+								"keys": [
+									{
+										"idType": "Custom",
+										"type": "Property",
+										"value": "15"
+									}
+								]
+							},
+							"valueType": "STRING",
+							"category": "PARAMETER",
+							"idShort": "PinB"
+						},
+						{
+							"modelType": {
+								"name": "Property"
+							},
+							"kind": "Instance",
+							"value": "30",
+							"valueId": {
+								"keys": [
+									{
+										"idType": "Custom",
+										"type": "Property",
+										"value": "30"
+									}
+								]
+							},
+							"valueType": "STRING",
+							"category": "PARAMETER",
+							"idShort": "PinC"
+						},
+						{
+							"modelType": {
+								"name": "Property"
+							},
+							"kind": "Instance",
+							"valueId": {
+								"keys": [
+									{
+										"idType": "Custom",
+										"type": "Property",
+										"value": null
+									}
+								]
+							},
+							"valueType": "STRING",
+							"category": "PARAMETER",
+							"idShort": "PinD"
+						},
+						{
+							"modelType": {
+								"name": "Property"
+							},
+							"kind": "Instance",
+							"value": "15",
+							"valueId": {
+								"keys": [
+									{
+										"idType": "Custom",
+										"type": "Property",
+										"value": "15"
+									}
+								]
+							},
+							"valueType": "STRING",
+							"category": "PARAMETER",
+							"idShort": "PinE"
+						}
+					]
+				}
+			]
+		}
+	]
+}

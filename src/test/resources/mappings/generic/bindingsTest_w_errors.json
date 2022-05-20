@@ -1,0 +1,43 @@
+{
+	"@header": {
+		"version": "1.0.0",
+		"aasVersion": "3.0RC01"
+	},
+	"aasEnvironmentMapping": {
+		"submodels": [
+			{
+				"identification": {
+					"idType": "Iri",
+					"@bind": {
+						"id": "https://test.org/id_via_bind"
+					}
+				},
+				"submodelElements": [
+					{
+						"modelType": "File",
+						"@bind": {
+							"idShort": "idshort_via_bind"
+						}
+					},
+					{
+						"modelType": "Property",
+						"@bind": {
+							"value": "value_via_bind"
+						},
+						"valueId": {
+							"keys": [
+								{
+									"idType": "Iri",
+									"value": "http://acplt.org/ValueId/ExampleValueId",
+									"@bind": {
+										"type": "ThisShouldNotTransform"
+									}
+								}
+							]
+						}
+					}
+				]
+			}
+		]
+	}
+}

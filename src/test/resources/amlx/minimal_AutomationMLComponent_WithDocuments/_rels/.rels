@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+		
+	<Relationship Type="http://schemas.automationml.org/container/relationship/RootDocument" Target="/minimal_AutomationMLComponent_WithDocuments.aml" Id="RelationshipID1" />
+	
+	<Relationship Type="http://schemas.automationml.org/container/relationship/CAEXSchema" Target="/CAEX_ClassModel_V.3.0.xsd" Id="RelationshipID3" />
+	
+	<Relationship Type="http://schemas.automationml.org/container/relationship/AnyContent" Target="/files/TestTXTDeviceManual.txt" Id="RelationshipID4" />
+	<Relationship Type="http://schemas.automationml.org/container/relationship/AnyContent" Target="/files/TestPDFDeviceManual.pdf" Id="RelationshipID5" />
+	<Relationship Type="http://schemas.automationml.org/container/relationship/AnyContent" Target="/files/TestTXTWarranty.txt" Id="RelationshipID6" />
+
+</Relationships>

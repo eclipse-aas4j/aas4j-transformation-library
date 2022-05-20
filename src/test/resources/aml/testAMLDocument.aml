@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<caex:CAEXFile xmlns:caex="http://www.dke.de/CAEX">
+    <caex:SystemUnitClassLib Name="SystemUnitClassLib">
+        <caex:SystemUnitClass Name="MyClass" ID="MyClassId">
+            <caex:SupportedRoleClass RefRoleClassPath="AutomationMLComponentStandardRCL/AutomationComponent"/>
+            <caex:Attribute Name="MyAttribute">
+                <caex:Attribute Name="MyFirstNotSearchedSubAttribute">
+                    <caex:Value>Not Searched</caex:Value>
+                </caex:Attribute>
+                <caex:Attribute Name="MySubAttribute">
+                    <caex:Value>MyValue</caex:Value>
+                    <caex:DefaultValue>OtherValue</caex:DefaultValue>
+                </caex:Attribute>
+            </caex:Attribute>
+            <caex:Attribute Name="MyAttribute2"/>
+        </caex:SystemUnitClass>
+        <caex:SystemUnitClass Name="SecondComponent" ID="SecondComponentId">
+            <caex:SupportedRoleClass RefRoleClassPath="AutomationMLComponentStandardRCL/AutomationComponent"/>
+        </caex:SystemUnitClass>
+        <caex:SystemUnitClass Name="ThirdAssetShortId" ID="ThirdAssetId">
+            <caex:SupportedRoleClass RefRoleClassPath="AutomationMLStandardRCL/Asset"/>
+        </caex:SystemUnitClass>
+    </caex:SystemUnitClassLib>
+</caex:CAEXFile>
+</caex:CAEXFile>

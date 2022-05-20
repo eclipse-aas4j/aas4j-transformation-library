@@ -1,0 +1,235 @@
+{
+  "version": "2.0.0",
+  "aasVersion": "3.0RC01",
+  "configMappings": [
+    {
+      "from_xpath": "//caex:SystemUnitClass[caex:SupportedRoleClass/@RefRoleClassPath='AutomationMLComponentStandardRCL/AutomationComponent' or caex:RoleRequirements/@RefBaseRoleClassPath='AutomationMLComponentStandardRCL/AutomationComponent'] | //caex:InternalElement[caex:SupportedRoleClass/@RefRoleClassPath='AutomationMLComponentStandardRCL/AutomationComponent' or caex:RoleRequirements/@RefBaseRoleClassPath='AutomationMLComponentStandardRCL/AutomationComponent']",
+      "idGeneration": {
+        "parameters": [
+          {
+            "from_xpath": "caex:Attribute[@Name='IdentificationData']/caex:Attribute[@Name='Manufacturer']/caex:Value",
+            "from_string": "DefaultManufacturer"
+          },
+          {
+            "from_string": "/"
+          },
+          {
+            "from_xpath": "caex:Attribute[@Name='IdentificationData']/caex:Attribute[@Name='ManufacturerUri']/caex:Value"
+          }
+        ],
+        "finalizeFunction": "concatenate_and_hash",
+        "idGenerationName": "mappingIdGeneration"
+      },
+      "assetInformation": {
+        "kindType_xpath": "TYPE",
+        "idGeneration": {
+          "parameters": [
+            {
+              "from_string": "assetInformationId"
+            }
+          ]
+        },
+        "globalAssetIdReference": {
+          "valueId": "assetInformationGlobalAssetIdReference",
+          "keyType": "CUSTOM",
+          "keyElement": "ASSET"
+        }
+      },
+      "assetShell": {
+        "idGeneration": {
+          "parameters": [{
+            "from_string": "shellId"
+          }]
+        },
+        "idShort_xpath": "@Name"
+      },
+      "assets": [
+        {
+          "from_xpath": "//caex:SystemUnitClass[caex:SupportedRoleClass/@RefRoleClassPath='AutomationMLComponentStandardRCL/AutomationComponent' or caex:RoleRequirements/@RefBaseRoleClassPath='AutomationMLComponentStandardRCL/AutomationComponent'] | //caex:InternalElement[caex:SupportedRoleClass/@RefRoleClassPath='AutomationMLComponentStandardRCL/AutomationComponent' or caex:RoleRequirements/@RefBaseRoleClassPath='AutomationMLComponentStandardRCL/AutomationComponent']",
+          "idGeneration": {
+            "parameters": [
+              {
+                "from_xpath": "caex:Attribute[@Name='IdentificationData']/caex:Attribute[@Name='Manufacturer']/caex:Value",
+                "from_string": "DefaultManufacturer"
+              },
+              {
+                "from_string": "/"
+              },
+              {
+                "from_xpath": "caex:Attribute[@Name='IdentificationData']/caex:Attribute[@Name='ManufacturerUri']/caex:Value"
+              }
+            ],
+            "finalizeFunction": "concatenate_and_hash",
+            "idGenerationName": "assetIdGeneration"
+          },
+          "idShort_xpath": "@Name"
+        }
+      ],
+      "submodels": [
+        {
+          "from_xpath": ".",
+          "semanticId_ref": {
+            "valueId": "http://admin-shell.io/ZVEI/TechnicalData/Submodel/1/1",
+            "keyType": "IRI",
+            "keyElement": "SUBMODEL"
+          },
+          "idGeneration": {
+            "parameters": [{
+              "from_idGenerationName": "assetIdGeneration"
+            }, {
+              "from_string": "_submodel1"
+            }],
+            "finalizeFunction": "concatenate"
+          },
+          "idShort_xpath": "'TechnicalData'",
+          "submodelElements": [
+            {
+              "from_attributeName": "IdentificationData",
+              "idShort_xpath": " 'GeneralInformation' ",
+              "@type": "SubmodelElementCollection",
+              "semanticId_ref": {
+                "valueId": "https://admin-shell.io/ZVEI/TechnicalData/GeneralInformation/1/1",
+                "keyType": "IRI",
+                "keyElement": "SUBMODEL_ELEMENT_COLLECTION"
+              },
+              "submodelElements": [
+                {
+                  "semanticId_ref": {
+                    "valueId": "https://admin-shell.io/ZVEI/TechnicalData/ManufacturerName/1/1",
+                    "keyType": "IRI",
+                    "keyElement": "SUBMODEL_ELEMENT"
+                  },
+                  "idShort_xpath": " 'ManufacturerName' ",
+                  "from_attributeName": "Manufacturer",
+                  "@type": "Property",
+                  "valueType": "string"
+                } ,
+                {
+                  "semanticId_ref": {
+                    "valueId": "https://admin-shell.io/ZVEI/TechnicalData/ManufacturerPartNumber/1/1",
+                    "keyType": "IRI",
+                    "keyElement": "SUBMODEL_ELEMENT"
+                  },
+                  "idShort_xpath": " 'ManufacturerPartNumber' ",
+                  "from_attributeName": "ProductCode",
+                  "@type": "Property",
+                  "valueType": "string"
+                } ,
+                {
+                  "semanticId_ref": {
+                    "valueId": "https://admin-shell.io/ZVEI/TechnicalData/ManufacturerOrderCode/1/1",
+                    "keyType": "IRI",
+                    "keyElement": "SUBMODEL_ELEMENT"
+                  },
+                  "idShort_xpath": " 'ManufacturerOrderCode' ",
+                  "from_attributeName": "OrderCode",
+                  "@type": "Property",
+                  "valueType": "string"
+                } ,
+                {
+                  "semanticId_ref": {
+                    "valueId": "https://admin-shell.io/ZVEI/TechnicalData/ManufacturerProductDesignation/1/1",
+                    "keyType": "IRI",
+                    "keyElement": "SUBMODEL_ELEMENT"
+                  },
+                  "from_xpath": "caex:Attribute[@Name='DeviceClass']",
+                  "@type": "MultiLanguageProperty",
+                  "values": [
+                    {
+                      "langXPath": "'en-us'",
+                      "valueXPath": "caex:Value"
+                    }
+                  ],
+                  "idShort_xpath": " 'ManufacturerProductDesignation' "
+                }
+              ]
+            },
+            {
+              "from_attributeName": "GeneralTechnicalData",
+              "idShort_xpath": " 'TechnicalProperties' ",
+              "@type": "SubmodelElementCollection",
+              "semanticId_ref": {
+                "valueId": "https://admin-shell.io/ZVEI/TechnicalData/TechnicalProperties/1/1",
+                "keyType": "IRI",
+                "keyElement": "SUBMODEL"
+              },
+              "submodelElements": [
+                {
+                  "from_attributeName": "AmbientTemperature",
+                  "@type": "Range",
+                  "valueType": "Integer",
+                  "semanticId": "0112/2///62683#ACE440#001",
+                  "minValueXPath": "caex:Attribute[@Name='TemperatureMin']/caex:Value",
+                  "maxValueXPath": "caex:Attribute[@Name='TemperatureMax']/caex:Value"
+
+                },
+                {
+                  "semanticId": "0112/2///61987#ABA558#006",
+                  "from_attributeName": "IPCode",
+                  "@type": "Property",
+                  "valueType": "string"
+                },
+                {
+                  "semanticId": "0112/2///61987#ABA158#004",
+                  "from_attributeName": "Material",
+                  "@type": "MultiLanguageProperty"
+                },
+                {
+                  "semanticId": "0112/2///61987#ABA553#006",
+                  "from_attributeName": "Weight",
+                  "@type": "Property",
+                  "valueType": "Float"
+                },
+                {
+                  "semanticId": "0112/2///61987#ABA574#006",
+                  "from_attributeName": "Height",
+                  "@type": "Property",
+                  "valueType": "Integer"
+                },
+                {
+                  "semanticId": "0112/2///61987#ABA573#006",
+                  "from_attributeName": "Width",
+                  "@type": "Property",
+                  "valueType": "Integer"
+                },
+                {
+                  "semanticId": "0112/2///61987#ABA640#006",
+                  "from_attributeName": "Length",
+                  "@type": "Property",
+                  "valueType": "Integer"
+                },
+                {
+                  "semanticId": "https://admin-shell.io/SemanticIdNotAvailable/1/1",
+                  "from_xpath": "caex:Attribute[@Name='ManufacturerURI']",
+                  "valueXPath": "caex:Value",
+                  "valueType": "string",
+                  "@type": "Property"
+                } ,
+                {
+                  "semanticId": "https://admin-shell.io/SemanticIdNotAvailable/1/1",
+                  "from_xpath": "caex:Attribute[@Name='OrderCode']",
+                  "valueXPath": "caex:Value",
+                  "valueType": "string",
+                  "@type": "Property"
+                },
+                {
+                  "from_xpath": "caex:Attribute[@Name='ProductInstanceURI']",
+                  "valueXPath": "caex:Value",
+                  "valueType": "string",
+                  "@type": "Property"
+                },
+                {
+                  "semanticId": "https://admin-shell.io/SemanticIdNotAvailable/1/1",
+                  "from_xpath": "caex:Attribute[@Name='FabricationNumber']",
+                  "valueXPath": "caex:Value",
+                  "valueType": "string",
+                  "@type": "Property"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

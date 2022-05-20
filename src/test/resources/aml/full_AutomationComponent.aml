@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CAEXFile SchemaVersion="3.0" FileName="aml_minimal_sample.xml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.dke.de/CAEX"
+  xsi:schemaLocation="http://www.dke.de/CAEX CAEX_ClassModel_V.3.0.xsd">
+    <SuperiorStandardVersion>AutomationML 2.10</SuperiorStandardVersion>
+    <SourceDocumentInformation OriginName="" OriginID="" OriginVersion=""
+      LastWritingDateTime="2020-06-12T12:46:56.7231137+02:00"/>
+
+    <SystemUnitClassLib Name="TestSystemUnitClassLib">
+        <SystemUnitClass Name="TestSystemUnitClass" ID="TestSystemUnitClassID">
+
+            <Attribute Name="IdentificationData">
+                <Attribute Name="Manufacturer">
+                    <Value>Test Manufacturer</Value>
+                </Attribute>
+                <Attribute Name="ManufacturerURI">
+                    <Value>http://www.example.com/manufacturerURI</Value>
+                </Attribute>
+                <Attribute Name="DeviceClass">
+                    <Value>1234</Value>
+                </Attribute>
+                <Attribute Name="Model">
+                    <Value>Test Model</Value>
+                </Attribute>
+                <Attribute Name="ProductCode">
+                    <Value>Test ProductCode</Value>
+                </Attribute>
+                <Attribute Name="OrderCode">
+                    <Value>Test OrderCode</Value>
+                </Attribute>
+                <Attribute Name="HardwareRevision">
+                    <Value>1.0.0</Value>
+                </Attribute>
+                <Attribute Name="SoftwareRevision">
+                    <Value>1.0.0</Value>
+                </Attribute>
+                <Attribute Name="SerialNumber">
+                    <Value>TestSerialNumber1234</Value>
+                </Attribute>
+                <Attribute Name="FabricationNumber">
+                    <Value>TestFabricationNumber1234</Value>
+                </Attribute>
+                <Attribute Name="ProductInstanceURI">
+                    <Value>http://www.example.com/productInstanceURI</Value>
+                </Attribute>
+            </Attribute>
+
+            <Attribute Name="GeneralTechnicalData">
+                <Attribute Name="AmbientTemperature">
+                    <Attribute Name="TemperatureMin">
+                        <Value>-273</Value>
+                    </Attribute>
+                    <Attribute Name="TemperatureMax">
+                        <Value>100</Value>
+                    </Attribute>
+                </Attribute>
+                <Attribute Name="IPCode">
+                    <Value>Test IPCode</Value>
+                </Attribute>
+                <Attribute Name="Material">
+                    <Value>Test Material</Value>
+                    <Attribute Name="aml-lang=en-US">
+                        <Description>This is the value name in english</Description>
+                        <Value>English Test Material</Value>
+                    </Attribute>
+                    <Attribute Name="aml-lang=de-DE">
+                        <Description>Dies ist der Name in Deutsch</Description>
+                        <Value>Test Material Deutsch</Value>
+                    </Attribute>
+                </Attribute>
+                <Attribute Name="Weight">
+                    <Value>123.1</Value>
+                </Attribute>
+                <Attribute Name="Height">
+                    <Value>15</Value>
+                </Attribute>
+                <Attribute Name="Width">
+                    <Value>18</Value>
+                </Attribute>
+                <Attribute Name="Length">
+                    <Value>14</Value>
+                </Attribute>
+            </Attribute>
+
+            <Attribute Name="CommercialData">
+                <Attribute Name="PackagingAndTransportation">
+                    <Attribute Name="GTIN">
+                        <Value>TestGlobalTradeItemNumber1234</Value>
+                    </Attribute>
+                    <Attribute Name="CustomsTariffNumber">
+                        <Value>1234</Value>
+                    </Attribute>
+                    <Attribute Name="CountryOfOrigin">
+                        <Value>TestCountryOfOriginDE</Value>
+                    </Attribute>
+                </Attribute>
+                <Attribute Name="ProductDetails">
+                    <Attribute Name="DescriptionShort">
+                        <Value>TestProductDetailsDescriptionShort</Value>
+                    </Attribute>
+                    <Attribute Name="DescriptionLong">
+                        <Value>TestProductDetailsDescriptionLong</Value>
+                    </Attribute>
+                    <Attribute Name="InternationalPID">
+                        <Value>TestInternationalPID</Value>
+                    </Attribute>
+                    <Attribute Name="ManufacturerPID">
+                        <Value>TestManufacturerPID</Value>
+                    </Attribute>
+                    <Attribute Name="SpecialTreatmentClass">
+                        <Value>TestSpecialTreatmentClass1</Value>
+                    </Attribute>
+                    <Attribute Name="Keyword">
+                        <Value>TestKeyword1</Value>
+                    </Attribute>
+                    <Attribute Name="Remarks">
+                        <Value>TestRemarks</Value>
+                    </Attribute>
+                </Attribute>
+                <Attribute Name="ProductOrderDetails">
+                    <Attribute Name="OrderUnit">
+                        <Value>TestProductOrderDetailsOrderUnit</Value>
+                    </Attribute>
+                    <Attribute Name="ContentUnit">
+                        <Value>TestProductOrderDetailsContentUnit</Value>
+                    </Attribute>
+                    <Attribute Name="PriceQuantity">
+                        <Value>TestProductOrderDetailsPriceQuantity</Value>
+                    </Attribute>
+                    <Attribute Name="QuantityMin">
+                        <Value>1.3</Value>
+                    </Attribute>
+                    <Attribute Name="QuantityInterval">
+                        <Value>2.1</Value>
+                    </Attribute>
+                    <Attribute Name="QuantityMax">
+                        <Value>QuantityMax is a string</Value>
+                    </Attribute>
+                    <Attribute Name="PackingUnits">
+                        <Value>TestProductOrderDetailsPackingUnits</Value>
+                    </Attribute>
+                    <Attribute Name="PackingSize">
+                        <Value>TestProductOrderDetailsPackingSize</Value>
+                    </Attribute>
+                </Attribute>
+                <Attribute Name="ProductPriceDetails">
+                    <Attribute Name="ValidStartDate">
+                        <Value>2020-01-01</Value>
+                    </Attribute>
+                    <Attribute Name="VaildEndDate">
+                        <Value>2021-01-01</Value>
+                    </Attribute>
+                    <Attribute Name="ProductPrice">
+                        <Attribute Name="PriceAmount">
+                            <Value>TestPriceAmount</Value>
+                        </Attribute>
+                        <Attribute Name="PriceCurrency">
+                            <Value>TestPriceCurrency</Value>
+                        </Attribute>
+                        <Attribute Name="Tax">
+                            <Value>TestProductPriceDetailsTax</Value>
+                        </Attribute>
+                        <Attribute Name="PriceFactor">
+                            <Value>TestPriceFactor</Value>
+                        </Attribute>
+                        <Attribute Name="LowerBound">
+                            <Value>TestLowerBound</Value>
+                        </Attribute>
+                        <Attribute Name="Territory">
+                            <Value>TestTerritory1</Value>
+                        </Attribute>
+                    </Attribute>
+                </Attribute>
+                <Attribute Name="ManufacturerDetails">
+                    <Attribute Name="Name">
+                        <Value>TestManufacturerManufaturerDetails</Value>
+                    </Attribute>
+                    <Attribute Name="Address1">
+                        <Value>TestManufacturerAddress1</Value>
+                    </Attribute>
+                    <Attribute Name="Address2">
+                        <Value>TestManufacturerAddress2</Value>
+                    </Attribute>
+                    <Attribute Name="ZipCode">
+                        <Value>TestManufacturerZipCode</Value>
+                    </Attribute>
+                    <Attribute Name="City">
+                        <Value>TestManufacturerCity</Value>
+                    </Attribute>
+                    <Attribute Name="Country">
+                        <Value>TestManufacturerCountry</Value>
+                    </Attribute>
+                    <Attribute Name="ContactMail">
+                        <Value>TestManufacturerContactMail</Value>
+                    </Attribute>
+                    <Attribute Name="ContactPhone">
+                        <Value>TestManufacturerContactPhone</Value>
+                    </Attribute>
+                    <Attribute Name="Website">
+                        <Value>TestManufacturerWebsite</Value>
+                    </Attribute>
+                </Attribute>
+            </Attribute>
+
+            <Attribute Name="ParameterData">
+                <Attribute Name="ParameterDataCustomAttribute1">
+                    <Value>Value of my custom attribute in ParameterData1</Value>
+                </Attribute>
+                <Attribute Name="ParameterDataCustomAttribute2">
+                    <Value>Value of my custom attribute in ParameterData2</Value>
+                </Attribute>
+            </Attribute>
+
+            <Attribute Name="OperationA">
+                <Attribute Name="Inputs">
+                    <Attribute Name="PinA">
+                        <Value>10</Value>
+                    </Attribute>
+                    <Attribute Name="PinB">
+                        <Value>15</Value>
+                    </Attribute>
+                    <Attribute Name="PinC">
+                        <Value>30</Value>
+                    </Attribute>
+                </Attribute>
+                <Attribute Name="Outputs">
+                    <Attribute Name="PinD"/>
+                    <Attribute Name="PinE">
+                        <Value>15</Value>
+                    </Attribute>
+                </Attribute>
+                <Attribute Name="InOut">
+                    <Attribute Name="PinF">
+                        <Value>10</Value>
+                    </Attribute>
+                </Attribute>
+            </Attribute>
+
+            <InternalElement Name="FMILogicBehaviour">
+                <ExternalInterface Name="FMIReference"/>
+                <SupportedRoleClass
+                  RefRoleClassPath="AutomationMLComponentbaseRCL/LogicModel/FMILogic"/>
+            </InternalElement>
+
+            <InternalElement Name="NonStandardLogic">
+                <InternalElement Name="WinModModel">
+                    <InternalElement Name="SimFile">
+                        <ExternalInterface Name="ExternalDataReference"
+                          RefBaseClassPath="AutomationMLBPRInterfaceClassLib/ExternalDataReference">
+                            <Attribute Name="MIMEType" AttributeDataType="xs:string">
+                                <Value>application/octet-stream</Value>
+                            </Attribute>
+                            <Attribute Name="refURI" AttributeDataType="xs:anyURI"
+                              RefAttributeType="AutomationMLBaseAttributeTypeLib/refURI">
+                                <Value>BehaviorModelWinMOD.sim</Value>
+                            </Attribute>
+                        </ExternalInterface>
+                        <SupportedRoleClass
+                          RefRoleClassPath="AutomationMLBPRRoleClassLib/ExternalData"/>
+                    </InternalElement>
+                    <SupportedRoleClass
+                      RefRoleClassPath="AutomationMLComponentStandardRCL/SimulationModel"/>
+                </InternalElement>
+            </InternalElement>
+            <InternalElement Name="StandardLogic">
+                <InternalElement Name="WinModModel">
+                    <InternalElement Name="SimFile">
+                        <ExternalInterface Name="ExternalDataReference"
+                          RefBaseClassPath="AutomationMLBPRInterfaceClassLib/ExternalDataReference">
+                            <Attribute Name="refURI" AttributeDataType="xs:anyURI"
+                              RefAttributeType="AutomationMLBaseAttributeTypeLib/refURI"/>
+                        </ExternalInterface>
+                        <SupportedRoleClass
+                          RefRoleClassPath="AutomationMLBPRRoleClassLib/ExternalData"/>
+                    </InternalElement>
+                    <SupportedRoleClass
+                      RefRoleClassPath="AutomationMLComponentStandardRCL/SimulationModel"/>
+                </InternalElement>
+            </InternalElement>
+            <InternalElement Name="Manuals">
+                <InternalElement Name="Betriebsanleitung">
+                    <ExternalInterface Name="ExternalDataReference"
+                      RefBaseClassPath="AutomationMLBPRInterfaceClassLib/ExternalDataReference">
+                        <Attribute Name="MIMEType" AttributeDataType="xs:string">
+                            <DefaultValue></DefaultValue>
+                            <Value>application/pdf</Value>
+                        </Attribute>
+                        <Attribute Name="refURI" AttributeDataType="xs:anyURI"
+                          RefAttributeType="AutomationMLBaseAttributeTypeLib/refURI">
+                            <Value>manual/OI_wtt12l_en_de_fr_it_pt_es_zh_.pdf</Value>
+                        </Attribute>
+                    </ExternalInterface>
+                    <SupportedRoleClass
+                      RefRoleClassPath="AutomationMLBPRRoleClassLib/ExternalData"/>
+                </InternalElement>
+                <RoleRequirements
+                  RefBaseRoleClassPath="AutomationMLBaseRoleClassLib/AutomationMLBaseRole"/>
+            </InternalElement>
+            <InternalElement Name="ManualsBIN">
+                <InternalElement Name="BetriebsanleitungBIN">
+                    <ExternalInterface Name="ExternalDataReference"
+                      RefBaseClassPath="AutomationMLBPRInterfaceClassLib/ExternalDataReference">
+                        <Attribute Name="MIMEType" AttributeDataType="xs:string">
+                            <DefaultValue></DefaultValue>
+                            <Value>application/pdf</Value>
+                        </Attribute>
+                        <Attribute Name="refURI" AttributeDataType="xs:anyURI"
+                          RefAttributeType="AutomationMLBaseAttributeTypeLib/refURI">
+                            <Value>foo</Value>
+                        </Attribute>
+                    </ExternalInterface>
+                    <SupportedRoleClass
+                      RefRoleClassPath="AutomationMLBPRRoleClassLib/ExternalData"/>
+                </InternalElement>
+                <RoleRequirements
+                  RefBaseRoleClassPath="AutomationMLBaseRoleClassLib/AutomationMLBaseRole"/>
+            </InternalElement>
+            <InternalElement Name="ManualsBasicEvent">
+                <InternalElement Name="SampleBasicEvent">
+                    <ExternalInterface Name="ExternalDataReference"
+                      RefBaseClassPath="AutomationMLBPRInterfaceClassLib/ExternalDataReference">
+                        <Attribute Name="refURI" AttributeDataType="xs:anyURI"
+                          RefAttributeType="AutomationMLBaseAttributeTypeLib/refURI">
+                            <Value>Blob</Value>
+                        </Attribute>
+                    </ExternalInterface>
+                    <SupportedRoleClass
+                      RefRoleClassPath="AutomationMLBPRRoleClassLib/ExternalData"/>
+                </InternalElement>
+                <RoleRequirements
+                  RefBaseRoleClassPath="AutomationMLBaseRoleClassLib/AutomationMLBaseRole"/>
+            </InternalElement>
+            <InternalElement Name="STEPGeometry">
+                <ExternalInterface Name="ExternalDataReference"
+                  RefBaseClassPath="AutomationMLBPRInterfaceClassLib/ExternalDataReference">
+                    <Attribute Name="MIMEType" AttributeDataType="xs:string">
+                        <Value>application/STEP</Value>
+                    </Attribute>
+                    <Attribute Name="refURI" AttributeDataType="xs:anyURI"
+                      RefAttributeType="AutomationMLBaseAttributeTypeLib/refURI">
+                        <Value>MGFTT2-DFC-C_20200519_134129_7UszRjlaUUSGJwr_3pyZ3g</Value>
+                    </Attribute>
+                </ExternalInterface>
+                <SupportedRoleClass RefRoleClassPath="AutomationMLComponentBaseRCL/GeometryModel"/>
+            </InternalElement>
+
+
+            <SupportedRoleClass
+              RefRoleClassPath="AutomationMLComponentStandardRCL/AutomationComponent"/>
+        </SystemUnitClass>
+        <SystemUnitClass Name="NotUsedSystemUnitClass" ID="NotUsedSystemUnitClassID">
+            <InternalElement Name="NotUsedFilesCollection" ID="NotUsedFilesCollectionID">
+                <!-- Link to a local .txt file -->
+                <InternalElement Name="NotUsedLocalTextFile" ID="NotUsedLocalTextFileID">
+                    <ExternalInterface Name="ExternalDataReference" ID="ExternalDataReferenceID1"
+                      RefBaseClassPath="AutomationMLBPRInterfaceClassLib/ExternalDataReference">
+                        <Attribute Name="MIMEType" AttributeDataType="xs:string">
+                            <Value>plain/text</Value>
+                        </Attribute>
+                        <Attribute Name="refURI" AttributeDataType="xs:anyURI"
+                          RefAttributeType="AutomationMLBaseAttributeTypeLib/refURI">
+                            <Value>/files/TestTXTWarranty.txt</Value>
+                        </Attribute>
+                    </ExternalInterface>
+                    <SupportedRoleClass
+                      RefRoleClassPath="AutomationMLBPRRoleClassLib/ExternalData"/>
+                </InternalElement>
+            </InternalElement>
+
+        </SystemUnitClass>
+
+    </SystemUnitClassLib>
+</CAEXFile>

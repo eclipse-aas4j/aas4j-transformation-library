@@ -1,0 +1,124 @@
+{
+  "@header": {
+    "aasVersion": "3.0RC01",
+    "@parameters": {
+      "manufacturerId": "The Id of the manufacturer, will be filled from the ClientId before calling the MEI Api"
+    },
+    "@definitions": {
+      "mappingIdGeneration": {
+        "@concatenate_and_hash": [
+          {
+            "@xpath": "caex:Attribute[@Name='IdentificationData']/caex:Attribute[@Name='Manufacturer']/caex:Value",
+            "default": "DefaultManufacturer"
+          },
+          "/",
+          {
+            "@xpath": "caex:Attribute[@Name='IdentificationData']/caex:Attribute[@Name='ManufacturerUri']/caex:Value"
+          }
+        ]
+      },
+      "assetIdGeneration": {
+        "@concatenate_and_hash": [
+          {
+            "@xpath": "caex:Attribute[@Name='IdentificationData']/caex:Attribute[@Name='Manufacturer']/caex:Value",
+            "default": "DefaultManufacturer"
+          },
+          "/",
+          {
+            "@xpath": "caex:Attribute[@Name='IdentificationData']/caex:Attribute[@Name='ManufacturerUri']/caex:Value"
+          }
+        ]
+      }
+    },
+    "@namespaces": {
+      "ns1": "http://ns.org/1",
+      "ns2": "http://ns.org/2",
+      "caex": "http://www.dke.de/CAEX"
+    }
+  },
+  "aasEnvironmentMapping": {
+    "assetAdministrationShells": [
+      {
+        "@foreach": {
+          "@xpath": "//caex:SystemUnitClass[caex:SupportedRoleClass/@RefRoleClassPath='AutomationMLComponentStandardRCL/AutomationComponent' or caex:RoleRequirements/@RefBaseRoleClassPath='AutomationMLComponentStandardRCL/AutomationComponent'] | //caex:InternalElement[caex:SupportedRoleClass/@RefRoleClassPath='AutomationMLComponentStandardRCL/AutomationComponent' or caex:RoleRequirements/@RefBaseRoleClassPath='AutomationMLComponentStandardRCL/AutomationComponent']"
+        },
+        "identification": {
+          "@bind": {
+            "id": {
+              "@def": "mappingIdGeneration"
+            },
+           "idType" : "Custom" 
+          }
+        },
+        "assetInformation": {
+          "assetKind": "Type",
+          "globalAssetId": {
+            "keys": [
+              {
+                "value": "assetInformationGlobalAssetIdReference",
+                "idType": "Custom",
+                "type": "Asset"
+              }
+            ]
+          }
+        },
+        "@bind": {
+          "idShort": {
+            "@xpath": "@Name"
+          }
+        }
+      }
+    ],
+    "submodels": [
+      {
+        "@foreach": {
+          "@xpath": "//caex:Attribute[@Name='CommercialData']/caex:Attribute[@Name='ManufacturerDetails']"
+        },
+        "@bind": {
+          "idShort": {
+            "@xpath": "'AIN_MEI_Tranformation_Submodel'"
+          }
+        },
+        "semanticId": {
+          "keys": [
+            {
+              "value": "https://sap.com/aas/ain",
+              "idType": "Custom",
+              "type": "Submodel"
+            }
+          ]
+        },
+        "identification": {
+          "id": "CustomAINSubmodel",
+          "idType": "Custom"
+        },
+        "submodelElements": [
+          {
+            "@foreach": {
+              "@caexAttributeName": "Name"
+            },
+            "idShort": "manufacturerId",
+            "semanticId": {
+              "keys": [
+                {
+                  "value": "manufacturerId",
+                  "idType": "Custom",
+                  "type": "SubmodelElement"
+                }
+              ]
+            },
+            "@bind": {
+              "value": {
+                "@var": "manufacturerId"
+              }
+            },
+            "modelType": {
+              "name": "Property"
+            },
+            "valueType": "string"
+          }
+        ]
+      }
+    ]
+  }
+}
