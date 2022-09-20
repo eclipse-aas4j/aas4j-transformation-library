@@ -1,0 +1,60 @@
+{
+	"@header": {
+		"version": "1.0.0",
+		"aasVersion": "3.0RC01"
+	},
+	"aasEnvironmentMapping": {
+		"submodels": [
+			{
+				"@foreach": {
+					"@list": [
+						"sm_a",
+						"sm_b",
+						"sm_c"
+					]
+				},
+				"identification": {
+					"@foreach": {
+						"@list": [
+						]
+					},
+					"id": "https://test.org/optional_shouldnottransform",
+					"idType": "Iri"
+				},
+				"submodelElements": [
+					{
+						"modelType": "File",
+						"@foreach": {
+							"@list": [
+								"sme_a",
+								"sme_b"
+							]
+						}
+					},
+					{
+						"modelType": "SubmodelElementCollection",
+						"value": [
+							{
+								"modelType": "Property",
+								"@foreach": {
+									"@list": [
+										"sme_in_collection_a",
+										"sme_in_collection_b",
+										"sme_in_collection_c"
+									]
+								}
+							},
+							{
+								"modelType": "MultiLanguageProperty",
+								"@foreach": {
+									"@list": [
+									]
+								}
+							}
+						]
+					}
+				]
+			}
+		]
+	}
+}

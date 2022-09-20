@@ -1,0 +1,69 @@
+{
+  "@header": {
+    "aasVersion": "3.0RC01",
+    "@namespaces": {
+      "ua": "http://opcfoundation.org/UA/2011/03/UANodeSet.xsd"
+    },
+    "@definitions": {},
+    "@variables": {}
+  },
+  "aasEnvironmentMapping": {
+    "assets": [],
+    "assetAdministrationShells": [
+      {
+        "idShort": "UaAdminShell",
+        "identification": {
+          "idType": "Custom",
+          "id": "UaAdminShellId"
+        },
+        "assetInformation": {
+          "@bind": {
+            "assetKind": {
+              "@xpath": "'Instance'"
+            }
+          },
+          "globalAssetId": {
+            "keys": [
+              {
+                "value": "link to Asset",
+                "idType": "Custom",
+                "type": "AssetAdministrationShell"
+              }
+            ]
+          }
+        }
+      }
+    ],
+    "submodels": [
+      {
+        "@foreach": {
+          "@uaChildren": [
+            "3:Machines"
+          ]
+        },
+        "@bind": {
+          "idShort": {
+            "@xpath": "ua:DisplayName"
+          }
+        },
+        "identification": {
+          "@bind": {
+            "id": {
+              "@concatenate": [
+                {
+                  "@xpath": "/ua:UANodeSet/ua:NamespaceUris/ua:Uri[last()]"
+                },
+                "/",
+                {
+                  "@xpath": "@NodeId"
+                }
+              ]
+            }
+          },
+          "idType": "Iri"
+        }
+      }
+    ],
+    "conceptDescriptions": []
+  }
+}

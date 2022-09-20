@@ -1,0 +1,27 @@
+{
+	"@header": {
+		"version": "1.0.0",
+		"aasVersion": "3.0RC01"
+	},
+	"aasEnvironmentMapping": {
+		"submodels": [
+			{
+				"submodelElements": [
+					{
+						"modelType": "File",
+						"@bind": {
+							"value": {
+								"default": "Betriebsanleitung_DefaultValue"
+							},
+							"idShort": {
+								"@list": [
+								],
+								"default": "DefaultIdShort"
+							}
+						}
+					}
+				]
+			}
+		]
+	}
+}

@@ -1,0 +1,42 @@
+{
+	"@header": {
+		"version": "1.0.0",
+		"aasVersion": "3.0RC01",
+		"@namespaces": {
+			"ns": "http://ns.org/"
+		},
+		"@parameters": {
+			"genericPlaceholder": "A generic placeholder"
+		}
+	},
+	"aasEnvironmentMapping": {
+		"submodels": [
+			{
+				"@foreach": {
+					"@xpath": "/ns:root/ns:a"
+				},
+				"@bind": {
+					"idShort": {
+						"@xpath": "@name"
+					}
+				},
+				"submodelElements": [
+					{
+						"@foreach": {
+							"@xpath": "ns:b"
+						},
+						"modelType": "Property",
+						"@bind": {
+							"value": {
+								"@var": "genericPlaceholder"
+							},
+							"idShort": {
+								"@xpath": "@name"
+							}
+						}
+					}
+				]
+			}
+		]
+	}
+}

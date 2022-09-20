@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+		
+	<Relationship Type="http://schemas.automationml.org/container/relationship/RootDocument" Target="/minimal_AutomationMLComponent_WithDocuments.aml" Id="RelationshipID1" />
+	
+</Relationships>

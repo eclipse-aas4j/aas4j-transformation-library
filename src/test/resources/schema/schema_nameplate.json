@@ -1,0 +1,801 @@
+{
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "$id": "http://www.admin-shell.io/schema/json/v3.0_RC01/namePlate",
+  "type": "object",
+  "title": "Digital Nameplate Submodel",
+  "description": "Contains the nameplate information attached to the product",
+  "allOf": [
+    {
+      "$ref": "file:src/test/resources/schema/schema_v3.0_RC01.json#/definitions/Submodel"
+    }
+  ],
+  "required": [
+    "semanticId",
+    "submodelElements",
+    "identification",
+    "idShort",
+    "modelType"
+  ],
+  "properties": {
+    "semanticId": {
+      "type": "object",
+      "required": [
+        "keys"
+      ],
+      "properties": {
+        "keys": {
+          "type": "array",
+          "items": {
+            "anyOf": [
+              {
+                "type": "object",
+                "required": [
+                  "idType",
+                  "type",
+                  "value"
+                ],
+                "properties": {
+                  "idType": {
+                    "type": "string",
+                    "oneOf": [
+                      {
+                        "const": "Iri"
+                      }
+                    ]
+                  },
+                  "type": {
+                    "type": "string",
+                    "title": "The type schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "oneOf": [
+                      {
+                        "const": "Submodel"
+                      }
+                    ]
+                  },
+                  "value": {
+                    "type": "string",
+                    "oneOf": [
+                      {
+                        "const": "https://admin-shell.io/zvei/nameplate/1/0/Nameplate"
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "submodelElements": {
+      "type": "object",
+      "title": "The submodelElements schema",
+      "contains":
+        {
+              "$ref": "#/definitions/ManufacturerName",
+              "$ref": "#/definitions/ManufacturerProductDesignation",
+              "$ref": "#/definitions/Address"
+        },
+      "minItems": 3,
+      "additionalItems": true,
+      "uniqueItems": true
+    },
+    "identification": {
+      "$id": "#/properties/identification",
+      "type": "object",
+      "default": {},
+      "required": [
+        "id",
+        "idType"
+      ],
+      "properties": {
+        "id": {
+          "$id": "#/properties/identification/properties/id",
+          "type": "string"
+        },
+        "idType": {
+          "$id": "#/properties/identification/properties/idType",
+          "type": "string",
+          "title": "The idType schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+            "Custom"
+          ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "idShort": {
+      "$id": "#/properties/idShort",
+      "type": "string",
+      "oneOf": [
+        {
+          "const": "Nameplate"
+        }
+      ]
+    },
+    "modelType": {
+      "$id": "#/properties/modelType",
+      "type": "object",
+      "title": "The modelType schema",
+      "examples": [
+        {
+          "name": "Submodel"
+        }
+      ],
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "$id": "#/properties/modelType/properties/name",
+          "type": "string",
+          "examples": [
+            "Submodel"
+          ]
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "definitions": {
+    "ManufacturerName": {
+      "type": "object",
+      "description": "Legally valid designation of the natural or judicial body which is directly responsible for the design, production, packaging and labeling of a product in respect to its being brought into the market.",
+      "required": [
+        "idShort",
+        "semanticId",
+        "modelType",
+        "category",
+        "value"
+      ],
+      "properties": {
+        "idShort": {
+          "type": "string",
+          "oneOf": [
+            {
+              "const": "ManufacturerName"
+            }
+          ]
+        },
+        "semanticId": {
+          "$id": "#/properties/submodelElements/items/anyOf/0/properties/semanticId",
+          "type": "object",
+          "required": [
+            "keys"
+          ],
+          "properties": {
+            "keys": {
+              "type": "array",
+              "items": {
+                "anyOf": [
+                  {
+                    "type": "object",
+                    "required": [
+                      "idType",
+                      "type",
+                      "value"
+                    ],
+                    "properties": {
+                      "idType": {
+                        "type": "string",
+                        "oneOf": [
+                          {
+                            "const": "Irdi"
+                          }
+                        ]
+                      },
+                      "value": {
+                        "type": "string",
+                        "oneOf": [
+                          {
+                            "const": "0173-1#02-AAO677#002"
+                          }
+                        ]
+                      },
+                      "type": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "modelType": {
+          "$id": "#/properties/submodelElements/items/anyOf/0/properties/value/items/anyOf/0/properties/modelType",
+          "type": "object",
+          "required": [
+            "name"
+          ],
+          "properties": {
+            "name": {
+              "$id": "#/properties/submodelElements/items/anyOf/0/properties/value/items/anyOf/0/properties/modelType/properties/name",
+              "type": "string",
+              "default": "",
+              "oneOf": [
+                {
+                  "const": "MultiLanguageProperty"
+                }
+              ]
+            }
+          }
+        },
+        "category": {
+          "type": "string",
+          "oneOf": [
+            {
+              "const": "PARAMETER"
+            }
+          ]
+        },
+        "value": {
+          "type": "array"
+        }
+      }
+    },
+    "ManufacturerProductDesignation": {
+      "type": "object",
+      "description": "Short description of the product (short text)",
+      "required": [
+        "idShort",
+        "semanticId",
+        "modelType",
+        "category",
+        "value"
+      ],
+      "properties": {
+        "idShort": {
+          "type": "string",
+          "oneOf": [
+            {
+              "const": "ManufacturerProductDesignation"
+            }
+          ]
+        },
+        "semanticId": {
+          "type": "object",
+          "required": [
+            "keys"
+          ],
+          "properties": {
+            "keys": {
+              "type": "array",
+              "items": {
+                "anyOf": [
+                  {
+                    "type": "object",
+                    "required": [
+                      "idType",
+                      "type",
+                      "value"
+                    ],
+                    "properties": {
+                      "idType": {
+                        "type": "string",
+                        "oneOf": [
+                          {
+                            "const": "Irdi"
+                          }
+                        ]
+                      },
+                      "value": {
+                        "type": "string",
+                        "oneOf": [
+                          {
+                            "const": "0173-1#02-AAW338#001"
+                          }
+                        ]
+                      },
+                      "type": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "modelType": {
+          "$id": "#/properties/submodelElements/items/anyOf/0/properties/value/items/anyOf/0/properties/modelType",
+          "type": "object",
+          "required": [
+            "name"
+          ],
+          "properties": {
+            "name": {
+              "$id": "#/properties/submodelElements/items/anyOf/0/properties/value/items/anyOf/0/properties/modelType/properties/name",
+              "type": "string",
+              "default": "",
+              "oneOf": [
+                {
+                  "const": "MultiLanguageProperty"
+                }
+              ]
+            }
+          }
+        },
+        "category": {
+          "type": "string",
+          "oneOf": [
+            {
+              "const": "PARAMETER"
+            }
+          ]
+        },
+        "value": {
+          "type": "array"
+        }
+      }
+    },
+    "Address": {
+      "type": "object",
+      "description": "Address information of a business partner",
+      "required": [
+        "idShort",
+        "semanticId",
+        "modelType",
+        "value"
+      ],
+      "properties": {
+        "idShort": {
+          "type": "string",
+          "oneOf": [
+            {
+              "const": "Address"
+            }
+          ]
+        },
+        "semanticId": {
+          "$id": "#/properties/submodelElements/items/anyOf/0/properties/semanticId",
+          "type": "object",
+          "required": [
+            "keys"
+          ],
+          "properties": {
+            "keys": {
+              "type": "array",
+              "items": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "required": [
+                      "idType",
+                      "type",
+                      "value"
+                    ],
+                    "properties": {
+                      "idType": {
+                        "type": "string",
+                        "oneOf": [
+                          {
+                            "const": "Irdi"
+                          }
+                        ]
+                      },
+                      "value": {
+                        "type": "string",
+                        "oneOf": [
+                          {
+                            "const": "0173-1#02-AAQ832#005"
+                          }
+                        ]
+                      },
+                      "type": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "modelType": {
+          "$id": "#/properties/submodelElements/items/anyOf/0/properties/modelType",
+          "type": "object",
+          "oneOf": [
+            {
+              "name": "SubmodelElementCollection"
+            }
+          ],
+          "required": [
+            "name"
+          ]
+        },
+        "value": {
+          "$id": "#/properties/submodelElements/items/anyOf/0/properties/value",
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "description": "street name and house number",
+              "required": [
+                "idShort",
+                "semanticId",
+                "modelType",
+                "category",
+                "value"
+              ],
+              "properties": {
+                "idShort": {
+                  "type": "string",
+                  "oneOf": [
+                    {
+                      "const": "Street"
+                    }
+                  ]
+                },
+                "semanticId": {
+                  "type": "object",
+                  "required": [
+                    "keys"
+                  ],
+                  "properties": {
+                    "keys": {
+                      "type": "array",
+                      "items": {
+                        "anyOf": [
+                          {
+                            "type": "object",
+                            "required": [
+                              "idType",
+                              "type",
+                              "value"
+                            ],
+                            "properties": {
+                              "idType": {
+                                "type": "string",
+                                "oneOf": [
+                                  {
+                                    "const": "Irdi"
+                                  }
+                                ]
+                              },
+                              "value": {
+                                "type": "string",
+                                "oneOf": [
+                                  {
+                                    "const": "0173-1#02-AAO128#002"
+                                  }
+                                ]
+                              },
+                              "type": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                },
+                "modelType": {
+                  "$id": "#/properties/submodelElements/items/anyOf/0/properties/value/items/anyOf/0/properties/modelType",
+                  "type": "object",
+                  "required": [
+                    "name"
+                  ],
+                  "properties": {
+                    "name": {
+                      "$id": "#/properties/submodelElements/items/anyOf/0/properties/value/items/anyOf/0/properties/modelType/properties/name",
+                      "type": "string",
+                      "default": "",
+                      "oneOf": [
+                        {
+                          "const": "MultiLanguageProperty"
+                        }
+                      ]
+                    }
+                  }
+                },
+                "category": {
+                  "type": "string",
+                  "oneOf": [
+                    {
+                      "const": "PARAMETER"
+                    }
+                  ]
+                },
+                "value": {
+                  "type": "array"
+                }
+              }
+            },
+            {
+              "type": "object",
+              "description": "ZIP code of address",
+              "required": [
+                "idShort",
+                "semanticId",
+                "modelType",
+                "category",
+                "value"
+              ],
+              "properties": {
+                "idShort": {
+                  "type": "string",
+                  "oneOf": [
+                    {
+                      "const": "Zipcode"
+                    }
+                  ]
+                },
+                "semanticId": {
+                  "type": "object",
+                  "required": [
+                    "keys"
+                  ],
+                  "properties": {
+                    "keys": {
+                      "type": "array",
+                      "items": {
+                        "anyOf": [
+                          {
+                            "type": "object",
+                            "required": [
+                              "idType",
+                              "type",
+                              "value"
+                            ],
+                            "properties": {
+                              "idType": {
+                                "type": "string",
+                                "oneOf": [
+                                  {
+                                    "const": "Irdi"
+                                  }
+                                ]
+                              },
+                              "value": {
+                                "type": "string",
+                                "oneOf": [
+                                  {
+                                    "const": "0173-1#02-AAO129#002"
+                                  }
+                                ]
+                              },
+                              "type": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                },
+                "modelType": {
+                  "$id": "#/properties/submodelElements/items/anyOf/0/properties/value/items/anyOf/0/properties/modelType",
+                  "type": "object",
+                  "required": [
+                    "name"
+                  ],
+                  "properties": {
+                    "name": {
+                      "$id": "#/properties/submodelElements/items/anyOf/0/properties/value/items/anyOf/0/properties/modelType/properties/name",
+                      "type": "string",
+                      "default": "",
+                      "oneOf": [
+                        {
+                          "const": "MultiLanguageProperty"
+                        }
+                      ]
+                    }
+                  }
+                },
+                "category": {
+                  "type": "string",
+                  "oneOf": [
+                    {
+                      "const": "PARAMETER"
+                    }
+                  ]
+                },
+                "value": {
+                  "type": "array"
+                }
+              }
+            },
+            {
+              "type": "object",
+              "description": "town or city",
+              "required": [
+                "idShort",
+                "semanticId",
+                "modelType",
+                "category",
+                "value"
+              ],
+              "properties": {
+                "idShort": {
+                  "type": "string",
+                  "oneOf": [
+                    {
+                      "const": "CityTown"
+                    }
+                  ]
+                },
+                "semanticId": {
+                  "type": "object",
+                  "required": [
+                    "keys"
+                  ],
+                  "properties": {
+                    "keys": {
+                      "type": "array",
+                      "items": {
+                        "anyOf": [
+                          {
+                            "type": "object",
+                            "required": [
+                              "idType",
+                              "type",
+                              "value"
+                            ],
+                            "properties": {
+                              "idType": {
+                                "type": "string",
+                                "oneOf": [
+                                  {
+                                    "const": "Irdi"
+                                  }
+                                ]
+                              },
+                              "value": {
+                                "type": "string",
+                                "oneOf": [
+                                  {
+                                    "const": "0173-1#02-AAO132#002"
+                                  }
+                                ]
+                              },
+                              "type": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                },
+                "modelType": {
+                  "$id": "#/properties/submodelElements/items/anyOf/0/properties/value/items/anyOf/0/properties/modelType",
+                  "type": "object",
+                  "required": [
+                    "name"
+                  ],
+                  "properties": {
+                    "name": {
+                      "$id": "#/properties/submodelElements/items/anyOf/0/properties/value/items/anyOf/0/properties/modelType/properties/name",
+                      "type": "string",
+                      "default": "",
+                      "oneOf": [
+                        {
+                          "const": "MultiLanguageProperty"
+                        }
+                      ]
+                    }
+                  }
+                },
+                "category": {
+                  "type": "string",
+                  "oneOf": [
+                    {
+                      "const": "PARAMETER"
+                    }
+                  ]
+                },
+                "value": {
+                  "type": "array"
+                }
+              }
+            },
+            {
+              "type": "object",
+              "description": "code of a country",
+              "required": [
+                "idShort",
+                "semanticId",
+                "modelType",
+                "category",
+                "value"
+              ],
+              "properties": {
+                "idShort": {
+                  "type": "string",
+                  "oneOf": [
+                    {
+                      "const": "NationalCode"
+                    }
+                  ]
+                },
+                "semanticId": {
+                  "type": "object",
+                  "required": [
+                    "keys"
+                  ],
+                  "properties": {
+                    "keys": {
+                      "type": "array",
+                      "items": {
+                        "anyOf": [
+                          {
+                            "type": "object",
+                            "required": [
+                              "idType",
+                              "type",
+                              "value"
+                            ],
+                            "properties": {
+                              "idType": {
+                                "type": "string",
+                                "oneOf": [
+                                  {
+                                    "const": "Irdi"
+                                  }
+                                ]
+                              },
+                              "value": {
+                                "type": "string",
+                                "oneOf": [
+                                  {
+                                    "const": "0173-1#02-AAO134#002"
+                                  }
+                                ]
+                              },
+                              "type": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                },
+                "modelType": {
+                  "$id": "#/properties/submodelElements/items/anyOf/0/properties/value/items/anyOf/0/properties/modelType",
+                  "type": "object",
+                  "required": [
+                    "name"
+                  ],
+                  "properties": {
+                    "name": {
+                      "$id": "#/properties/submodelElements/items/anyOf/0/properties/value/items/anyOf/0/properties/modelType/properties/name",
+                      "type": "string",
+                      "default": "",
+                      "oneOf": [
+                        {
+                          "const": "MultiLanguageProperty"
+                        }
+                      ]
+                    }
+                  }
+                },
+                "category": {
+                  "type": "string",
+                  "oneOf": [
+                    {
+                      "const": "PARAMETER"
+                    }
+                  ]
+                },
+                "value": {
+                  "type": "array"
+                }
+              }
+            }
+          ],
+          "additionalItems": true
+        }
+      }
+    }
+  }
+}

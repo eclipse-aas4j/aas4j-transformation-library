@@ -1,0 +1,12 @@
+<ns:root xmlns:ns="http://ns.org/" targetNamespace="http://ns.org/">
+	<ns:a name="submodel_a">
+		<ns:b name="element_a"></ns:b>
+		<ns:b name="element_b"></ns:b>
+		<ns:b name="element_c"></ns:b>
+	</ns:a>
+	<ns:a name="submodel_b">
+		<ns:b name="element_d"></ns:b>
+		<ns:b name="element_e"></ns:b>
+		<ns:b name="element_f"></ns:b>
+	</ns:a>
+</ns:root>

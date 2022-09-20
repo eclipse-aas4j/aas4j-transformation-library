@@ -1,0 +1,851 @@
+{
+  "@header": {
+    "aasVersion": "3.0RC01",
+    "@namespaces": {
+      "ns1": "http://ns.org/1",
+      "ns2": "http://ns.org/2",
+      "caex": "http://www.dke.de/CAEX"
+    },
+    "@definitions": {
+      "assetIdGeneration": {
+        "@concatenate_and_hash": [
+          {
+            "@xpath": "caex:Attribute[@Name='IdentificationData']/caex:Attribute[@Name='Manufacturer']/caex:Value",
+            "default": "DefaultManufacturer"
+          },
+          "/",
+          {
+            "@xpath": "caex:Attribute[@Name='IdentificationData']/caex:Attribute[@Name='ManufacturerUri']/caex:Value"
+          }
+        ]
+      },
+      "mappingIdGeneration": {
+        "@concatenate_and_hash": [
+          {
+            "@xpath": "caex:Attribute[@Name='IdentificationData']/caex:Attribute[@Name='Manufacturer']/caex:Value",
+            "default": "DefaultManufacturer"
+          },
+          "/",
+          {
+            "@xpath": "caex:Attribute[@Name='IdentificationData']/caex:Attribute[@Name='ManufacturerUri']/caex:Value"
+          }
+        ]
+      }
+    },
+    "@variables": {
+      "submodel3Id": "submodel3",
+      "submodelDocsId": "submodelDocuments"
+    }
+  },
+  "aasEnvironmentMapping": {
+    "@foreach": {
+      "@xpath": "//caex:SystemUnitClass[caex:SupportedRoleClass/@RefRoleClassPath='AutomationMLComponentStandardRCL/AutomationComponent' or caex:RoleRequirements/@RefBaseRoleClassPath='AutomationMLComponentStandardRCL/AutomationComponent'] | //caex:InternalElement[caex:SupportedRoleClass/@RefRoleClassPath='AutomationMLComponentStandardRCL/AutomationComponent' or caex:RoleRequirements/@RefBaseRoleClassPath='AutomationMLComponentStandardRCL/AutomationComponent']"
+    },
+    "assets": [],
+    "assetAdministrationShells": [
+      {
+        "@bind": {
+          "idShort": {
+            "@xpath": "@Name"
+          }
+        },
+        "identification": {
+          "idType": "Custom",
+          "id": "shellId"
+        },
+        "assetInformation": {
+          "@bind": {
+            "assetKind": {
+              "@xpath": "'Type'"
+            }
+          },
+          "globalAssetId": {
+            "keys": [
+              {
+                "value": "assetInformationGlobalAssetIdReference",
+                "idType": "Custom",
+                "type": "Asset"
+              }
+            ]
+          }
+        }
+      }
+    ],
+    "submodels": [
+      {
+        "@foreach": {
+          "@caexAttributeName": "IdentificationData"
+        },
+        "semanticId": {
+          "keys": [
+            {
+              "idType": "Iri",
+              "type": "Submodel",
+              "value": "http://sap.com"
+            }
+          ]
+        },
+        "@variables": {
+          "submodel3Id": "this is an updated Variable"
+        },
+        "identification": {
+          "@bind": {
+            "id": {
+              "@concatenate": [
+                {
+                  "@def": "assetIdGeneration"
+                },
+                "_submodel1",
+                {
+                  "@var": "submodel3Id"
+                }
+              ]
+            }
+          },
+          "idType": "Custom"
+        },
+        "idShort": "submodelShortId1",
+        "submodelElements": [
+          {
+            "@foreach": {
+              "@caexAttributeName": "Manufacturer"
+            },
+            "@bind": {
+              "idShort": {
+                "@xpath": "@Name"
+              }
+            },
+            "semanticId": {
+              "keys": [
+                {
+                  "idType": "Custom",
+                  "type": "ReferenceElement",
+                  "value": "submodelElementSemanticId1"
+                }
+              ]
+            },
+            "modelType": {
+              "name": "Property"
+            },
+            "valueType": "STRING"
+          },
+          {
+            "@foreach": {
+              "@xpath": "caex:Attribute[@Name='Manufacturer']"
+            },
+            "semanticId": {
+              "keys": [
+                {
+                  "idType": "Custom",
+                  "type": "ReferenceElement",
+                  "value": "submodelElementSemanticId2"
+                }
+              ]
+            },
+            "modelType": {
+              "name": "Property"
+            },
+            "valueType": "STRING",
+            "@bind": {
+              "idShort": {
+                "@xpath": "@Name"
+              },
+              "value": {
+                "@xpath": "caex:Value"
+              }
+            }
+          },
+          {
+            "@foreach": {
+              "@xpath": "caex:Attribute[@Name='ManufacturerURI']"
+            },
+            "modelType": {
+              "name": "Capability"
+            },
+            "@bind": {
+              "idShort": {
+                "@xpath": "'Browseable'"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "@foreach": {
+          "@xpath": "caex:Attribute[@Name='CommercialData']"
+        },
+        "@bind": {
+          "idShort": {
+            "@xpath": "@Name"
+          }
+        },
+        "semanticId": {
+          "keys": [
+            {
+              "idType": "Iri",
+              "type": "Submodel",
+              "value": "http://sap.com"
+            }
+          ]
+        },
+        "identification": {
+          "@bind": {
+            "id": {
+              "@concatenate": [
+                "submodel2_",
+                {
+                  "@def": "assetIdGeneration"
+                }
+              ]
+            }
+          },
+          "idType": "Iri"
+        },
+        "submodelElements": [
+          {
+            "@foreach": {
+              "@caexAttributeName": "ProductPriceDetails"
+            },
+            "@bind": {
+              "idShort": {
+                "@xpath": "@Name"
+              }
+            },
+            "modelType": {
+              "name": "SubmodelElementCollection"
+            },
+            "semanticId": {
+              "keys": [
+                {
+                  "idType": "Custom",
+                  "type": "Submodel",
+                  "value": "SubmodelElementCollectionSemanticId"
+                }
+              ]
+            },
+            "value": [
+              {
+                "@foreach": {
+                  "@caexAttributeName": "ValidStartDate"
+                },
+                "modelType": {
+                  "name": "Property"
+                },
+                "valueType": "STRING"
+              },
+              {
+                "@foreach": {
+                  "@xpath": "caex:Attribute[@Name='ProductPrice']/caex:Attribute[@Name='PriceAmount']"
+                },
+                "modelType": {
+                  "name": "Property"
+                },
+                "valueType": "STRING"
+              }
+            ]
+          },
+          {
+            "@foreach": {
+              "@caexAttributeName": "ProductDetails"
+            },
+            "@bind": {
+              "idShort": {
+                "@xpath": "@Name"
+              }
+            },
+            "modelType": {
+              "name": "SubmodelElementCollection"
+            },
+            "semanticId": {
+              "keys": {
+                "value": "ProductDetails",
+                "idType": "Custom",
+                "type": "ConceptDescription"
+              }
+            },
+            "value": [
+              {
+                "@foreach": {
+                  "@caexAttributeName": "DescriptionShort"
+                },
+                "@bind": {
+                  "idShort": {
+                    "@xpath": "@Name"
+                  }
+                },
+                "modelType": {
+                  "name": "MultiLanguageProperty"
+                },
+                "value": [
+                  {
+                    "language" : "en",
+                    "@bind": {
+                      "text": {
+                        "@xpath": "caex:Value"
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "@foreach": {
+              "@caexAttributeName": "PackagingAndTransportation"
+            },
+            "@bind": {
+              "idShort": {
+                "@xpath": "@Name"
+              }
+            },
+            "modelType": {
+              "name": "Entity"
+            },
+            "semanticId": {
+              "keys": {
+                "value": "PackAndTransport",
+                "idType": "Irdi",
+                "type": "ConceptDescription"
+              }
+            },
+            "entityType": "SelfManagedEntity",
+            "globalAssetId": {
+              "keys": [
+                {
+                  "value": "AssetIdExtern",
+                  "type": "Asset",
+                  "idType": "Custom"
+                }
+              ]
+            },
+            "statements": [
+              {
+                "@foreach": {
+                  "@caexAttributeName": "GTIN"
+                },
+                "modelType": {
+                  "name": "Property"
+                },
+                "valueType": "STRING"
+              },
+              {
+                "@foreach": {
+                  "@caexAttributeName": "CustomsTariffNumber"
+                },
+                "modelType": {
+                  "name": "Property"
+                },
+                "valueType": "integer"
+              },
+              {
+                "@foreach": {
+                  "@caexAttributeName": "CountryOfOrigin"
+                },
+                "modelType": {
+                  "name": "Property"
+                },
+                "valueType": "STRING"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "@foreach": {
+          "@caexAttributeName": "GeneralTechnicalData"
+        },
+        "@bind": {
+          "idShort": {
+            "@xpath": "@Name"
+          }
+        },
+        "semanticId": {
+          "keys": [
+            {
+              "idType": "Iri",
+              "type": "Submodel",
+              "value": "http://sap.com"
+            }
+          ]
+        },
+        "identification": {
+          "@bind": {
+            "id": {
+              "@concatenate": [
+                {
+                  "@def": "assetIdGeneration"
+                },
+                "_generalTechnicalData"
+              ]
+            }
+          },
+          "idType": "Iri"
+        },
+        "submodelElements": [
+          {
+            "@foreach": {
+              "@caexAttributeName": "AmbientTemperature"
+            },
+            "modelType": {
+              "name": "Range"
+            },
+            "semanticId": {
+              "keys": {
+                "value": "AmbientTemperature",
+                "idType": "Iri",
+                "type": "Range"
+              }
+            },
+            "valueType": "integer",
+            "@bind": {
+              "idShort": {
+                "@xpath": "@Name"
+              },
+              "min": {
+                "@negate": {
+                  "@plus": [
+                    {
+                      "@max": [240,4.2]
+                    },
+                    33
+                  ]
+                }
+              },
+              "max": {
+                "@times": [
+                  5,
+                  20
+                ]
+              }
+            }
+          },
+          {
+            "@foreach": {
+              "@caexAttributeName": "Material"
+            },
+            "@bind": {
+              "idShort": {
+                "@xpath": "@Name"
+              }
+            },
+            "modelType": {
+              "name": "MultiLanguageProperty"
+            },
+            "value": [
+              {
+                "@foreach": {
+                  "@caexAttributeName": "aml-lang=en-US"
+                },
+                "language" : "en",
+                "@bind": {
+                  "text": {
+                    "@xpath": "caex:Value"
+                  }
+                }
+              },
+              {
+                "@foreach": {
+                  "@caexAttributeName": "aml-lang=de-DE"
+                },
+                "language": "de",
+                "@bind": {
+                  "text": {
+                    "@xpath": "caex:Value"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "@foreach": {
+          "@caexAttributeName": "ParameterData"
+        },
+        "@bind": {
+          "idShort": {
+            "@xpath": "@Name"
+          }
+        },
+        "semanticId": {
+          "keys": [
+            {
+              "idType": "Iri",
+              "type": "Submodel",
+              "value": "http://sap.com"
+            }
+          ]
+        },
+        "identification": {
+          "@bind": {
+            "id": {
+              "@var": "submodel3Id"
+            }
+          },
+          "idType": "Custom"
+        },
+        "submodelElements": [
+          {
+            "@foreach": {
+              "@xpath": "caex:Attribute"
+            },
+            "@bind": {
+              "idShort": {
+                "@xpath": "@Name"
+              }
+            },
+            "modelType": {
+              "name": "Property"
+            },
+            "valueType": "STRING"
+          }
+        ]
+      },
+      {
+        "@foreach": {
+          "@xpath": "."
+        },
+        "semanticId": {
+          "keys": [
+            {
+              "idType": "Iri",
+              "type": "Submodel",
+              "value": "http://sap.com/Documents"
+            }
+          ]
+        },
+        "idShort": "Documents",
+        "identification": {
+          "@bind": {
+            "id": {
+              "@var": "submodelDocsId"
+            }
+          },
+          "idType": "Custom"
+        },
+        "submodelElements": [
+          {
+            "@foreach": {
+              "@xpath": "caex:InternalElement[@Name='Manuals']/caex:InternalElement[@Name='Betriebsanleitung']/caex:ExternalInterface[@Name='ExternalDataReference']"
+            },
+            "modelType": {
+              "name": "File"
+            },
+            "@bind": {
+              "idShort": {
+                "@xpath": "'Betriebsanleitung'"
+              },
+              "value": {
+                "@xpath": "caex:Attribute[@Name='refURI']/caex:Value"
+              },
+              "mimeType": {
+                "@xpath": "caex:Attribute[@Name='MIMEType']/caex:Value"
+              }
+            }
+          },
+          {
+            "@foreach": {
+              "@xpath": "caex:InternalElement[@Name='STEPGeometry']/caex:ExternalInterface[@Name='ExternalDataReference']"
+            },
+            "modelType": {
+              "name": "ReferenceElement"
+            },
+            "@bind": {
+              "idShort": {
+                "@xpath": "'STEPGeometry'"
+              }
+            },
+            "value": {
+              "keys": [
+                {
+                  "@bind": {
+                    "value": {
+                      "@xpath": "caex:Attribute[@Name='refURI']/caex:Value"
+                    }
+                  },
+                  "idType": "Custom",
+                  "type": "ConceptDescription"
+                }
+              ]
+            }
+          },
+          {
+            "@foreach": {
+              "@xpath": "caex:InternalElement[@Name='ManualsBIN']/caex:InternalElement[@Name='BetriebsanleitungBIN']/caex:ExternalInterface[@Name='ExternalDataReference']"
+            },
+            "modelType": {
+              "name": "Blob"
+            },
+            "@bind": {
+              "idShort": {
+                "@xpath": "'BetriebsanleitungBIN'"
+              },
+              "value": {
+                "@base64": {
+                  "@xpath": "caex:Attribute[@Name='refURI']/caex:Value"
+                }
+              },
+              "mimeType": {
+                "@xpath": "caex:Attribute[@Name='MIMEType']/caex:Value"
+              }
+            }
+          },
+          {
+            "@foreach": {
+              "@xpath": "caex:InternalElement[@Name='ManualsBasicEvent']/caex:InternalElement[@Name='SampleBasicEvent']/caex:ExternalInterface[@Name='ExternalDataReference']"
+            },
+            "modelType": {
+              "name": "BasicEvent"
+            },
+            "@bind": {
+              "idShort": {
+                "@xpath": "'SampleBasicEvent'"
+              }
+            },
+            "observed": {
+              "keys": [
+                {
+                  "idType": "Custom",
+                  "type": "Blob",
+                  "@bind": {
+                    "value": {
+                      "@xpath": "caex:Attribute[@Name='refURI']/caex:Value"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "@foreach": {
+          "@xpath": "."
+        },
+        "@bind": {
+          "idShort": {
+            "@xpath": "'Operations'"
+          }
+        },
+        "identification": {
+          "@bind": {
+            "id": {
+              "@concatenate": [
+                {
+                  "@def": "assetIdGeneration"
+                },
+                "_operations"
+              ]
+            }
+          },
+          "idType": "Iri"
+        },
+        "semanticId": {
+          "keys": [
+            {
+              "idType": "Iri",
+              "type": "Submodel",
+              "value": "http://sap.com/operations"
+            }
+          ]
+        },
+        "submodelElements": [
+          {
+            "@foreach": {
+              "@caexAttributeName": "OperationA"
+            },
+            "@bind": {
+              "idShort": {
+                "@xpath": "@Name"
+              }
+            },
+            "semanticId": {
+              "keys": [
+                {
+                  "idType": "Custom",
+                  "type": "Submodel",
+                  "value": "ops"
+                }
+              ]
+            },
+            "modelType": {
+              "name": "Operation"
+            },
+            "inputVariable": [
+              {
+                "@foreach": {
+                  "@xpath": "caex:Attribute[@Name='Inputs']/caex:Attribute"
+                },
+                "value": {
+                  "modelType": {
+                    "name": "Property"
+                  },
+                  "valueType": "STRING"
+                }
+              }
+            ],
+            "outputVariable": [
+              {
+                "@foreach": {
+                  "@xpath": "caex:Attribute[@Name='Outputs']/caex:Attribute"
+                },
+                "value": {
+                  "modelType": {
+                    "name": "Property"
+                  },
+                  "valueType": "STRING"
+                }
+              }
+            ],
+            "inoutputVariable": [
+              {
+                "value": {
+                  "@foreach": {
+                    "@xpath": "caex:Attribute[@Name='InOut']/caex:Attribute"
+                  },
+                  "modelType": {
+                    "name": "Property"
+                  },
+                  "valueType": "STRING"
+                }
+              }
+            ]
+          },
+          {
+            "@foreach": {
+              "@caexAttributeName": "OperationA"
+            },
+            "semanticId": {
+              "keys": [
+                {
+                  "idType": "Custom",
+                  "type": "Submodel",
+                  "value": "test"
+                }
+              ]
+            },
+            "modelType": {
+              "name": "RelationshipElement"
+            },
+            "idShort": "relElement",
+            "first": {
+              "keys": [
+                {
+                  "value": "FOO",
+                  "idType": "Iri",
+                  "type": "ConceptDescription"
+                }
+              ]
+            },
+            "second": {
+              "keys": [
+                {
+                  "value": "BAR",
+                  "idType": "Iri",
+                  "type": "ConceptDescription"
+                }
+              ]
+            }
+          },
+          {
+            "@foreach": {
+              "@caexAttributeName": "OperationA"
+            },
+            "semanticId": {
+              "keys": [
+                {
+                  "idType": "FragmentId",
+                  "type": "Submodel",
+                  "value": "test/test/test"
+                }
+              ]
+            },
+            "modelType": {
+              "name": "AnnotatedRelationshipElement"
+            },
+            "@bind": {
+              "idShort": {
+                "@xpath": "'annoRelElement'"
+              }
+            },
+            "first": {
+              "keys": [
+                {
+                  "value": "abc",
+                  "type": "ConceptDescription",
+                  "idType": "Custom"
+                }
+              ]
+            },
+            "second": {
+              "keys": [
+                {
+                  "value": "def",
+                  "type": "ConceptDescription",
+                  "idType": "Custom"
+                }
+              ]
+            },
+            "annotation": [
+              {
+                "@foreach": {
+                  "@xpath": "caex:Attribute[@Name='Inputs']/caex:Attribute"
+                },
+                "modelType": {
+                  "name": "Property"
+                },
+                "valueType": "STRING"
+              },
+              {
+                "@foreach": {
+                  "@xpath": "caex:Attribute[@Name='Outputs']/caex:Attribute"
+                },
+                "modelType": {
+                  "name": "Property"
+                },
+                "valueType": "STRING"
+              }
+            ]
+          },
+          {
+            "@foreach": {
+              "@xpath": "caex:Attribute[@Name='Manufacturer']"
+            },
+            "semanticId": {
+              "keys": [
+                {
+                  "idType": "Custom",
+                  "type": "Submodel",
+                  "value": "submodelElementSemanticId2"
+                }
+              ]
+            },
+            "valueType": "STRING",
+            "modelType": {
+              "name": "Property"
+            },
+            "@bind": {
+              "value": {
+                "@xpath": "caex:Value"
+              }
+            }
+          },
+          {
+            "@foreach": {
+              "@xpath": "caex:Attribute[@Name='ManufacturerURI']"
+            },
+            "@bind": {
+              "idShort": {
+                "@xpath": "'Browseable'"
+              }
+            },
+            "modelType": {
+              "name": "Capability"
+            }
+          }
+        ]
+      }
+    ],
+    "conceptDescriptions": []
+  }
+}

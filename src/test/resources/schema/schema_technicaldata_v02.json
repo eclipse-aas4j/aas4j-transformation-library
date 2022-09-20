@@ -1,0 +1,777 @@
+{
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "$id": "http://www.admin-shell.io/schema/json/v3.0_RC01/technicalData",
+  "type": "object",
+  "title": "Generic Frame for Technical Data for Industrial Equipment in Manufacturing",
+  "description": "This Submodel template aims at interoperable provision of technical data describing the asset of the respective Asset Administration Shell.",
+  "allOf": [
+    {
+      "$ref": "file:src/test/resources/schema/schema_v3.0_RC01.json#/definitions/Submodel"
+    }
+  ],
+  "required": [
+    "semanticId",
+    "submodelElements",
+    "identification",
+    "idShort",
+    "modelType"
+  ],
+  "properties": {
+    "semanticId": {
+      "type": "object",
+      "required": [
+        "keys"
+      ],
+      "properties": {
+        "keys": {
+          "type": "array",
+          "items": {
+            "anyOf": [
+              {
+                "type": "object",
+                "required": [
+                  "idType",
+                  "type",
+                  "value"
+                ],
+                "properties": {
+                  "idType": {
+                    "type": "string",
+                    "oneOf": [
+                      {
+                        "const": "Iri"
+                      }
+                    ]
+                  },
+                  "type": {
+                    "type": "string",
+                    "title": "The type schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "oneOf": [
+                      {
+                        "const": "Submodel"
+                      }
+                    ]
+                  },
+                  "value": {
+                    "type": "string",
+                    "oneOf": [
+                      {
+                        "const": "http://admin-shell.io/ZVEI/TechnicalData/Submodel/1/1"
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "submodelElements": {
+      "$id": "#/properties/submodelElements",
+      "type": "array",
+      "title": "The submodelElements schema",
+      "items": [
+        {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/GeneralInformation"
+            },
+            {
+              "$ref": "#/definitions/TechnicalProperties"
+            }
+          ]
+        },
+        {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/GeneralInformation"
+            },
+            {
+              "$ref": "#/definitions/TechnicalProperties"
+            }
+          ]
+        }
+      ],
+      "minItems": 2,
+      "additionalItems": true,
+      "uniqueItems": true
+    },
+    "identification": {
+      "$id": "#/properties/identification",
+      "type": "object",
+      "title": "The identification schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": {},
+      "required": [
+        "id",
+        "idType"
+      ],
+      "properties": {
+        "id": {
+          "$id": "#/properties/identification/properties/id",
+          "type": "string",
+          "title": "The id schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+            "Test Manufacturer/null_submodel1"
+          ]
+        },
+        "idType": {
+          "$id": "#/properties/identification/properties/idType",
+          "type": "string",
+          "title": "The idType schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+            "Custom"
+          ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "idShort": {
+      "$id": "#/properties/idShort",
+      "type": "string",
+      "oneOf": [
+        {
+          "const": "TechnicalData"
+        }
+      ]
+    },
+    "modelType": {
+      "$id": "#/properties/modelType",
+      "type": "object",
+      "title": "The modelType schema",
+      "examples": [
+        {
+          "name": "Submodel"
+        }
+      ],
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "$id": "#/properties/modelType/properties/name",
+          "type": "string",
+          "examples": [
+            "Submodel"
+          ]
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "definitions": {
+    "GeneralInformation": {
+      "$id": "#/properties/submodelElements/items/anyOf/GeneralInformation",
+      "type": "object",
+      "description": "General information, for example ordering and manufacturer information",
+      "required": [
+        "idShort",
+        "semanticId",
+        "modelType",
+        "value"
+      ],
+      "properties": {
+        "idShort": {
+          "type": "string",
+          "oneOf": [
+            {
+              "const": "GeneralInformation"
+            }
+          ]
+        },
+        "semanticId": {
+          "$id": "#/properties/submodelElements/items/anyOf/0/properties/semanticId",
+          "type": "object",
+          "required": [
+            "keys"
+          ],
+          "properties": {
+            "keys": {
+              "type": "array",
+              "items": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "required": [
+                      "idType",
+                      "type",
+                      "value"
+                    ],
+                    "properties": {
+                      "idType": {
+                        "type": "string",
+                        "oneOf": [
+                          {
+                            "const": "Iri"
+                          }
+                        ]
+                      },
+                      "value": {
+                        "type": "string",
+                        "oneOf": [
+                          {
+                            "const": "https://admin-shell.io/ZVEI/TechnicalData/GeneralInformation/1/1"
+                          }
+                        ]
+                      },
+                      "type": {
+                        "$id": "#/properties/submodelElements/items/anyOf/0/properties/semanticId/properties/keys/items/anyOf/0/properties/type",
+                        "type": "string"
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "kind": {
+          "$id": "#/properties/submodelElements/items/anyOf/0/properties/kind",
+          "type": "string",
+          "title": "The kind schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+            "Instance"
+          ]
+        },
+        "modelType": {
+          "type": "object",
+          "required": [
+            "name"
+          ],
+          "properties": {
+            "name": {
+              "oneOf": [
+                {
+                  "const": "SubmodelElementCollection"
+                }
+              ]
+            }
+          },
+          "additionalProperties": true
+        },
+        "category": {
+          "$id": "#/properties/submodelElements/items/anyOf/0/properties/category",
+          "type": "string",
+          "title": "The category schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+            "PARAMETER"
+          ]
+        },
+        "value": {
+          "type": "array",
+          "minItems": 4,
+          "items": [
+            {
+              "$id": "#/properties/submodelElements/items/anyOf/0/properties/value/items/anyOf/ManufacturerName",
+              "type": "object",
+              "description": "Legally valid designation of the natural or judicial body which is directly responsible for the design, production, packaging and labeling of a product in respect to its being brought into the market.",
+              "required": [
+                "idShort",
+                "semanticId",
+                "modelType",
+                "category",
+                "value"
+              ],
+              "properties": {
+                "idShort": {
+                  "type": "string",
+                  "oneOf": [
+                    {
+                      "const": "ManufacturerName"
+                    }
+                  ]
+                },
+                "semanticId": {
+                  "$id": "#/properties/submodelElements/items/anyOf/0/properties/semanticId",
+                  "type": "object",
+                  "required": [
+                    "keys"
+                  ],
+                  "properties": {
+                    "keys": {
+                      "type": "array",
+                      "items": {
+                        "anyOf": [
+                          {
+                            "type": "object",
+                            "required": [
+                              "idType",
+                              "type",
+                              "value"
+                            ],
+                            "properties": {
+                              "idType": {
+                                "type": "string",
+                                "oneOf": [
+                                  {
+                                    "const": "Iri"
+                                  }
+                                ]
+                              },
+                              "value": {
+                                "type": "string",
+                                "oneOf": [
+                                  {
+                                    "const": "https://admin-shell.io/ZVEI/TechnicalData/ManufacturerName/1/1"
+                                  }
+                                ]
+                              },
+                              "type": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                },
+                "modelType": {
+                  "$id": "#/properties/submodelElements/items/anyOf/0/properties/value/items/anyOf/0/properties/modelType",
+                  "type": "object",
+                  "required": [
+                    "name"
+                  ],
+                  "properties": {
+                    "name": {
+                      "$id": "#/properties/submodelElements/items/anyOf/0/properties/value/items/anyOf/0/properties/modelType/properties/name",
+                      "type": "string",
+                      "title": "The name schema",
+                      "description": "An explanation about the purpose of this instance.",
+                      "default": "",
+                      "oneOf": [
+                        {
+                          "const": "Property"
+                        }
+                      ]
+                    }
+                  }
+                },
+                "category": {
+                  "type": "string"
+                },
+                "value": {
+                  "type": "string",
+                  "examples": [
+                    "Example Company"
+                  ]
+                },
+                "valueType": {
+                  "type": "string"
+                }
+              }
+            },
+            {
+              "$id": "#/properties/submodelElements/items/anyOf/0/properties/value/items/anyOf/ManufacturerPartNumber",
+              "type": "object",
+              "description": "Unique product identifier of the manufacturer for the product type respective the type designation of the industrial equipemnt.",
+              "required": [
+                "idShort",
+                "semanticId",
+                "modelType",
+                "category",
+                "value"
+              ],
+              "properties": {
+                "idShort": {
+                  "type": "string",
+                  "oneOf": [
+                    {
+                      "const": "ManufacturerPartNumber"
+                    }
+                  ]
+                },
+                "semanticId": {
+                  "$id": "#/properties/submodelElements/items/anyOf/0/properties/semanticId",
+                  "type": "object",
+                  "required": [
+                    "keys"
+                  ],
+                  "properties": {
+                    "keys": {
+                      "type": "array",
+                      "items": {
+                        "anyOf": [
+                          {
+                            "type": "object",
+                            "required": [
+                              "idType",
+                              "type",
+                              "value"
+                            ],
+                            "properties": {
+                              "idType": {
+                                "type": "string",
+                                "oneOf": [
+                                  {
+                                    "const": "Iri"
+                                  }
+                                ]
+                              },
+                              "value": {
+                                "type": "string",
+                                "oneOf": [
+                                  {
+                                    "const": "https://admin-shell.io/ZVEI/TechnicalData/ManufacturerPartNumber/1/1"
+                                  }
+                                ]
+                              },
+                              "type": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                },
+                "modelType": {
+                  "$id": "#/properties/submodelElements/items/anyOf/0/properties/value/items/anyOf/0/properties/modelType",
+                  "type": "object",
+                  "required": [
+                    "name"
+                  ],
+                  "properties": {
+                    "name": {
+                      "$id": "#/properties/submodelElements/items/anyOf/0/properties/value/items/anyOf/0/properties/modelType/properties/name",
+                      "type": "string",
+                      "title": "The name schema",
+                      "description": "An explanation about the purpose of this instance.",
+                      "default": "",
+                      "oneOf": [
+                        {
+                          "const": "Property"
+                        }
+                      ]
+                    }
+                  }
+                },
+                "category": {
+                  "type": "string"
+                },
+                "value": {
+                  "type": "string",
+                  "examples": [
+                    "Example Company"
+                  ]
+                },
+                "valueType": {
+                  "type": "string"
+                }
+              }
+            },
+            {
+              "$id": "#/properties/submodelElements/items/anyOf/0/properties/value/items/anyOf/ManufacturerOrderCode",
+              "type": "object",
+              "description": "Unique product identifier of the manufacturer for the product type respective the type designation of the industrial equipemnt.",
+              "required": [
+                "idShort",
+                "semanticId",
+                "modelType",
+                "category",
+                "value"
+              ],
+              "properties": {
+                "idShort": {
+                  "type": "string",
+                  "oneOf": [
+                    {
+                      "const": "ManufacturerOrderCode"
+                    }
+                  ]
+                },
+                "semanticId": {
+                  "$id": "#/properties/submodelElements/items/anyOf/0/properties/semanticId",
+                  "type": "object",
+                  "required": [
+                    "keys"
+                  ],
+                  "properties": {
+                    "keys": {
+                      "type": "array",
+                      "items": {
+                        "anyOf": [
+                          {
+                            "type": "object",
+                            "required": [
+                              "idType",
+                              "type",
+                              "value"
+                            ],
+                            "properties": {
+                              "idType": {
+                                "type": "string",
+                                "oneOf": [
+                                  {
+                                    "const": "Iri"
+                                  }
+                                ]
+                              },
+                              "value": {
+                                "type": "string",
+                                "oneOf": [
+                                  {
+                                    "const": "https://admin-shell.io/ZVEI/TechnicalData/ManufacturerOrderCode/1/1"
+                                  }
+                                ]
+                              },
+                              "type": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                },
+                "modelType": {
+                  "$id": "#/properties/submodelElements/items/anyOf/0/properties/value/items/anyOf/0/properties/modelType",
+                  "type": "object",
+                  "required": [
+                    "name"
+                  ],
+                  "properties": {
+                    "name": {
+                      "$id": "#/properties/submodelElements/items/anyOf/0/properties/value/items/anyOf/0/properties/modelType/properties/name",
+                      "type": "string",
+                      "title": "The name schema",
+                      "description": "An explanation about the purpose of this instance.",
+                      "default": "",
+                      "oneOf": [
+                        {
+                          "const": "Property"
+                        }
+                      ]
+                    }
+                  }
+                },
+                "category": {
+                  "type": "string"
+                },
+                "value": {
+                  "type": "string",
+                  "examples": [
+                    "Example Company"
+                  ]
+                },
+                "valueType": {
+                  "type": "string"
+                }
+              }
+            },
+            {
+              "$id": "#/properties/submodelElements/items/anyOf/0/properties/value/items/anyOf/ManufacturerName",
+              "type": "object",
+              "description": "Legally valid designation of the natural or judicial body which is directly responsible for the design, production, packaging and labeling of a product in respect to its being brought into the market.",
+              "required": [
+                "idShort",
+                "semanticId",
+                "modelType",
+                "category",
+                "value"
+              ],
+              "properties": {
+                "idShort": {
+                  "type": "string",
+                  "oneOf": [
+                    {
+                      "const": "ManufacturerProductDesignation"
+                    }
+                  ]
+                },
+                "semanticId": {
+                  "$id": "#/properties/submodelElements/items/anyOf/0/properties/semanticId",
+                  "type": "object",
+                  "required": [
+                    "keys"
+                  ],
+                  "properties": {
+                    "keys": {
+                      "type": "array",
+                      "items": {
+                        "anyOf": [
+                          {
+                            "type": "object",
+                            "required": [
+                              "idType",
+                              "type",
+                              "value"
+                            ],
+                            "properties": {
+                              "idType": {
+                                "type": "string",
+                                "oneOf": [
+                                  {
+                                    "const": "Iri"
+                                  }
+                                ]
+                              },
+                              "value": {
+                                "type": "string",
+                                "oneOf": [
+                                  {
+                                    "const": "https://admin-shell.io/ZVEI/TechnicalData/ManufacturerProductDesignation/1/1"
+                                  }
+                                ]
+                              },
+                              "type": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                },
+                "modelType": {
+                  "$id": "#/properties/submodelElements/items/anyOf/0/properties/value/items/anyOf/0/properties/modelType",
+                  "type": "object",
+                  "required": [
+                    "name"
+                  ],
+                  "properties": {
+                    "name": {
+                      "$id": "#/properties/submodelElements/items/anyOf/0/properties/value/items/anyOf/0/properties/modelType/properties/name",
+                      "type": "string",
+                      "title": "The name schema",
+                      "description": "An explanation about the purpose of this instance.",
+                      "default": "",
+                      "oneOf": [
+                        {
+                          "const": "MultiLanguageProperty"
+                        }
+                      ]
+                    }
+                  }
+                },
+                "category": {
+                  "type": "string"
+                },
+                "value": {
+                  "type": "array"
+                }
+              }
+            }
+          ],
+          "additionalProperties": true
+        }
+      }
+    },
+    "TechnicalProperties": {
+      "$id": "#/properties/submodelElements/items/anyOf/TechnicalProperties",
+      "type": "object",
+      "description": "An explanation about the purpose of this instance.",
+      "required": [
+        "idShort",
+        "semanticId",
+        "modelType",
+        "value"
+      ],
+      "properties": {
+        "idShort": {
+          "type": "string",
+          "description": "Individual characteristics that describe the product (industrial equipment) and its technical properties.",
+          "oneOf": [
+            {
+              "const": "TechnicalProperties"
+            }
+          ]
+        },
+        "semanticId": {
+          "$id": "#/properties/submodelElements/items/anyOf/0/properties/semanticId",
+          "type": "object",
+          "required": [
+            "keys"
+          ],
+          "properties": {
+            "keys": {
+              "$id": "#/properties/submodelElements/items/anyOf/0/properties/semanticId/properties/keys",
+              "type": "array",
+              "items": {
+                "$id": "#/properties/submodelElements/items/anyOf/0/properties/semanticId/properties/keys/items",
+                "anyOf": [
+                  {
+                    "$id": "#/properties/submodelElements/items/anyOf/0/properties/semanticId/properties/keys/items/anyOf/0",
+                    "type": "object",
+                    "required": [
+                      "idType",
+                      "type",
+                      "value"
+                    ],
+                    "properties": {
+                      "idType": {
+                        "$id": "#/properties/submodelElements/items/anyOf/0/properties/semanticId/properties/keys/items/anyOf/0/properties/idType",
+                        "type": "string",
+                        "oneOf": [
+                          {
+                            "const": "Iri"
+                          }
+                        ]
+                      },
+                      "value": {
+                        "type": "string",
+                        "oneOf": [
+                          {
+                            "const": "https://admin-shell.io/ZVEI/TechnicalData/TechnicalProperties/1/1"
+                          }
+                        ]
+                      },
+                      "type": {
+                        "$id": "#/properties/submodelElements/items/anyOf/0/properties/semanticId/properties/keys/items/anyOf/0/properties/type",
+                        "type": "string"
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "modelType": {
+          "$id": "#/properties/submodelElements/items/anyOf/0/properties/modelType",
+          "type": "object",
+          "title": "The modelType schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": {},
+          "oneOf": [
+            {
+              "name": "SubmodelElementCollection"
+            }
+          ],
+          "required": [
+            "name"
+          ]
+        },
+        "value": {
+          "$id": "#/properties/submodelElements/items/anyOf/0/properties/value",
+          "type": "array",
+          "items": {
+            "$id": "#/properties/submodelElements/items/anyOf/0/properties/value/items",
+            "anyOf": [
+              {
+                "$ref": "file:src/test/resources/schema/schema_v3.0_RC01.json#/definitions/SubmodelElement"
+              },
+              {
+                "$ref": "file:src/test/resources/schema/schema_v3.0_RC01.json#/definitions/SubmodelElementCollection"
+              }
+            ]
+          }
+        }
+      }
+    }
+  }
+}

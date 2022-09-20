@@ -1,0 +1,508 @@
+{
+	"@header": {
+		"aasVersion": "3.0RC01",
+		"@namespaces": {
+			"ns1": "http://ns.org/1",
+			"ns2": "http://ns.org/2",
+			"caex": "http://www.dke.de/CAEX"
+		},
+		"@definitions": {
+			"assetIdGeneration": {
+				"@concatenate_and_hash": [
+					{
+						"@xpath": "caex:Attribute[@Name='IdentificationData']/caex:Attribute[@Name='Manufacturer']/caex:Value",
+						"default": "DefaultManufacturer"
+					},
+					"/",
+					{
+						"@xpath": "caex:Attribute[@Name='IdentificationData']/caex:Attribute[@Name='ManufacturerUri']/caex:Value"
+					}
+				]
+			},
+			"mappingIdGeneration": {
+				"@concatenate_and_hash": [
+					{
+						"@xpath": "caex:Attribute[@Name='IdentificationData']/caex:Attribute[@Name='Manufacturer']/caex:Value",
+						"default": "DefaultManufacturer"
+					},
+					"/",
+					{
+						"@xpath": "caex:Attribute[@Name='IdentificationData']/caex:Attribute[@Name='ManufacturerUri']/caex:Value"
+					}
+				]
+			}
+		}
+	},
+	"aasEnvironmentMapping": {
+		"@foreach": {
+			"@xpath": "//caex:SystemUnitClass[caex:SupportedRoleClass/@RefRoleClassPath='AutomationMLComponentStandardRCL/AutomationComponent' or caex:RoleRequirements/@RefBaseRoleClassPath='AutomationMLComponentStandardRCL/AutomationComponent'] | //caex:InternalElement[caex:SupportedRoleClass/@RefRoleClassPath='AutomationMLComponentStandardRCL/AutomationComponent' or caex:RoleRequirements/@RefBaseRoleClassPath='AutomationMLComponentStandardRCL/AutomationComponent']"
+		},
+		"assetAdministrationShells": [
+			{
+				"identification": {
+					"id": "shellId",
+					"idType": "Custom"
+				},
+				"@bind": {
+					"idShort": {
+						"@xpath": "@Name"
+					}
+				},
+				"assetInformation": {
+					"assetKind": "Type",
+					"globalAssetId": {
+						"keys": [
+							{
+								"value": "assetInformationGlobalAssetIdReference",
+								"idType": "Custom",
+								"type": "Asset"
+							}
+						]
+					}
+				}
+			}
+		],
+		"submodels": [
+			{
+				"semanticId": {
+					"keys": [
+						{
+							"idType": "Iri",
+							"type": "Submodel",
+							"value": "http://admin-shell.io/ZVEI/TechnicalData/Submodel/1/1"
+						}
+					]
+				},
+				"identification": {
+					"@bind": {
+						"id": {
+							"@concatenate": [
+								{
+									"@def": "assetIdGeneration"
+								},
+								"_submodel1"
+							]
+						}
+					},
+					"idType": "Custom"
+				},
+				"idShort": "TechnicalData",
+				"submodelElements": [
+					{
+						"@foreach": {
+							"@caexAttributeName": "IdentificationData"
+						},
+						"modelType": "SubmodelElementCollection",
+						"kind": "Instance",
+						"semanticId": {
+							"keys": [
+								{
+									"idType": "Iri",
+									"type": "SubmodelElementCollection",
+									"value": "https://admin-shell.io/ZVEI/TechnicalData/GeneralInformation/1/1"
+								}
+							]
+						},
+						"category": "PARAMETER",
+						"idShort": "GeneralInformation",
+						"allowDuplicates": true,
+						"value": [
+							{
+								"@foreach": {
+									"@caexAttributeName": "Manufacturer"
+								},
+								"modelType": "Property",
+								"kind": "Instance",
+								"semanticId": {
+									"keys": [
+										{
+											"idType": "Iri",
+											"type": "SubmodelElement",
+											"value": "https://admin-shell.io/ZVEI/TechnicalData/ManufacturerName/1/1"
+										}
+									]
+								},
+								"@bind": {
+									"value": {
+										"@xpath": "caex:Value"
+									}
+								},
+								"valueId": {
+									"keys": [
+										{
+											"idType": "Custom",
+											"type": "Property",
+											"@bind": {
+												"value": {
+													"@xpath": "caex:Value"
+												}
+											}
+										}
+									]
+								},
+								"valueType": "string",
+								"category": "PARAMETER",
+								"idShort": "ManufacturerName"
+							},
+							{
+								"@foreach": {
+									"@caexAttributeName": "ProductCode"
+								},
+								"modelType": "Property",
+								"kind": "Instance",
+								"semanticId": {
+									"keys": [
+										{
+											"idType": "Iri",
+											"type": "SubmodelElement",
+											"value": "https://admin-shell.io/ZVEI/TechnicalData/ManufacturerPartNumber/1/1"
+										}
+									]
+								},
+								"@bind": {
+									"value": {
+										"@xpath": "caex:Value"
+									}
+								},
+								"valueId": {
+									"keys": [
+										{
+											"idType": "Custom",
+											"type": "Property",
+											"@bind": {
+												"value": {
+													"@xpath": "caex:Value"
+												}
+											}
+										}
+									]
+								},
+								"valueType": "string",
+								"category": "PARAMETER",
+								"idShort": "ManufacturerPartNumber"
+							},
+							{
+								"@foreach": {
+									"@caexAttributeName": "OrderCode"
+								},
+								"modelType": "Property",
+								"kind": "Instance",
+								"semanticId": {
+									"keys": [
+										{
+											"idType": "Iri",
+											"type": "SubmodelElement",
+											"value": "https://admin-shell.io/ZVEI/TechnicalData/ManufacturerOrderCode/1/1"
+										}
+									]
+								},
+								"@bind": {
+									"value": {
+										"@xpath": "caex:Value"
+									}
+								},
+								"valueId": {
+									"keys": [
+										{
+											"idType": "Custom",
+											"type": "Property",
+											"@bind": {
+												"value": {
+													"@xpath": "caex:Value"
+												}
+											}
+										}
+									]
+								},
+								"valueType": "string",
+								"category": "PARAMETER",
+								"idShort": "ManufacturerOrderCode"
+							},
+							{
+								"@foreach": {
+									"@xpath": "caex:Attribute[@Name='DeviceClass']"
+								},
+								"modelType": "MultiLanguageProperty",
+								"kind": "Instance",
+								"semanticId": {
+									"keys": [
+										{
+											"idType": "Iri",
+											"type": "SubmodelElement",
+											"value": "https://admin-shell.io/ZVEI/TechnicalData/ManufacturerProductDesignation/1/1"
+										}
+									]
+								},
+								"category": "PARAMETER",
+								"idShort": "ManufacturerProductDesignation",
+								"value": [
+									{
+										"language": "en-us",
+										"@bind": {
+											"text": {
+												"@xpath": "caex:Value"
+											}
+										}
+									}
+								]
+							}
+						]
+					},
+					{
+						"@foreach": {
+							"@caexAttributeName": "GeneralTechnicalData"
+						},
+						"modelType": "SubmodelElementCollection",
+						"kind": "Instance",
+						"semanticId": {
+							"keys": [
+								{
+									"idType": "Iri",
+									"type": "Submodel",
+									"value": "https://admin-shell.io/ZVEI/TechnicalData/TechnicalProperties/1/1"
+								}
+							]
+						},
+						"category": "PARAMETER",
+						"idShort": "TechnicalProperties",
+						"allowDuplicates": true,
+						"value": [
+							{
+								"@foreach": {
+									"@caexAttributeName": "AmbientTemperature"
+								},
+								"modelType": "Range",
+								"kind": "Instance",
+								"semanticId": {
+									"keys": [
+										{
+											"idType": "Irdi",
+											"type": "ConceptDescription",
+											"value": "0112/2///62683#ACE440#001"
+										}
+									]
+								},
+								"@bind": {
+									"min": {
+										"@xpath": "caex:Attribute[@Name='TemperatureMin']/caex:Value"
+									},
+									"max": {
+										"@xpath": "caex:Attribute[@Name='TemperatureMax']/caex:Value"
+									}
+								},
+								"valueType": "Integer",
+								"category": "PARAMETER",
+								"idShort": "AmbientTemperature"
+							},
+							{
+								"@foreach": {
+									"@caexAttributeName": "IPCode"
+								},
+								"modelType": "Property",
+								"kind": "Instance",
+								"semanticId": {
+									"keys": [
+										{
+											"idType": "Irdi",
+											"type": "ConceptDescription",
+											"value": "0112/2///61987#ABA558#006"
+										}
+									]
+								},
+								"@bind": {
+									"value": {
+										"@xpath": "caex:Value"
+									}
+								},
+								"valueId": {
+									"keys": [
+										{
+											"idType": "Custom",
+											"type": "Property",
+											"@bind": {
+												"value": {
+													"@xpath": "caex:Value"
+												}
+											}
+										}
+									]
+								},
+								"valueType": "string",
+								"category": "PARAMETER",
+								"idShort": "IPCode"
+							},
+							{
+								"@foreach": {
+									"@caexAttributeName": "Material"
+								},
+								"modelType": "MultiLanguageProperty",
+								"kind": "Instance",
+								"semanticId": {
+									"keys": [
+										{
+											"idType": "Irdi",
+											"type": "ConceptDescription",
+											"value": "0112/2///61987#ABA158#004"
+										}
+									]
+								},
+								"category": "PARAMETER",
+								"idShort": "Material",
+								"value": [
+									{
+										"language": "de",
+										"@bind": {
+											"text": {
+												"@xpath": "caex:Attribute[@Name='aml-lang=de-DE']/caex:Value"
+											}
+										}
+									},
+									{
+										"language": "en",
+										"@bind": {
+											"text": {
+												"@xpath": "caex:Attribute[@Name='aml-lang=en-US']/caex:Value"
+											}
+										}
+									}
+								]
+							},
+							{
+								"@foreach": {
+									"@caexAttributeName": "Weight"
+								},
+								"modelType": "Property",
+								"kind": "Instance",
+								"semanticId": {
+									"keys": [
+										{
+											"idType": "Irdi",
+											"type": "ConceptDescription",
+											"value": "0112/2///61987#ABA553#006"
+										}
+									]
+								},
+								"@bind": {
+									"value": {
+										"@xpath": "caex:Value"
+									}
+								},
+								"valueId": {
+									"keys": [
+										{
+											"idType": "Custom",
+											"type": "Property",
+											"value": "123.1"
+										}
+									]
+								},
+								"valueType": "Float",
+								"category": "PARAMETER",
+								"idShort": "Weight"
+							},
+							{
+								"@foreach": {
+									"@caexAttributeName": "Height"
+								},
+								"modelType": "Property",
+								"kind": "Instance",
+								"semanticId": {
+									"keys": [
+										{
+											"idType": "Irdi",
+											"type": "ConceptDescription",
+											"value": "0112/2///61987#ABA574#006"
+										}
+									]
+								},
+								"@bind": {
+									"value": {
+										"@xpath": "caex:Value"
+									}
+								},
+								"valueId": {
+									"keys": [
+										{
+											"idType": "Custom",
+											"type": "Property",
+											"value": "15"
+										}
+									]
+								},
+								"valueType": "Integer",
+								"category": "PARAMETER",
+								"idShort": "Height"
+							},
+							{
+								"@foreach": {
+									"@caexAttributeName": "Width"
+								},
+								"modelType": "Property",
+								"kind": "Instance",
+								"semanticId": {
+									"keys": [
+										{
+											"idType": "Irdi",
+											"type": "ConceptDescription",
+											"value": "0112/2///61987#ABA573#006"
+										}
+									]
+								},
+								"@bind": {
+									"value": {
+										"@xpath": "caex:Value"
+									}
+								},
+								"valueId": {
+									"keys": [
+										{
+											"idType": "Custom",
+											"type": "Property",
+											"value": "18"
+										}
+									]
+								},
+								"valueType": "Integer",
+								"category": "PARAMETER",
+								"idShort": "Width"
+							},
+							{
+								"@foreach": {
+									"@caexAttributeName": "Length"
+								},
+								"modelType": "Property",
+								"kind": "Instance",
+								"semanticId": {
+									"keys": [
+										{
+											"idType": "Irdi",
+											"type": "ConceptDescription",
+											"value": "0112/2///61987#ABA640#006"
+										}
+									]
+								},
+								"@bind": {
+									"value": {
+										"@xpath": "caex:Value"
+									}
+								},
+								"valueId": {
+									"keys": [
+										{
+											"idType": "Custom",
+											"type": "Property",
+											"value": "14"
+										}
+									]
+								},
+								"valueType": "Integer",
+								"category": "PARAMETER",
+								"idShort": "Length"
+							}
+						]
+					}
+				]
+			}
+		]
+	}
+}

@@ -1,0 +1,130 @@
+{
+  "@header": {
+    "aasVersion": "3.0RC01",
+    "@namespaces": {
+      "caex": "http://www.dke.de/CAEX"
+    }
+  },
+  "aasEnvironmentMapping": {
+    "@definitions": {
+      "idGen": {
+        "@concatenate_and_hash": [
+          {
+            "@xpath": "caex:Attribute[@Name='IdentificationData']/caex:Attribute[@Name='Manufacturer']/caex:Value"
+          },
+          "/",
+          {
+            "@xpath": "caex:Attribute[@Name='IdentificationData']/caex:Attribute[@Name='ManufacturerUri']/caex:Value"
+          }
+        ]
+      }
+    },
+
+    "assetAdministrationShells": {
+      "@foreach": {
+        "@xpath": "//caex:SystemUnitClass[caex:SupportedRoleClass/@RefRoleClassPath='AutomationMLComponentStandardRCL/AutomationComponent' or caex:RoleRequirements/@RefBaseRoleClassPath='AutomationMLComponentStandardRCL/AutomationComponent'] | //caex:InternalElement[caex:SupportedRoleClass/@RefRoleClassPath='AutomationMLComponentStandardRCL/AutomationComponent' or caex:RoleRequirements/@RefBaseRoleClassPath='AutomationMLComponentStandardRCL/AutomationComponent']"
+      },
+      "@bind": {
+        "idShort": {
+          "@xpath": "@Name"
+        }
+      },
+      "identification": {
+        "id": "shellId",
+        "idType": "Custom"
+      },
+      "assetInformation": {
+        "assetKind": "Type",
+        "globalAssetId": {
+          "keys": [
+            {
+              "value": "assetInformationGlobalAssetIdReference",
+              "idType": "Custom",
+              "type": "Asset"
+            }
+          ]
+        }
+      }
+    },
+    "submodels": [
+      {
+        "@foreach": {
+          "@xpath": "//caex:Attribute[@Name='CommercialData']/caex:Attribute[@Name='ManufacturerDetails']"
+        },
+        "idShort" : "Nameplate",
+        "semanticId": {
+          "keys": [
+            {
+              "value": "https://admin-shell.io/zvei/nameplate/1/0/Nameplate",
+              "idType": "Iri",
+              "type": "Submodel"
+            }
+          ]
+        },
+        "identification": {
+          "@bind": {
+            "id": {
+              "@concatenate": [
+                {
+                  "@def": "idGen"
+                },
+                "_submodel1"
+              ]
+            },
+            "idType": "Custom"
+          }
+        },
+        "submodelElements": [
+          {
+            "semanticId": {
+              "keys": [
+                {
+                  "value": "0173-1#02-AAO677#002",
+                  "idType": "Irdi",
+                  "type": "SubmodelElement"
+                }
+              ]
+            },
+            "idShort": "ManufacturerName",
+            "@foreach": {
+              "@xpath": "caex:Attribute[@Name='Name']"
+            },
+            "modelType": "MultiLanguageProperty",
+            "value": {
+              "language": "en-us",
+              "@bind": {
+                "text": {
+                  "@xpath": "caex:Value"
+                }
+              }
+            }
+          },
+          {
+            "semanticId": {
+              "keys": [
+                {
+                  "value": "0173-1#02-AAW338#001",
+                  "idType": "Irdi",
+                  "type": "SubmodelElement"
+                }
+              ]
+            },
+            "idShort": "ManufacturerProductDesignation",
+            "@foreach": {
+              "@xpath": "//caex:Attribute[@Name='DescriptionLong']"
+            },
+            "modelType": "MultiLanguageProperty",
+            "value": {
+              "language": "en-us",
+              "@bind": {
+                "text": {
+                  "@xpath": "caex:Value"
+                }
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<invalid_CAEXFile SchemaVersion="3.0" FileName="aml_minimal_sample.xml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.dke.de/CAEX" xsi:schemaLocation="http://www.dke.de/CAEX CAEX_ClassModel_V.3.0.xsd">
+	<SuperiorStandardVersion>AutomationML 2.10</SuperiorStandardVersion>
+	<SourceDocumentInformation OriginName="" OriginID="" OriginVersion="" LastWritingDateTime="2020-06-12T12:46:56.7231137+02:00"/>
+	<SystemUnitClassLib Name="TestSystemUnitClassLib">
+		<SystemUnitClass Name="TestSystemUnitClass" ID="TestSystemUnitClassID">
+			<Attribute Name="GeneralTechnicalData">
+				<Attribute Name="AmbientTemperature">
+					<Value>Test AmbientTemperature String</Value>
+				</Attribute>
+				<Attribute Name="TemperatureMin">
+					<Value>−273</Value>
+				</Attribute>
+				<Attribute Name="TemperatureMin">
+					<Value>100</Value>
+				</Attribute>
+				<Attribute Name="IPCode">
+					<Value>Test IPCode</Value>
+				</Attribute>
+				<Attribute Name="Material">
+					<Value>Test Material</Value>
+				</Attribute>
+				<Attribute Name="Weight">
+					<Value>123.1</Value>
+				</Attribute>
+				<Attribute Name="Height">
+					<Value>1e5</Value>
+				</Attribute>
+				<Attribute Name="Width">
+					<Value>1E8</Value>
+				</Attribute>
+				<Attribute Name="Length">
+					<Value>1e-4</Value>
+				</Attribute>
+			</Attribute>
+			<Attribute Name="IdentificationData">
+				<Attribute Name="Manufacturer">
+					<Value>Test Manufacturer</Value>
+				</Attribute>
+				<Attribute Name="ManufacturerURI">
+					<Value>http://www.example.com/manufacturerURI</Value>
+				</Attribute>
+				<Attribute Name="DeviceClass">
+					<Value>1234</Value>
+				</Attribute>
+				<Attribute Name="Model">
+					<Value>Test Model</Value>
+				</Attribute>
+				<Attribute Name="ProductCode">
+					<Value>Test ProductCode</Value>
+				</Attribute>
+				<Attribute Name="OrderCode">
+					<Value>Test OrderCode</Value>
+				</Attribute>
+				<Attribute Name="HardwareRevision">
+					<Value>1.0.0</Value>
+				</Attribute>
+				<Attribute Name="SoftwareRevision">
+					<Value>1.0.0</Value>
+				</Attribute>
+				<Attribute Name="SerialNumber">
+					<Value>TestSerialNumber1234</Value>
+				</Attribute>
+				<Attribute Name="FabricationNumber">
+					<Value>TestFabricationNumber1234</Value>
+				</Attribute>
+				<Attribute Name="ProductInstanceURI">
+					<Value>http://www.example.com/productInstanceURI</Value>
+				</Attribute>
+			</Attribute>
+			
+			<SupportedRoleClass RefRoleClassPath="AutomationMLComponentStandardRCL/AutomationComponent"/>
+		</SystemUnitClass>
+	</SystemUnitClassLib>
+</invalid_CAEXFile>

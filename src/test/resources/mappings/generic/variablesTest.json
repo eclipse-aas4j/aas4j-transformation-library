@@ -1,0 +1,42 @@
+{
+	"@header": {
+		"version": "1.0.0",
+		"aasVersion": "3.0RC01"
+	},
+	"aasEnvironmentMapping": {
+		"submodels": [
+			{
+				"@variables": {
+					"myvar1": "myvarforidshort",
+					"myvar2": "myvarforlateruse"
+				},
+				"@bind": {
+					"idShort": {
+						"@var": "myvar1"
+					}
+				},
+				"submodelElements": [
+					{
+						"@variables": {
+							"myvar1": "myoverriddenvarforidshort"
+						},
+						"@foreach": [
+							"e1",
+							"e2",
+							"e3"
+						],
+						"modelType": "Property",
+						"@bind": {
+							"idShort": {
+								"@var": "myvar1"
+							},
+							"value": {
+								"@var": "myvar2"
+							}
+						}
+					}
+				]
+			}
+		]
+	}
+}

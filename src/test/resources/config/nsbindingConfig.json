@@ -1,0 +1,11 @@
+{
+	"@header": {
+		"aasVersion": "3.0RC01",
+		"@namespaces": {
+			"ns1": "http://ns.org/1",
+			"ns2": "http://ns.org/2"
+		}
+	},
+
+	"aasEnvironmentMapping": {}
+}

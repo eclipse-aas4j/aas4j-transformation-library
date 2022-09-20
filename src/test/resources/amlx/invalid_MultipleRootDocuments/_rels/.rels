@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+		
+	<Relationship Type="http://schemas.automationml.org/container/relationship/RootDocument" Target="/root1.aml" Id="RelationshipID1" />
+	<Relationship Type="http://schemas.automationml.org/container/relationship/RootDocument" Target="/root2.aml" Id="RelationshipID2" />
+	<Relationship Type="http://schemas.automationml.org/container/relationship/CAEXSchema" Target="/CAEX_ClassModel_V.3.0.xsd" Id="RelationshipID3" />
+	
+</Relationships>
