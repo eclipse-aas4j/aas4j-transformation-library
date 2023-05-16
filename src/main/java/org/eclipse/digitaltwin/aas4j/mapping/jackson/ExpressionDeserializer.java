@@ -18,7 +18,6 @@ import com.fasterxml.jackson.core.JsonToken;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.exc.InvalidFormatException;
-import com.sap.dsc.aas.lib.expressions.*;
 import org.eclipse.digitaltwin.aas4j.expressions.*;
 
 public class ExpressionDeserializer extends JsonDeserializer<Expression> {
