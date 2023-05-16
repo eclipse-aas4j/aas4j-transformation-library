@@ -49,7 +49,7 @@ Missing required option: c
 
 $ java -jar ./build/distributions/aas-transformation-library-shadow-0.0.1-SNAPSHOT.jar -c src/test/resources/config/simpleConfig.json -a src/test/resources/aml/full_AutomationComponent.aml
 [main] INFO com.sap.dsc.aas.lib.aml.ConsoleApplication - Loaded config version 1.0.0, aas version 2.0.1
-[main] INFO com.sap.dsc.aas.lib.aml.transform.AmlTransformer - Loaded config version 1.0.0, AAS version 2.0.1
+[main] INFO transform.aml.org.eclipse.digitaltwin.aas4j.AmlTransformer - Loaded config version 1.0.0, AAS version 2.0.1
 [main] INFO com.sap.dsc.aas.lib.aml.transform.AssetAdministrationShellEnvTransformer - Transforming 1 config assets...
 [main] INFO com.sap.dsc.aas.lib.aml.ConsoleApplication - Wrote AAS file to full_AutomationComponent.json
 
@@ -72,7 +72,7 @@ $ cd ../../../../../
 
 $ java -jar ./build/distributions/aas-transformation-library-shadow-0.0.1-SNAPSHOT.jar -c src/test/resources/config/simpleConfig.json -amlx src/test/resources/amlx/minimal_AutomationMLComponent_WithDocuments/minimal_AutomationMLComponent_WithDocuments.amlx
 [main] INFO com.sap.dsc.aas.lib.aml.ConsoleApplication - Loaded config version 1.0.0, aas version 2.0.1
-[main] INFO com.sap.dsc.aas.lib.aml.transform.AmlTransformer - Loaded config version 1.0.0, AAS version 2.0.1
+[main] INFO transform.aml.org.eclipse.digitaltwin.aas4j.AmlTransformer - Loaded config version 1.0.0, AAS version 2.0.1
 [main] INFO com.sap.dsc.aas.lib.aml.transform.AssetAdministrationShellEnvTransformer - Transforming 1 config assets...
 [main] INFO com.sap.dsc.aas.lib.aml.ConsoleApplication - Wrote AAS file to minimal_AutomationMLComponent_WithDocuments.json
 Writing to: minimal_AutomationMLComponent_WithDocuments/files/TestTXTDeviceManual.txt
