@@ -16,13 +16,13 @@ plugins {
     id 'maven-publish'
 }
 
-group = 'com.sap.dsc.aas.lib'
-version = '0.1.1'
+group = 'org.eclipse.digitaltwin.aas4j'
+version = '0.1.2'
 
 application {
     group = group
     version = version
-    mainClass.set('com.sap.dsc.aas.lib.ConsoleApplication')
+    mainClass.set('org.eclipse.digitaltwin.aas4j.ConsoleApplication')
 }
 
 mainClassName = application.mainClass.get()
@@ -271,8 +271,8 @@ dependencies {
     def slf4j_version = "1.7.30"
     def json_schema_validator_version = "1.0.45"
     def jaxen_version = "1.1.6"
-    def aas_dataformat_json = "1.1.1"
-    def aas_model_version = "1.1.1"
+    def aas_dataformat_json = "1.2.0"
+    def aas_model_version = "1.2.0"
 
     implementation group: "com.google.guava", name: "guava", version: guava_version
     implementation group: "commons-cli", name: "commons-cli", version: commons_version
