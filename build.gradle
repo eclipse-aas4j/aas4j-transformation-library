@@ -1,5 +1,5 @@
 /* 
-  SPDX-FileCopyrightText: (C)2021 SAP SE or an affiliate company and aas-transformation-library contributors. All rights reserved. 
+  SPDX-FileCopyrightText: (C)2021 SAP SE or an affiliate company and aas4j-transformation-library contributors. All rights reserved. 
 
   SPDX-License-Identifier: Apache-2.0 
  */
@@ -154,7 +154,7 @@ spotless {
         trimTrailingWhitespace()
         indentWithSpaces()
         endWithNewline()
-        licenseHeader('/* \n  SPDX-FileCopyrightText: (C)$YEAR SAP SE or an affiliate company and aas-transformation-library contributors. All rights reserved. \n\n  SPDX-License-Identifier: Apache-2.0 \n */','\\w')
+        licenseHeader('/* \n  SPDX-FileCopyrightText: (C)$YEAR SAP SE or an affiliate company and aas4j-transformation-library contributors. All rights reserved. \n\n  SPDX-License-Identifier: Apache-2.0 \n */','\\w')
     }
 
     // format 'xmlaml', {
@@ -162,7 +162,7 @@ spotless {
     //     trimTrailingWhitespace()
     //     indentWithSpaces()
     //     endWithNewline()
-    //     licenseHeader('<!-- \n  SPDX-FileCopyrightText: (C)$YEAR SAP SE or an affiliate company and aas-transformation-library contributors. All rights reserved. \n\n  SPDX-License-Identifier: Apache-2.0 \n -->','<[^!]')
+    //     licenseHeader('<!-- \n  SPDX-FileCopyrightText: (C)$YEAR SAP SE or an affiliate company and aas4j-transformation-library contributors. All rights reserved. \n\n  SPDX-License-Identifier: Apache-2.0 \n -->','<[^!]')
     // }
 
     java {
@@ -172,7 +172,7 @@ spotless {
         endWithNewline()
         eclipse('4.12.0').configFile 'codestyle/EclipseFormatterProfile.xml'
         importOrderFile('codestyle/EclipseOrganizeImports.importorder')
-        licenseHeader('/* \n  SPDX-FileCopyrightText: (C)$YEAR SAP SE or an affiliate company and aas-transformation-library contributors. All rights reserved. \n\n  SPDX-License-Identifier: Apache-2.0 \n */')
+        licenseHeader('/* \n  SPDX-FileCopyrightText: (C)$YEAR SAP SE or an affiliate company and aas4j-transformation-library contributors. All rights reserved. \n\n  SPDX-License-Identifier: Apache-2.0 \n */')
     }
 }
 
@@ -228,11 +228,11 @@ task build(overwrite: true) {
 
 shadowJar {
     destinationDirectory = file("${buildDir}/distributions")
-    archiveClassifier.set("")
+    archiveClassifier.set("shadow")
 
     exclude 'META-INF/*.RSA', 'META-INF/*.SF', 'META-INF/*.DSA', 'META-INF/NOTICE', 'META-INF/LICENSE', 'META-INF/LICENSE'
 
-    archiveBaseName.set("aas-transformation-library")
+    archiveBaseName.set("aas4j-transformation-library")
     archiveAppendix.set("shadow")
     archiveExtension.set("jar")
 }
@@ -255,6 +255,7 @@ publishing {
     publications {
         gpr(MavenPublication) {
             artifact jar
+            from (components.java)
         }
     }
 }
