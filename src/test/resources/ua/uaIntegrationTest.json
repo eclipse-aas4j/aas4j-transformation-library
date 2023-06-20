@@ -13,8 +13,12 @@
       {
         "idShort": "UaAdminShell",
         "identification": {
-          "idType": "Custom",
-          "id": "UaAdminShellId"
+          "@bind": {
+            "idType": "Custom",
+            "id": {
+              "@generateId": "someIgnoredArg"
+            }
+          }
         },
         "assetInformation": {
           "@bind": {

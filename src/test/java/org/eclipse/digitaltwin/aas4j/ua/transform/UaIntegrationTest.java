@@ -50,6 +50,8 @@ public class UaIntegrationTest {
         boolean idInEnv = shellEnv.getSubmodels().stream().map(s -> s.getIdentification().getIdentifier())
                 .collect(Collectors.toList()).contains("http://exp.organization.com/UA/BigMachine/ns=4;i=1281");
         assertTrue(idInEnv);
+
+        assertTrue(shellEnv.getAssetAdministrationShells().get(0).getIdentification().getIdentifier().startsWith("urn:uuid"));
     }
 
     @Test

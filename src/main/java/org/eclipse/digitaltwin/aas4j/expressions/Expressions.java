@@ -6,13 +6,7 @@
 package org.eclipse.digitaltwin.aas4j.expressions;
 
 import java.nio.charset.StandardCharsets;
-import java.util.Base64;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -134,6 +128,10 @@ public class Expressions {
             String concatenated = strStream.collect(Collectors.joining());
             return Hashing.sha256().hashString(concatenated, StandardCharsets.UTF_8).toString();
         });
+
+        functions.put("generateId", args ->
+                "urn:uuid:" + UUID.randomUUID().toString()
+        );
 
         // string encoding
         functions.put("base64", args -> {
