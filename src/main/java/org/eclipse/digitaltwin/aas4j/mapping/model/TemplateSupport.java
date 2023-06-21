@@ -53,12 +53,12 @@ public class TemplateSupport implements Template {
     }
 
     @Override
-    public Map<String, Expression> getDefinitions() {
+    public Map<String, Expression> getTemplateDefinitions() {
         return definitions;
     }
 
     @Override
-    public void setDefinitions(Map<String, Expression> definitions) {
+    public void setTemplateDefinitions(Map<String, Expression> definitions) {
         this.definitions = definitions;
     }
 

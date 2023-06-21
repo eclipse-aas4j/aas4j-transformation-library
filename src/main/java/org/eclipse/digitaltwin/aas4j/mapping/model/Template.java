@@ -24,10 +24,10 @@ public interface Template {
     @JsonProperty("@foreach")
     void setForeachExpression(Expression expression);
 
-    Map<String, Expression> getDefinitions();
+    Map<String, Expression> getTemplateDefinitions();
 
     @JsonProperty("@definitions")
-    void setDefinitions(Map<String, Expression> definitions);
+    void setTemplateDefinitions(Map<String, Expression> definitions);
 
     Map<String, Expression> getVariables();
 
