@@ -218,8 +218,8 @@ task buildJar (type: Jar) {
 
     exclude 'META-INF/*.RSA', 'META-INF/*.SF', 'META-INF/*.DSA', 'META-INF/NOTICE', 'META-INF/LICENSE', 'META-INF/DEPENDENCIES'
 
-    archiveExtension.set('jar')
     with jar
+    archiveExtension.set('jar')
 }
 
 task build(overwrite: true) {
@@ -228,12 +228,12 @@ task build(overwrite: true) {
 
 shadowJar {
     destinationDirectory = file("${buildDir}/distributions")
-    archiveClassifier.set("shadow")
 
     exclude 'META-INF/*.RSA', 'META-INF/*.SF', 'META-INF/*.DSA', 'META-INF/NOTICE', 'META-INF/LICENSE', 'META-INF/LICENSE'
 
     archiveBaseName.set("aas4j-transformation-library")
     archiveAppendix.set("shadow")
+    archiveClassifier.set("shadedJar")
     archiveExtension.set("jar")
 }
 
@@ -254,7 +254,6 @@ publishing {
     }
     publications {
         gpr(MavenPublication) {
-            artifact jar
             from (components.java)
         }
     }
