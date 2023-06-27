@@ -23,10 +23,16 @@ import org.junit.jupiter.api.Test;
 
 import io.adminshell.aas.v3.model.AssetAdministrationShellEnvironment;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 class GenericDocumentTransformerTest {
 
     public static final String XML_INPUT = "src/test/resources/ua/aasfull.xml";
     public static final String JSON_CONFIG = "src/test/resources/ua/genericSampleConfig.json";
+    public static final String SPARQL_XML_INPUT = "src/test/resources/xml/groupable.xml";
+    public static final String NESTED_FOR_EACH_JSON_CONFIG = "src/test/resources/mappings/generic/nestedForEach.json";
+
 
     private InputStream testInputStream;
 
@@ -39,7 +45,6 @@ class GenericDocumentTransformerTest {
     @BeforeEach
     void setUp() throws Exception {
         TestUtils.resetBindings();
-        testInputStream = Files.newInputStream(Paths.get(XML_INPUT));
     }
 
     @AfterEach
@@ -47,6 +52,7 @@ class GenericDocumentTransformerTest {
 
     @Test
     void testNsBindings() throws TransformationException, IOException {
+        testInputStream = Files.newInputStream(Paths.get(XML_INPUT));
         DocumentTransformer transformer = new GenericDocumentTransformer();
 
         MappingSpecification mapping = new MappingSpecificationParser().loadMappingSpecification(JSON_CONFIG);
@@ -54,6 +60,19 @@ class GenericDocumentTransformerTest {
         AssetAdministrationShellEnvironment transform = transformer.execute(testInputStream, mapping);
         Assert.assertNotNull(transform);
         Assert.assertEquals(71, transform.getSubmodels().size());
+    }
+
+    @Test
+    void testNestedForEach() throws IOException, TransformationException {
+        testInputStream = Files.newInputStream(Paths.get(SPARQL_XML_INPUT));
+        DocumentTransformer transformer = new GenericDocumentTransformer();
+
+        MappingSpecification mapping = new MappingSpecificationParser().loadMappingSpecification(NESTED_FOR_EACH_JSON_CONFIG);
+
+        AssetAdministrationShellEnvironment transform = transformer.execute(testInputStream, mapping);
+
+        assertEquals(2, transform.getSubmodels().size());
+        assertTrue(transform.getSubmodels().stream().anyMatch(sm -> sm.getIdShort().equals("131")));
     }
 
 }

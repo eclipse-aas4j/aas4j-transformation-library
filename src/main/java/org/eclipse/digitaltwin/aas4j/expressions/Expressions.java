@@ -15,6 +15,7 @@ import java.util.stream.Stream;
 import org.dom4j.Node;
 
 import com.google.common.hash.Hashing;
+import org.eclipse.digitaltwin.aas4j.exceptions.TransformationException;
 
 public class Expressions {
 
@@ -129,8 +130,13 @@ public class Expressions {
             return Hashing.sha256().hashString(concatenated, StandardCharsets.UTF_8).toString();
         });
 
-        functions.put("generateId", args ->
-                "urn:uuid:" + UUID.randomUUID().toString()
+        functions.put("generateUuid", args ->
+                {
+                    boolean isEmpty = Helpers.valueToStream(args).allMatch(element -> element.equals(""));
+                    return args == null || isEmpty ? "urn:uuid:" + UUID.randomUUID() : "urn:uuid:" + UUID.nameUUIDFromBytes(
+                            nodeListsToString(Helpers.valueToStream(args))
+                                    .collect(Collectors.joining()).getBytes());
+                }
         );
 
         // string encoding

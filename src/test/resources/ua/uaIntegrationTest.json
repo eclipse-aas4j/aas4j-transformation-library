@@ -11,12 +11,16 @@
     "assets": [],
     "assetAdministrationShells": [
       {
-        "idShort": "UaAdminShell",
+        "@bind": {
+          "idShort": {
+            "@generateUuid": ""
+          }
+        },
         "identification": {
           "@bind": {
             "idType": "Custom",
             "id": {
-              "@generateId": "someIgnoredArg"
+              "@generateUuid": "someStringAsSeed"
             }
           }
         },
