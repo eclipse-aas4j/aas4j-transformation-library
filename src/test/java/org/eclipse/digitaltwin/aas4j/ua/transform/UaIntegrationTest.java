@@ -54,7 +54,7 @@ public class UaIntegrationTest {
         assertEquals("urn:uuid:407ef772-7040-3b9e-b51a-80286d1c8e49", shellEnv.getAssetAdministrationShells().get(0).getIdentification().getIdentifier());
 
         //this value was extracted from the first run. Since it should change
-        assertNotEquals("urn:uuid:6b6dcb8f-352c-49f7-8267-e2586601e858", shellEnv.getAssetAdministrationShells().get(0).getIdentification().getIdentifier());
+        assertNotEquals("urn:uuid:6b6dcb8f-352c-49f7-8267-e2586601e858", shellEnv.getAssetAdministrationShells().get(0).getIdShort());
 
     }
 
