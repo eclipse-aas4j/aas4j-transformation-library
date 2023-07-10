@@ -13,14 +13,14 @@
       {
         "@bind": {
           "idShort": {
-            "@generateUuid": ""
+            "@generate_uuid": ""
           }
         },
         "identification": {
           "@bind": {
             "idType": "Custom",
             "id": {
-              "@generateUuid": "someStringAsSeed"
+              "@generate_uuid": "someStringAsSeed"
             }
           }
         },

@@ -130,12 +130,15 @@ public class Expressions {
             return Hashing.sha256().hashString(concatenated, StandardCharsets.UTF_8).toString();
         });
 
-        functions.put("generateUuid", args ->
+        functions.put("generate_uuid", args ->
                 {
                     boolean isEmpty = Helpers.valueToStream(args).allMatch(element -> element.equals(""));
-                    return args == null || isEmpty ? "urn:uuid:" + UUID.randomUUID() : "urn:uuid:" + UUID.nameUUIDFromBytes(
-                            nodeListsToString(Helpers.valueToStream(args))
-                                    .collect(Collectors.joining()).getBytes());
+                    if (args == null || isEmpty) {
+                        return UUID.randomUUID();
+                    } else {
+                        String input = nodeListsToString(Helpers.valueToStream(args)).collect(Collectors.joining());
+                        return UUID.nameUUIDFromBytes(input.getBytes());
+                    }
                 }
         );
 

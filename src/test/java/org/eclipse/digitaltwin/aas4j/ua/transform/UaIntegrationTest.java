@@ -51,10 +51,10 @@ public class UaIntegrationTest {
                 .collect(Collectors.toList()).contains("http://exp.organization.com/UA/BigMachine/ns=4;i=1281");
         assertTrue(idInEnv);
 
-        assertEquals("urn:uuid:407ef772-7040-3b9e-b51a-80286d1c8e49", shellEnv.getAssetAdministrationShells().get(0).getIdentification().getIdentifier());
+        assertEquals("407ef772-7040-3b9e-b51a-80286d1c8e49", shellEnv.getAssetAdministrationShells().get(0).getIdentification().getIdentifier());
 
         //this value was extracted from the first run. Since it should change
-        assertNotEquals("urn:uuid:6b6dcb8f-352c-49f7-8267-e2586601e858", shellEnv.getAssetAdministrationShells().get(0).getIdShort());
+        assertNotEquals("6b6dcb8f-352c-49f7-8267-e2586601e858", shellEnv.getAssetAdministrationShells().get(0).getIdShort());
 
     }
 
