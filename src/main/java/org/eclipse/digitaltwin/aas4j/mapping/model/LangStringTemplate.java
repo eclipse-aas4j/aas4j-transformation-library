@@ -38,13 +38,13 @@ public class LangStringTemplate extends LangString implements Template {
     }
 
     @Override
-    public Map<String, Expression> getDefinitions() {
-        return template.getDefinitions();
+    public Map<String, Expression> getTemplateDefinitions() {
+        return template.getTemplateDefinitions();
     }
 
     @Override
-    public void setDefinitions(Map<String, Expression> definitions) {
-        template.setDefinitions(definitions);
+    public void setTemplateDefinitions(Map<String, Expression> definitions) {
+        template.setTemplateDefinitions(definitions);
     }
 
     @Override

@@ -1,5 +1,5 @@
 /* 
-  SPDX-FileCopyrightText: (C)2021 SAP SE or an affiliate company and aas-transformation-library contributors. All rights reserved. 
+  SPDX-FileCopyrightText: (C)2021 SAP SE or an affiliate company and aas4j-transformation-library contributors. All rights reserved. 
 
   SPDX-License-Identifier: Apache-2.0 
  */
@@ -17,7 +17,7 @@ plugins {
 }
 
 group = 'org.eclipse.digitaltwin.aas4j'
-version = '0.1.2'
+version = '0.1.3'
 
 application {
     group = group
@@ -154,7 +154,7 @@ spotless {
         trimTrailingWhitespace()
         indentWithSpaces()
         endWithNewline()
-        licenseHeader('/* \n  SPDX-FileCopyrightText: (C)$YEAR SAP SE or an affiliate company and aas-transformation-library contributors. All rights reserved. \n\n  SPDX-License-Identifier: Apache-2.0 \n */','\\w')
+        licenseHeader('/* \n  SPDX-FileCopyrightText: (C)$YEAR SAP SE or an affiliate company and aas4j-transformation-library contributors. All rights reserved. \n\n  SPDX-License-Identifier: Apache-2.0 \n */','\\w')
     }
 
     // format 'xmlaml', {
@@ -162,7 +162,7 @@ spotless {
     //     trimTrailingWhitespace()
     //     indentWithSpaces()
     //     endWithNewline()
-    //     licenseHeader('<!-- \n  SPDX-FileCopyrightText: (C)$YEAR SAP SE or an affiliate company and aas-transformation-library contributors. All rights reserved. \n\n  SPDX-License-Identifier: Apache-2.0 \n -->','<[^!]')
+    //     licenseHeader('<!-- \n  SPDX-FileCopyrightText: (C)$YEAR SAP SE or an affiliate company and aas4j-transformation-library contributors. All rights reserved. \n\n  SPDX-License-Identifier: Apache-2.0 \n -->','<[^!]')
     // }
 
     java {
@@ -172,7 +172,7 @@ spotless {
         endWithNewline()
         eclipse('4.12.0').configFile 'codestyle/EclipseFormatterProfile.xml'
         importOrderFile('codestyle/EclipseOrganizeImports.importorder')
-        licenseHeader('/* \n  SPDX-FileCopyrightText: (C)$YEAR SAP SE or an affiliate company and aas-transformation-library contributors. All rights reserved. \n\n  SPDX-License-Identifier: Apache-2.0 \n */')
+        licenseHeader('/* \n  SPDX-FileCopyrightText: (C)$YEAR SAP SE or an affiliate company and aas4j-transformation-library contributors. All rights reserved. \n\n  SPDX-License-Identifier: Apache-2.0 \n */')
     }
 }
 
@@ -218,8 +218,8 @@ task buildJar (type: Jar) {
 
     exclude 'META-INF/*.RSA', 'META-INF/*.SF', 'META-INF/*.DSA', 'META-INF/NOTICE', 'META-INF/LICENSE', 'META-INF/DEPENDENCIES'
 
-    archiveExtension.set('jar')
     with jar
+    archiveExtension.set('jar')
 }
 
 task build(overwrite: true) {
@@ -228,12 +228,12 @@ task build(overwrite: true) {
 
 shadowJar {
     destinationDirectory = file("${buildDir}/distributions")
-    archiveClassifier.set("")
 
     exclude 'META-INF/*.RSA', 'META-INF/*.SF', 'META-INF/*.DSA', 'META-INF/NOTICE', 'META-INF/LICENSE', 'META-INF/LICENSE'
 
-    archiveBaseName.set("aas-transformation-library")
+    archiveBaseName.set("aas4j-transformation-library")
     archiveAppendix.set("shadow")
+    archiveClassifier.set("shadedJar")
     archiveExtension.set("jar")
 }
 
@@ -254,7 +254,7 @@ publishing {
     }
     publications {
         gpr(MavenPublication) {
-            artifact jar
+            from components.java
         }
     }
 }
@@ -266,7 +266,7 @@ dependencies {
     def mockito_version = "3.2.4"
     def dom4j_version = "2.1.3"
     def apache_poi_version = "4.1.2"
-    def jackson_version = "2.11.3"
+    def jackson_version = "2.14.2"
     def truth_version = "1.1"
     def slf4j_version = "1.7.30"
     def json_schema_validator_version = "1.0.45"

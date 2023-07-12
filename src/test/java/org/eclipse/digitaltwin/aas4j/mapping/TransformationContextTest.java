@@ -26,14 +26,14 @@ class TransformationContextTest {
         mockDefs1.put("myDef", Expressions.getConstantByName("pi"));
         mockTemplate1 = Mockito.mock(Template.class);
         Mockito.when(mockTemplate1.getVariables()).thenReturn(null);
-        Mockito.when(mockTemplate1.getDefinitions()).thenReturn(mockDefs1);
+        Mockito.when(mockTemplate1.getTemplateDefinitions()).thenReturn(mockDefs1);
 
         HashMap<String, Expression> mockDefs2 = new HashMap<>();
         mockDefs2.put("myDef", Expressions.getConstantByName("NaN"));
         mockDefs2.put("myDef2", Expressions.getConstantByName("e"));
         mockTemplate2 = Mockito.mock(Template.class);
         Mockito.when(mockTemplate2.getVariables()).thenReturn(null);
-        Mockito.when(mockTemplate2.getDefinitions()).thenReturn(mockDefs2);
+        Mockito.when(mockTemplate2.getTemplateDefinitions()).thenReturn(mockDefs2);
 
     }
 

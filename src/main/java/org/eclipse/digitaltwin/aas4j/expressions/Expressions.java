@@ -6,13 +6,7 @@
 package org.eclipse.digitaltwin.aas4j.expressions;
 
 import java.nio.charset.StandardCharsets;
-import java.util.Base64;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -21,6 +15,7 @@ import java.util.stream.Stream;
 import org.dom4j.Node;
 
 import com.google.common.hash.Hashing;
+import org.eclipse.digitaltwin.aas4j.exceptions.TransformationException;
 
 public class Expressions {
 
@@ -134,6 +129,18 @@ public class Expressions {
             String concatenated = strStream.collect(Collectors.joining());
             return Hashing.sha256().hashString(concatenated, StandardCharsets.UTF_8).toString();
         });
+
+        functions.put("generate_uuid", args ->
+                {
+                    boolean isEmpty = Helpers.valueToStream(args).allMatch(element -> element.equals(""));
+                    if (args == null || isEmpty) {
+                        return UUID.randomUUID();
+                    } else {
+                        String input = nodeListsToString(Helpers.valueToStream(args)).collect(Collectors.joining());
+                        return UUID.nameUUIDFromBytes(input.getBytes());
+                    }
+                }
+        );
 
         // string encoding
         functions.put("base64", args -> {

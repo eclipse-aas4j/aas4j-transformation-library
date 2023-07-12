@@ -56,8 +56,8 @@ public class TransformationContext {
         }
         // add and/or override with template context
         if (template != null) {
-            if (template.getDefinitions() != null) {
-                build.definitions.putAll(template.getDefinitions());
+            if (template.getTemplateDefinitions() != null) {
+                build.definitions.putAll(template.getTemplateDefinitions());
             }
             if (template.getVariables() != null) {
                 template.getVariables().forEach((key, expr) -> {

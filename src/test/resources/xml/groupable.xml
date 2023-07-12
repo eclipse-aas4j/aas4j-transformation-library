@@ -1,0 +1,27 @@
+<ns:root xmlns:ns="http://ns.org/" targetNamespace="http://ns.org/">
+    <ns:a>
+        <ns:c>foo</ns:c>
+        <ns:b name="prop_b">1</ns:b>
+        <ns:b name="prop_c">2</ns:b>
+    </ns:a>
+    <ns:a>
+        <ns:c>foo</ns:c>
+        <ns:b name="prop_b">3</ns:b>
+        <ns:b name="prop_c">3</ns:b>
+    </ns:a>
+    <ns:a>
+        <ns:c>foo</ns:c>
+        <ns:b name="prop_b">1</ns:b>
+        <ns:b name="prop_c">2</ns:b>
+    </ns:a>
+    <ns:a>
+        <ns:c>bar</ns:c>
+        <ns:b name="prop_b">4</ns:b>
+        <ns:b name="prop_c">5</ns:b>
+    </ns:a>
+    <ns:a>
+        <ns:c>bar</ns:c>
+        <ns:b name="prop_b">4</ns:b>
+        <ns:b name="prop_c">8</ns:b>
+    </ns:a>
+</ns:root>

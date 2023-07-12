@@ -3,4 +3,4 @@
 
   SPDX-License-Identifier: Apache-2.0 
  */
-rootProject.name = 'aas-transformation-library'
+rootProject.name = 'aas4j-transformation-library'

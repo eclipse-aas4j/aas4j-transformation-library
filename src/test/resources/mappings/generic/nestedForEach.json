@@ -1,0 +1,52 @@
+{
+  "@header": {
+    "version": "1.0.0",
+    "aasVersion": "3.0RC01",
+    "@namespaces": {
+      "ns": "http://ns.org/"
+    }
+  },
+  "aasEnvironmentMapping": {
+    "submodels": [
+      {
+        "@foreach": {
+          "@xpath": "//ns:a/ns:c[not(.=../following::ns:c)]"
+        },
+        "@variables": {
+          "here": {
+            "@xpath": "."
+          }
+        },
+        "semanticId": {
+          "keys": [
+            {
+              "@bind": {
+                "value": {
+                  "@var": "here"
+                }
+              },
+              "idType": "Iri",
+              "type": "Submodel"
+            }
+          ]
+        },
+        "@bind": {
+          "idShort": {
+            "@concatenate": [
+              {
+                "@xpath": {
+                  "@concatenate": [
+                    "//ns:a[ns:c='",
+                    {
+                      "@var": "here"
+                    },
+                    "']/ns:b[@name='prop_b']"
+                  ]
+                }
+              }]
+          }
+        }
+      }
+    ]
+  }
+}

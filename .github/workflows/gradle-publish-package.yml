@@ -27,7 +27,7 @@ jobs:
         uses: actions/delete-package-versions@v4
         continue-on-error: true
         with:
-          package-name: 'com.sap.dsc.aas.lib.aas-transformation-library'
+          package-name: 'org.eclipse.digitaltwin.aas4j.aas4j-transformation-library'
       - name: Publish package
         run: ./gradlew -i publish
         env:
