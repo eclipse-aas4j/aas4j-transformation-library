@@ -1,0 +1,171 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>API | aas-transformation-library Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="API | aas-transformation-library Documentation ">
+    <meta name="generator" content="docfx 2.56.7.0">
+    
+    <link rel="shortcut icon" href="../images/favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/adminshellio-48x48.jpg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="api">API</h1>
+
+<p>For the end user, there are three relevant classes, all of which extend the <a href="https://github.com/admin-shell-io/aas-transformation-library/blob/main/src/main/java/com/sap/dsc/aas/lib/transform/DocumentTransformer.java">DocumentTransformer Class</a></p>
+<pre><code class="lang-java">public AssetAdministrationShellEnvironment transform(InputStream inStream, MappingSpecification mapping, Map&lt;String, String&gt; initialVars);
+</code></pre>
+<p>This requires three inputs for transformation:</p>
+<ul>
+<li>A source xml-based document as an InputStream (inStream).</li>
+<li>A MappingSpecification Object, that holds a parsed json-config file. This can be obtained from the MappingSpecificationParser:
+<code>new MappingSpecificationParser().loadMappingSpecification(PATH_TO_CONFIG_JSON)</code></li>
+<li>Optionally, the user can set the parameters declared by the @parameters section in the config file as a Map&lt;String, String&gt;.
+If the config does not define such parameters <code>null</code> can be passed which is equivalent to a second transform-method taking only
+the first two arguments.</li>
+</ul>
+<p>Depending on what kind of document shall be transformed, different classes should be used:</p>
+<h2 id="aml-files">AML files</h2>
+<p>AML files can be transformed by calling the <a href="https://github.com/admin-shell-io/aas-transformation-library/blob/main/src/main/java/com/sap/dsc/aas/lib/aml/transform/AmlTransformer.java">AmlTransformer</a>:</p>
+<pre><code class="lang-java">AmlTransformer amlTransformer = new AmlTransformer();
+shellEnv = amlTransformer.execute(amlInputStream, mapping);
+</code></pre>
+<p>AML file validation includes the following steps (cf. <a href="https://github.com/admin-shell-io/aas-transformation-library/blob/main/src/main/java/com/sap/dsc/aas/lib/aml/transform/validation/AmlValidator.java"><em>AmlValidator.java</em></a>):</p>
+<ul>
+<li>Check that the AML file is a valid XML file</li>
+<li>Check that the AML file is valid according to the <a href="https://github.com/admin-shell-io/aas-transformation-library/blob/main/src/main/resources/aml/CAEX_ClassModel_V.3.0.xsd">CAEX 3.0 class model</a></li>
+</ul>
+<h2 id="amlx-files">AMLX files</h2>
+<p>AMLX contains a AML-file at its core that needs to be unpackaged first</p>
+<pre><code class="lang-java">AmlxPackage amlxPackage = new AmlxPackageReader().readAmlxPackage(Paths.get(amlxInputFileName).toFile());
+InputStream amlInputStream = amlxPackage.getRootAmlFile().getInputStream()
+
+</code></pre>
+<p>After that the tranformation is equivalent to that of an AML-file.</p>
+<p>AMLX file validation includes the following steps (cf. <a href="https://github.com/admin-shell-io/aas-transformation-library/blob/main/src/main/java/com/sap/dsc/aas/lib/aml/amlx/AmlxValidator.java"><em>AmlxValidator.java</em></a>):</p>
+<ul>
+<li>Check whether each document defined in <em>/_rels/.rels</em> exists</li>
+<li>Check whether each file in the AMLX file (a ZIP archive) is defined in <em>/_rels/.rels</em></li>
+<li>Check that the root document exists</li>
+<li>Check that there is exactly one root document</li>
+<li>Check that the root document is a valid AML file</li>
+</ul>
+<h2 id="opc-ua-nodeset-files">OPC UA Nodeset files</h2>
+<p>Due to the <a href="https://github.com/admin-shell-io/aas-transformation-library/blob/main/src/main/java/com/sap/dsc/aas/lib/ua/transform/UANodeSetTransformer.java">UANodeSetTransformer</a>
+inheriting methods from the DocumentTransformer, transforming UA is very similar to AML.</p>
+<pre><code class="lang-java">UANodeSetTransformer uaTransformer = new UANodeSetTransformer();
+shellEnv = uaTransformer.execute(amlInputStream, mapping);
+</code></pre>
+<p>The OPC UA Nodeset validation includes the following (cf.
+<a href="https://github.com/admin-shell-io/aas-transformation-library/blob/main/src/main/java/com/sap/dsc/aas/lib/ua/transform/validation/UANodeSetSchemaValidator.java"><em>UANodeSetSchemaValidator.java</em></a>):</p>
+<ul>
+<li>Check that the nodeset xml file is valid xml file.</li>
+<li>Check that the nodeset xml file is valid according
+to <a href="https://github.com/OPCFoundation/UA-Nodeset/blob/v1.04/Schema/UANodeSet.xsd">UANodeSet.xsd</a> V1.04 schema.</li>
+</ul>
+<p><strong>Please note</strong>: The nodeset <a href="https://github.com/admin-shell-io/aas-transformation-library/tree/main/src/test/resources/ua/EntType.xml">EntType.xml</a>
+is taken from OPC UA information models published by <a href="https://github.com/equinor/opc-ua-information-models/tree/test">Equinor</a>.</p>
+<h3 id="plain-xml-files">Plain XML files</h3>
+<p>Plain XML files can be tranformed using the <a href="https://github.com/admin-shell-io/aas-transformation-library/tree/main/src/main/java/com/sap/dsc/aas/lib/transform/GenericDocumentTransformer.java">GenericDocumentTransformer.</a>
+This transformer does not trigger any validation but also prohibits users from accessing meta-model specific <a href="#expressions">expressions</a>
+such as <code>@caexAttributeName</code> or <code>@uaChildren</code>.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/eclipse-aas4j/aas4j-transformation-library/blob/main/docs/articles/api.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

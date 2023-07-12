@@ -1,0 +1,192 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Importing the AAS Transformation Library | aas-transformation-library Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Importing the AAS Transformation Library | aas-transformation-library Documentation ">
+    <meta name="generator" content="docfx 2.56.7.0">
+    
+    <link rel="shortcut icon" href="../images/favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/adminshellio-48x48.jpg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="importing-the-aas-transformation-library">Importing the AAS Transformation Library</h1>
+
+<h2 id="usage-as-a-dependency">Usage as a dependency</h2>
+<p>Currently, builds are exclusively released to GitHub Packages. They can be imported into gradle and maven projects with adjusted versioning, for example:</p>
+<pre><code class="lang-xml">&lt;dependency&gt;
+    &lt;groupId&gt;com.sap.dsc.aas.lib&lt;/groupId&gt;
+    &lt;artifactId&gt;aas-transformation-library&lt;/artifactId&gt;
+    &lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<h2 id="local-usage">Local Usage</h2>
+<p>We rely on <a href="https://sap.github.io/SapMachine/">SapMachine 11</a> and use <a href="https://gradle.org/">Gradle</a>.</p>
+<p>You can download and build the repository by yourself by following these steps:</p>
+<ul>
+<li>Clone the GitHub repository:</li>
+</ul>
+<pre><code class="lang-sh">        git clone https://github.com/admin-shell-io/aas-transformation-library
+</code></pre>
+<p>Use the repository on the commandline. Adjust the name of the jar according to your build.</p>
+<pre><code class="lang-sh">$ ./gradlew build
+
+$ java -jar build/distributions/aas-transformation-library-shadow-0.0.1-SNAPSHOT.jar
+usage: transform [-a &lt;AML_INPUT_FILE&gt; | -amlx &lt;AMLX_INPUT_FILE&gt; | -ua
+       &lt;NODESET_INPUT_FILE&gt; | -xml &lt;GENERIC_INPUT_FILE&gt;]  -c &lt;CONFIG_FILE&gt;
+       [-P &lt;PLACEHOLDER_VALUES_JSON&gt;] [-p]
+Transform XML file into an AAS structured file
+
+ -a,--aml &lt;AML_INPUT_FILE&gt;                           AML input file
+ -amlx,--amlx &lt;AMLX_INPUT_FILE&gt;                      AMLX input file
+ -c,--config &lt;CONFIG_FILE&gt;                           Mapping config file
+ -P,--placeholder-values &lt;PLACEHOLDER_VALUES_JSON&gt;   Map of placeholder
+                                                     values in JSON format
+ -p,--print-placeholders                             Print placeholders
+                                                     with description
+ -ua,--ua &lt;NODESET_INPUT_FILE&gt;                       UA NodeSet input file
+ -xml,--xml &lt;GENERIC_INPUT_FILE&gt;                     Generic input file
+
+Missing required option: c
+
+
+$ java -jar ./build/distributions/aas-transformation-library-shadow-0.0.1-SNAPSHOT.jar -c src/test/resources/config/simpleConfig.json -a src/test/resources/aml/full_AutomationComponent.aml
+[main] INFO com.sap.dsc.aas.lib.aml.ConsoleApplication - Loaded config version 1.0.0, aas version 2.0.1
+[main] INFO transform.aml.org.eclipse.digitaltwin.aas4j.AmlTransformer - Loaded config version 1.0.0, AAS version 2.0.1
+[main] INFO com.sap.dsc.aas.lib.aml.transform.AssetAdministrationShellEnvTransformer - Transforming 1 config assets...
+[main] INFO com.sap.dsc.aas.lib.aml.ConsoleApplication - Wrote AAS file to full_AutomationComponent.json
+
+$  cd src/test/resources/amlx/minimal_AutomationMLComponent_WithDocuments
+
+$ zip -r minimal_AutomationMLComponent_WithDocuments.amlx . -x &quot;*.DS_Store&quot;
+adding: [Content_Types].xml (deflated 52%)
+adding: _rels/ (stored 0%)
+adding: _rels/.rels (deflated 68%)
+adding: lib/ (stored 0%)
+adding: lib/AutomationComponentLibrary_v1_0_0_Full_CAEX3_BETA.aml (deflated 85%)
+adding: files/ (stored 0%)
+adding: files/TestPDFDeviceManual.pdf (deflated 14%)
+adding: files/TestTXTDeviceManual.txt (stored 0%)
+adding: files/TestTXTWarranty.txt (stored 0%)
+adding: CAEX_ClassModel_V.3.0.xsd (deflated 90%)
+adding: minimal_AutomationMLComponent_WithDocuments.aml (deflated 80%)
+
+$ cd ../../../../../
+
+$ java -jar ./build/distributions/aas-transformation-library-shadow-0.0.1-SNAPSHOT.jar -c src/test/resources/config/simpleConfig.json -amlx src/test/resources/amlx/minimal_AutomationMLComponent_WithDocuments/minimal_AutomationMLComponent_WithDocuments.amlx
+[main] INFO com.sap.dsc.aas.lib.aml.ConsoleApplication - Loaded config version 1.0.0, aas version 2.0.1
+[main] INFO transform.aml.org.eclipse.digitaltwin.aas4j.AmlTransformer - Loaded config version 1.0.0, AAS version 2.0.1
+[main] INFO com.sap.dsc.aas.lib.aml.transform.AssetAdministrationShellEnvTransformer - Transforming 1 config assets...
+[main] INFO com.sap.dsc.aas.lib.aml.ConsoleApplication - Wrote AAS file to minimal_AutomationMLComponent_WithDocuments.json
+Writing to: minimal_AutomationMLComponent_WithDocuments/files/TestTXTDeviceManual.txt
+Writing to: minimal_AutomationMLComponent_WithDocuments/files/TestPDFDeviceManual.pdf
+Writing to: minimal_AutomationMLComponent_WithDocuments/files/TestTXTWarranty.txt
+</code></pre>
+<p>Output was shortened for increased readability.</p>
+<h2 id="versioning">Versioning</h2>
+<p>We version using <strong>semantic versioning</strong> (e.g., <code>1.0.4</code>). The first position indicates the major release. Different major
+releases canvas contain breaking changes and are not necessarily compliant. The second number indicates the minor release
+or revision, which contains new features compared to an older revision. The last position is used for hotfixes or bugfixes.</p>
+<p>Note, that the versioning scheme of this project is not directly aligned with the release process of the metamodel or the java-model library!
+When revisions of the meta-model are released, the <a href="github.com/admin-shell-io/java-model">java-model</a> will change and
+those changes will be integrated in this library eventually.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/eclipse-aas4j/aas4j-transformation-library/blob/main/docs/articles/building.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

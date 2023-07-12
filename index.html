@@ -1,0 +1,141 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Introduction | aas-transformation-library Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Introduction | aas-transformation-library Documentation ">
+    <meta name="generator" content="docfx 2.56.7.0">
+    
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="stylesheet" href="styles/docfx.vendor.css">
+    <link rel="stylesheet" href="styles/docfx.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <meta property="docfx:navrel" content="toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="index.html">
+                <img id="logo" class="svg" src="images/adminshellio-48x48.jpg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="introduction">Introduction</h1>
+
+<p>The <a href="https://github.com/admin-shell-io/aas-transformation-library/">AAS Transformation Library</a> is a software tool that
+eases the process of creating Asset Administration Shells from other XML-based formats. This functility is critical to
+integrate existing XML-based industry standard in the AAS, most notably OPC UA Nodeset and AutomationML files (.aml, .amlx).
+As it builds on open standards, the library is also usable for generic XML-files, however without domain-specific extensions. This library is no
+competitor to the OPC UA and AutomationML serializations defined in the specification <a href="https://www.plattform-i40.de/IP/Redaktion/EN/Downloads/Publikation/Details_of_the_Asset_Administration_Shell_Part1_V3.html">Details of the Asset Administration Shell Pt. 1</a>
+as the spec only defines ways to express AAS-native structures in the meta-models of AML or OPC UA. The OPC UA Companion Specification
+<a href="https://reference.opcfoundation.org/I4AAS/docs/">OPC UA for Asset Administration Shell</a> is equivalent to the OPC UA serialization
+in the spec.</p>
+<p>This library depends heavily on the implementation of the <a href="https://github.com/admin-shell-io/java-model">AAS in java</a> and the
+corresponding <a href="https://github.com/admin-shell-io/java-serializer/tree/main/dataformat-json">json-deserializer</a>.</p>
+<h2 id="scope">Scope</h2>
+<p>The AAS strives to provide a generic data model for industrial assets. However, depending on the scope, lifecycle stage
+and industry, the structure and semantics of a production plants may already be modelled elsewhere. To make use of this
+knowledge, users require a semi-automatic way to translate other standards to the AAS. This library can help.</p>
+<p>The library can be used twofold. Users can..</p>
+<ol>
+<li>import the library in Java applications to transform models using the most relevant XML-based industrial standards
+into AAS objects.</li>
+<li>use the library to build a <a href="https://github.com/johnrengelman/shadow">fat JAR</a> to transform XML files into AAS JSON
+files locally.</li>
+</ol>
+<p>It requires two inputs: The first is the file with the source data and the second is a file that tells the transformation
+engine, how to conduct the mapping. When called from the commandline, the resulting AAS will be serialized to json and written to a file.
+When used as a dependency in another java-project, it will return an AssetAdministrationShellEnvironment object from the
+abovementioned java-model library. The user must decide what transformer to use depending on the format of the source file.</p>
+<p><img src="images/aastransform.png" alt="aas-transformation-library schema" title="High level Workflow for the AAS Transformation Library"></p>
+<p>The project was kicked-off by SAP for AutomationML-transformations and extended its scope from there.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/eclipse-aas4j/aas4j-transformation-library/blob/main/docs/index.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="styles/docfx.js"></script>
+    <script type="text/javascript" src="styles/main.js"></script>
+  </body>
+</html>
